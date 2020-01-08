@@ -1,0 +1,63 @@
+//* Navbar
+
+
+.navbar {
+    display: none;
+   float: right;
+
+   @include largeScreen{
+       display: block;
+       font-size: .8rem;
+       margin-top: 26px;
+   }
+    &__content {
+   
+        display: flex;
+     
+        li {
+            margin:0 .8rem;
+            color: $primary-color;
+          
+            a {
+                color: $primary-color;
+                font-size: 1.2em;
+                
+                &:hover {
+                    color: rgba($yellow-color, 2.0);
+                    background: $primary-color;
+                    padding: 0 .6em;
+                    
+                }
+            }
+        }
+
+        &-item {
+            cursor: pointer;
+            ul {
+                display: none;
+            }
+
+            &:hover {
+                ul  {
+                    display: block;
+                    background: $light-color;
+                    box-shadow: 2px 2px  2px 2px #ccc;
+                    text-align: center;
+                    position: fixed;
+                    padding:1.4em 0;
+                    top: 11%;
+                    right: .3%;  
+                    
+                }
+
+                a {
+                    // display: block;
+                }
+            }
+
+            li {
+                padding: .4em;
+            }
+        }
+    }
+}

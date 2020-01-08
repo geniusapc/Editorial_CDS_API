@@ -1,0 +1,30 @@
+//? Tables 
+
+.table {
+    border: 2px #ccc solid;
+    text-align: center;
+    margin: auto ;
+
+    .hide {
+        display: none;
+    }
+
+    th,td {
+        border: 1px #ccc solid;
+        color: $primary-color;
+        padding: .8em;
+        margin-right: .5em; 
+    }
+
+    td {
+        max-width: 50px;
+        font-size: .8em;
+    }
+   
+}
+
+
+
+
+
+

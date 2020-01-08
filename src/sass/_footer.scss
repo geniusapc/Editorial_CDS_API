@@ -1,0 +1,58 @@
+.footer {
+    background: rgb(0, 0, 0);
+    color: $white-text;
+
+
+    .main__foot {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1em 2em ;
+
+        .social__icons {
+            &-box {
+                display: flex;
+                flex-flow: row nowrap;
+                p  {
+                    color: $primary-color;
+                }
+            }
+
+          
+        }
+
+        
+        @include largeScreen() {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1em 2em ;
+
+            .form {
+                margin-top: 10rem;
+            }
+        }
+
+        .form  {
+
+            &__control {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+
+                input[type ="text"]{
+                    padding: .4em;
+                    width: 45%;
+                }
+                input[type ="submit"]{
+                    padding: .6em;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    background: $primary-color;
+                    border: none;
+                    color: $white-text;
+                }
+            }
+            
+        }
+    }
+}
