@@ -1,0 +1,16 @@
+@import 'variables';
+
+
+.black_bg {
+     color: $body-color;
+}
+
+.green {
+     color: $primary;
+}
+
+// .border {
+//      border: none;
+// }
+
+@import '~bootstrap/scss/bootstrap.scss';

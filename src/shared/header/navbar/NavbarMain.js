@@ -1,60 +1,65 @@
 import React, { useState } from 'react';
+import Logo from '../logo/Logo';
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
+     Collapse,
+     Navbar,
+     NavbarToggler,
+     NavbarBrand,
+     Nav,
+     NavItem,
+     NavLink,
+     UncontrolledDropdown,
+     DropdownToggle,
+     DropdownMenu,
+     DropdownItem,
+     NavbarText
 } from 'reactstrap';
 
+
 const NavbarMain = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
+     const [isOpen, setIsOpen] = useState(false);
 
-    const toggle = () => setIsOpen(!isOpen);
+     const toggle = () => setIsOpen(!isOpen);
 
-    return (
-        <div>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">reactstrap</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/components/">Components</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                        </NavItem>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Options
+     return (
+          <div>
+               <Navbar color="white" light expand="md">
+                    <Logo ></Logo>
+                    <h4 className={'green ml-3'}>Editorial Cds group</h4>
+                    <NavbarToggler className={'border'} onClick={toggle} />
+                    <Collapse isOpen={isOpen} navbar>
+                         <Nav className="ml-auto" navbar>
+                              <NavItem>
+                                   <NavLink href="/">About</NavLink>
+                              </NavItem>
+                              <NavItem>
+                                   <NavLink href="/">Our Gallery </NavLink>
+                              </NavItem>
+                              <NavItem>
+                                   <NavLink href="/">Contact Us </NavLink>
+                              </NavItem>
+                              <UncontrolledDropdown nav inNavbar>
+                                   <DropdownToggle nav caret>
+                                       Member
                                    </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                    Option 1
+                                   <DropdownMenu right>
+                                        <DropdownItem>
+                                           Register
                                          </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
+                                        <DropdownItem>
+                                             Login
                                         </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                    Reset
+                                        <DropdownItem divider />
+                                        <DropdownItem>
+                                            Admin
                                          </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
-                    </Nav>
-                    <NavbarText>Simple Text</NavbarText>
-                </Collapse>
-            </Navbar>
-        </div>
-    );
+                                   </DropdownMenu>
+                              </UncontrolledDropdown>
+                         </Nav>
+                    </Collapse>
+               </Navbar>
+          </div>
+     );
 }
 
 export default NavbarMain;
