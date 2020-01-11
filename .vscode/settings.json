@@ -27,7 +27,7 @@
      },
      "extensions.showRecommendationsOnlyOnDemand": true,
      "workbench.iconTheme": "material-icon-theme",
-     "workbench.colorTheme": "Material Theme Ocean",
+     "workbench.colorTheme": "Lights Out",
      "window.menuBarVisibility": "toggle",
      "files.defaultLanguage": "auto",
      "git.enableSmartCommit": true,
