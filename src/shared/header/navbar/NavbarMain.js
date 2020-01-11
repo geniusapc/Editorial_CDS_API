@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import Logo from '../logo/Logo';
 import {
-     Collapse,
-     Navbar,
-     NavbarToggler,
-     NavbarBrand,
-     Nav,
-     NavItem,
-     NavLink,
-     UncontrolledDropdown,
-     DropdownToggle,
-     DropdownMenu,
-     DropdownItem,
-     NavbarText
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    NavbarText
 } from 'reactstrap';
 
 
@@ -22,10 +22,10 @@ const NavbarMain = (props) => {
      const toggle = () => setIsOpen(!isOpen);
 
      return (
-          <div>
-               <Navbar color="white" light expand="md">
+          <div className={'py-2'}>
+               <Navbar color="white"  light expand="md">
                     <Logo ></Logo>
-                    <h4 className={'green ml-3'}>Editorial Cds group</h4>
+                    <h4 className={'B ml-3'}>EDITORIAL CDS GROUP</h4>
                     <NavbarToggler className={'border'} onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                          <Nav className="ml-auto" navbar>
