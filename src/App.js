@@ -12,7 +12,13 @@ import {
      faTimesCircle,
      faServer,
      faSpinner,
-     faInfoCircle
+     faInfoCircle,
+     faSearch,
+     faThumbsUp,
+     faComment,
+     faShare,
+     fahear,
+     faHeart
 } from "@fortawesome/free-solid-svg-icons";
 
 import Layouts from "./layouts/Layouts";
@@ -30,7 +36,12 @@ library.add(
      faTimesCircle,
      faServer,
      faSpinner,
-     faInfoCircle
+     faInfoCircle,
+     faSearch,
+     faThumbsUp,
+     faComment,
+     faHeart,
+     faShare
 );
 
 const App = () => {

@@ -24,9 +24,15 @@ html {
 
 
 .img-rounded {
-     width:200px;
-     height:200px;
+     width:150px;
+     height:150px;
      border-radius:50%;
+     margin: 1.2rem 0;
+}
+
+.toggle {
+     border: none;
+     
 }
 
 
@@ -58,14 +64,22 @@ html {
           .search-btn {
                display:flex;
                flex-wrap: nowrap;
-               border : 1px solid $light;
+               border : 1px solid $light; 
+               justify-content: space-between;
                border-radius: $border-radius;
                background:$white;
-               padding: .6rem 10rem ;
+               // padding: .rem 4rem ;
 
                input {
                     border: none;
                     background:none;
+                     padding: .6rem 6rem ;
+                    border-radius: $border-radius;
+
+                    &:focus {
+                         border:$primary 1px solid;
+                         outline: none
+                    }
 
                     ::placeholder {
                          font-style: italic;
@@ -80,8 +94,10 @@ html {
 
 
 .event-grid {
-     display: grid;
-     grid-template-columns: 1fr ;
+      display:flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
 }
 
 .event-title {
@@ -89,6 +105,7 @@ html {
      flex-direction: column;
      align-items: center;
      justify-content: center;
+     cursor: pointer;
      // margin: 3rem 0;
 
      div {
@@ -103,6 +120,21 @@ html {
                background:$warning;
                margin: auto 1rem;
           }
+     }
+}
+
+.comment {
+     display:flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+     border-top: 1px $light solid;
+
+     div {
+          margin: .3rem 3rem 1rem 2rem ;
+          font-size: 20px;
+          cursor: pointer;
+        
      }
 }
 
@@ -202,13 +234,6 @@ html {
           background: $light;
      }
 
-     // svg {
-     //      height:100%;
-     // }
-
-     // &-info {
-     //      position: absolute;
-     // }
 }
 
 .card {
@@ -266,12 +291,15 @@ html {
 .footer {
     background: $black;
     color: $white;
+     display:flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center; 
+
 
 
     .main__foot {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 1em 2em ;
+        
 
         .social__icons {
             &-box {
@@ -288,35 +316,43 @@ html {
 
 
         .form  {
+             margin: 1rem  0 0 0 ;
+          &__control {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: center;
+          align-items: center;
 
-            &__control {
-               display: flex;
-               flex-flow: row wrap;
-               justify-content: center;
-               align-items: center;
-
-               input[type ="text"]{
+          input[type ="text"]{
                padding: .55em 1.2rem;
                border-top-left-radius: 7px;
                border-bottom-left-radius: 7px;
                border: none;
-               // width: 45%;
-               }
 
-                input[type ="submit"]{
-                    padding: .6em;
-                    border-top-right-radius: 7px;
-                    border-bottom-right-radius: 7px;
-                    background: $primary;
-                    border: none;
-                    color: $white;
-                }
-            }
-            
+          }
+
+          input[type ="submit"]{
+               padding: .6em;
+               border-top-right-radius: 7px;
+               border-bottom-right-radius: 7px;
+               background: $primary;
+               border: none;
+               color: $white;
+          }
+
+          }
+          
         }
     }
 }
 
+.flow {
+     margin: 0 0 0rem 0;
+}
+
+.text-medium {
+     font-size: 1rem
+}
 
 // media Queries......
 
@@ -325,14 +361,14 @@ html {
           display: grid;
           grid-template-columns: 1fr 1fr ;
      }
-  
-    
+
 }
 
 @media(min-width:1003px) {
      .event-grid {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr ;
+
      }
      
      .main {
@@ -343,22 +379,7 @@ html {
           div {
                max-width: 78.333%;  
           }
-     }
-     footer {
-
-          // div:nth-child(1) {
-          //      display: grid;
-          //      grid-template-columns: 1fr 1fr;
-               
-
-          //      .form {
-          //           margin-top: 10rem
-          //      }
-          // }
-     }
- 
-         
-    
+     }    
 }
 
 @import '~bootstrap/scss/bootstrap.scss';

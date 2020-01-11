@@ -1,10 +1,6 @@
 import React,{useState} from 'react';
 import EventList from './EventList';
-import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button
-} from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
+
 
 
 const Events = props => {
