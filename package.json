@@ -1,5 +1,5 @@
 {
-     "name": "weight_tracker",
+     "name": "Editorial_info _site",
      "version": "0.1.0",
      "private": true,
      "dependencies": {
@@ -9,23 +9,14 @@
           "animate.css": "^3.7.2",
           "bootstrap": "^4.4.1",
           "cra-template": "1.0.0",
-          "firebase": "^7.6.1",
           "install": "^0.13.0",
           "node-sass": "^4.13.0",
           "npm": "^6.13.4",
           "react": "^16.12.0",
           "react-dom": "^16.12.0",
-          "react-notifications-component": "^2.2.4",
-          "react-redux": "^7.1.3",
-          "react-redux-firebase": "^3.0.6",
           "react-router-dom": "^5.1.2",
           "react-scripts": "3.3.0",
-          "reactstrap": "^8.2.0",
-          "redux": "^4.0.5",
-          "redux-firestore": "^0.11.0",
-          "redux-thunk": "^2.3.0",
-          "styled-components": "^4.4.1",
-          "uuid": "^3.3.3"
+          "reactstrap": "^8.2.0"
      },
      "scripts": {
           "start": "react-scripts start",
