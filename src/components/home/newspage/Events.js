@@ -28,12 +28,12 @@ const Events = props => {
 
      // "https://jsonplaceholder.typicode.com/posts";
 
-     const [newsItem, setNewsItem] = useState([]);
+     const [newsItem, setNewsItem] = useState([""]);
      const fetchEvents = async () => {
-          const res = await fetch("./news.json");
-          const data = await res.json();
-          console.log(data);
-          setNewsItem(data);
+          const res = await fetch("news.json");
+          // const data = await res.json();
+          console.log(res);
+          // setNewsItem(data);
           // return data;
      };
      useEffect(() => {

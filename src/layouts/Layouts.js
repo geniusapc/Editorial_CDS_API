@@ -5,8 +5,7 @@ import NavbarMain from "../shared/header/navbar/NavbarMain";
 import Footer from "../shared/footer/Footer";
 import Home from "../components/home/Home";
 import Gallery from "../components/gallery/Gallery";
-
-const nopage = () => <h1>Oops page not found</h1>;
+import ErrorPage from "./ErrorPage";
 
 const Layouts = () => {
      return (
@@ -16,7 +15,7 @@ const Layouts = () => {
                     <Switch>
                          <Route path="/" exact component={Home} />
                          <Route path="/gallery" exact component={Gallery} />
-                         <Route component={nopage} />
+                         <Route component={ErrorPage} />
                     </Switch>
                </Router>
 

@@ -376,6 +376,21 @@ html {
      }
 }
 
+// Error page
+.error-page {
+     main {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          div {
+               a {
+                    display: block;
+               }
+          }
+     }
+}
+
 // footer
 
 .footer {
