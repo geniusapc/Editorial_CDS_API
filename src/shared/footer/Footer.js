@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = props => {
      const date = new Date();
-     const getYear = `${date.getFullYear()}`
+     const getYear = `${date.getFullYear()}`;
      return (
           <>
                <footer className={"footer  text-center"}>
@@ -29,7 +29,7 @@ const Footer = props => {
                     <div className={"social__icons"}>
                          <div className={"social__icons-box"}>
                               <p className={"primary"}>
-                                   <h3>follow us on</h3>
+                                   <strong>follow us on</strong>
                               </p>
                               <a href="#"></a>
                               <a href="#"></a>
@@ -37,7 +37,7 @@ const Footer = props => {
                          </div>
                     </div>
                     <cite className={"mb-3"}>
-                         <small className={"text-medium "} >
+                         <small className={"text-medium "}>
                               made with by cmc
                               <span className={"primary "}>WebCode</span> &
                               prince
