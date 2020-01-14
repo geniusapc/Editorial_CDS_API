@@ -26,25 +26,25 @@ const Events = props => {
           //           }
      };
 
-     const [newsItem, setNewsItem] = useState([]);
+     // "https://jsonplaceholder.typicode.com/posts";
 
+     const [newsItem, setNewsItem] = useState([]);
+     const fetchEvents = async () => {
+          const res = await fetch("./news.json");
+          const data = await res.json();
+          console.log(data);
+          setNewsItem(data);
+          // return data;
+     };
      useEffect(() => {
           // const fetchEvents = () => {
-          //      fetch("https://jsonplaceholder.typicode.com/posts")
-          //           .then(res => res.json())
-          //           .then(data => {
-          //                console.log(data);
-          //                setNewsItem(data);
-          //           });
+          //      fetch("news.json").then(res => res.json());
+          //      // .then(data => {
+          //      //      console.log(data);
+          //      //      // setNewsItem(data);
+          //      // });
           // };
-          const fetchEvents = async () => {
-               const res = await fetch(
-                    "https://jsonplaceholder.typicode.com/posts"
-               );
-               const data = await res.json();
-               console.log(data);
-               return data;
-          };
+
           fetchEvents();
      }, []);
 
