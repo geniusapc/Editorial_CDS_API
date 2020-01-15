@@ -13,10 +13,10 @@ const ErrorPage = props => {
                               src={image}
                               className="img-fluid"
                               alt=""
-                              // height="500"
-                              // width="400"
+                              height="500"
+                              width="350"
                          />
-                         <h2 className="primary text-center mb-4">
+                         <h2 className="primary text-center">
                               Oops page not found
                          </h2>
                     </div>
