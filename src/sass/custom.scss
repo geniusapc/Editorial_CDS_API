@@ -404,6 +404,23 @@ html {
      }
 }
 
+//Pagination...
+.pagiination-wrapper {
+     p {
+          font-size: 1.2rem;
+          color: $white;
+     }
+}
+.page-grid {
+     display: grid;
+     grid-template-columns: repeat(10, 1fr);
+     margin: 0 0.5rem 0 0;
+
+     li {
+          list-style-type: none;
+     }
+}
+
 // footer
 
 .footer {
