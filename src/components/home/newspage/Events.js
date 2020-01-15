@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EventList from "./EventList";
+import Pagination from "../../pagination/Pagination";
 
 const Events = props => {
      const news = {
@@ -28,25 +29,27 @@ const Events = props => {
 
      // "https://jsonplaceholder.typicode.com/posts";
 
-     const [newsItem, setNewsItem] = useState([""]);
-     const fetchEvents = async () => {
-          const res = await fetch("news.json");
-          // const data = await res.json();
-          console.log(res);
-          // setNewsItem(data);
-          // return data;
-     };
-     useEffect(() => {
-          // const fetchEvents = () => {
-          //      fetch("news.json").then(res => res.json());
-          //      // .then(data => {
-          //      //      console.log(data);
-          //      //      // setNewsItem(data);
-          //      // });
-          // };
+     const [newsItem, setNewsItem] = useState([]);
+     const [currentPage, setCurrentPage] = useState(1);
+     const [postPerpage] = useState(6);
 
+     const fetchEvents = async () => {
+          const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+          const data = await res.json();
+          console.log(data);
+          setNewsItem(data);
+          console.log(newsItem);
+     };
+
+     useEffect(() => {
           fetchEvents();
      }, []);
+
+     // Get the Current Page
+
+     const indexOfLastPost = currentPage * postPerpage;
+     const indexOfFirstPage = indexOfLastPost - postPerpage;
+     const currentPosts = newsItem.slice(indexOfFirstPage, indexOfLastPost);
 
      return (
           <>
@@ -58,7 +61,7 @@ const Events = props => {
                     </div>
                </div>
                <div className="container mx-auto event-grid">
-                    {newsItem.map(news => (
+                    {currentPosts.map(news => (
                          <EventList
                               key={news.id}
                               title={news.title}
@@ -67,6 +70,11 @@ const Events = props => {
                          />
                     ))}
                </div>
+               <Pagination
+                    className=" center"
+                    postPerPage={postPerpage}
+                    totalPosts={newsItem.length}
+               />
           </>
      );
 };
