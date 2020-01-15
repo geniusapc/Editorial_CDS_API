@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Posts from "../../readnewspage/Readnews";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
      Card,
@@ -28,7 +29,9 @@ const EventList = ({ title, text, image }) => {
                               <CardSubtitle className="my-3">
                                    Card subtitle
                               </CardSubtitle>
-                              <CardText className="">{text}.... </CardText>
+                              <CardText className="">
+                                   {text.slice(0, 150)}....{" "}
+                              </CardText>
                          </CardBody>
                          <div className={"comment"}>
                               <div>

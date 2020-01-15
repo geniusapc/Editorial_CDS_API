@@ -8,7 +8,7 @@ const Events = props => {
      const [newsItem, setNewsItem] = useContext(EventContext);
 
      const [currentPage, setCurrentPage] = useState(1);
-     const [loader, setLoader] = useState(true);
+     const [loader, setLoader] = useState(false);
      const [postPerpage] = useState(6);
 
      // const fetchEvents = async () => {

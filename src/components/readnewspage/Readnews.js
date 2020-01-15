@@ -1,9 +1,10 @@
 import React from "react";
 
-const Readnews = ({}) => {
+const Readnews = ({ text, title }) => {
      return (
           <div>
-               <div></div>
+               <div>{title}</div>
+               <div>{text}</div>
           </div>
      );
 };
