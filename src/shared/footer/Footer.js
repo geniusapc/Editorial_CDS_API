@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Footer = props => {
      const date = new Date();
@@ -37,8 +38,17 @@ const Footer = props => {
                          </div>
                     </div>
                     <cite className={"mb-3"}>
-                         <small className={"text-medium "}>
-                              made with by cmc
+                         <small className={" "}>
+                              made with{" "}
+                              <FontAwesomeIcon
+                                   style={{
+                                        margin: " 0 .4rem"
+                                   }}
+                                   icon="heart"
+                                   size="1x"
+                                   color="#dc3545"
+                              />
+                              by cmc
                               <span className={"primary "}>WebCode</span> &
                               prince
                               <span className={"primary"}>Arthur</span>
