@@ -9,12 +9,10 @@ const Pagination = ({ postPerPage, totalPosts, paginate }) => {
      }
      return (
           <nav className="pagination-wrapper">
-               <p className="text-white ml-5 font-weight-bold">
-                    view news page
-               </p>
+               <h5 className="text-white ml-5 font-italic">view news page</h5>
                <ul className=" page-grid">
                     {pageNumbers.map(number => (
-                         <li key={number} className="">
+                         <li key={number}>
                               <a
                                    onClick={() => paginate(number)}
                                    href=""
