@@ -41,9 +41,11 @@ const Events = props => {
           console.log(newsItem);
      };
 
+     const paginate = pageNumber => setCurrentPage(pageNumber);
+
      useEffect(() => {
           fetchEvents();
-     }, []);
+     }, [paginate]);
 
      // Get the Current Page
 
@@ -69,12 +71,13 @@ const Events = props => {
                               text={news.text}
                          />
                     ))}
+                    <Pagination
+                         className=" center"
+                         postPerPage={postPerpage}
+                         totalPosts={newsItem.length}
+                         paginate={paginate}
+                    />
                </div>
-               <Pagination
-                    className=" center"
-                    postPerPage={postPerpage}
-                    totalPosts={newsItem.length}
-               />
           </>
      );
 };
