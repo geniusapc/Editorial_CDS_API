@@ -18,7 +18,8 @@ import {
      faComment,
      faShare,
      fahear,
-     faHeart
+     faHeart,
+     faPager
 } from "@fortawesome/free-solid-svg-icons";
 
 import Layouts from "./layouts/Layouts";
@@ -41,7 +42,8 @@ library.add(
      faThumbsUp,
      faComment,
      faHeart,
-     faShare
+     faShare,
+     faPager
 );
 
 const App = () => {
