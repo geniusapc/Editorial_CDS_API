@@ -377,6 +377,10 @@ html {
 }
 
 // Error page
+
+.error {
+     border-top: 3px $light solid;
+}
 .error-page {
      main {
           display: flex;
