@@ -18,7 +18,7 @@ $body-color: #212529;
      color: $primary;
 }
 
-$border-radius: 0.7rem;
+$border-radius: 0.3rem;
 $border-radius-lg: 0.4rem;
 $border-radius-sm: 0.3rem;
 
@@ -482,6 +482,66 @@ html {
      font-size: 1rem;
 }
 
+//Forms
+
+.form-container {
+     position: relative;
+     margin: 10rem auto;
+     border: $primary 2px solid;
+}
+
+.form-wrapper {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     text-align: center;
+     padding: 10px 0 14px 0;
+     height: 100%;
+     width: 100%;
+
+     img {
+          position: absolute;
+          top: -45%;
+          left: 34%;
+     }
+}
+
+form {
+     .form-div {
+          display: block;
+
+          input[type="text"],
+          input[type="password"],
+          input[type="submit"] {
+               width: 80%;
+               border: none;
+               border-radius: $border-radius;
+               padding: 0.6rem;
+               margin: 0 0 0.6rem 0;
+          }
+          input[type="text"],
+          input[type="password"]:focus {
+               border: $primary;
+               outline: hidden;
+          }
+
+          label {
+               display: block;
+               font-size: 1.2rem;
+               color: $primary;
+               margin: 0.5rem 0 0 4rem;
+               text-align: left;
+
+               span {
+                    color: $danger;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    margin: 0 0 0 0.3rem;
+               }
+          }
+     }
+}
+
 // media Queries......
 
 @media (min-width: 790px) {
@@ -492,6 +552,13 @@ html {
 
      .flex-pics {
           display: flex;
+     }
+
+     .form-container {
+          width: 500px;
+          .form-div label {
+               margin-left: 0.6rem;
+          }
      }
 }
 

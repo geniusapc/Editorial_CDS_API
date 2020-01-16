@@ -17,7 +17,6 @@ import {
      faThumbsUp,
      faComment,
      faShare,
-     fahear,
      faHeart,
      faPager
 } from "@fortawesome/free-solid-svg-icons";
