@@ -1,15 +1,5 @@
 import React from "react";
-import {
-     Card,
-     CardImg,
-     CardText,
-     CardBody,
-     CardTitle,
-     CardSubtitle,
-     Button
-} from "reactstrap";
 import image from "./slide3.jpg";
-
 
 const Profiles = props => {
      return (

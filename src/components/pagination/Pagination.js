@@ -1,6 +1,5 @@
 import React from "react";
-import PaginationItem from "reactstrap/lib/PaginationItem";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Pagination = ({ postPerPage, totalPosts, paginate }) => {
      const pageNumbers = [];
@@ -14,13 +13,12 @@ const Pagination = ({ postPerPage, totalPosts, paginate }) => {
                <ul className=" page-grid">
                     {pageNumbers.map(number => (
                          <li key={number}>
-                              <a
+                              <span
                                    onClick={() => paginate(number)}
-                                   href=""
                                    className="page-link"
                               >
                                    {number}
-                              </a>
+                              </span>
                          </li>
                     ))}
                </ul>

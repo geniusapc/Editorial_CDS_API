@@ -32,9 +32,6 @@ const Footer = props => {
                               <p className={"primary"}>
                                    <strong>follow us on</strong>
                               </p>
-                              <a href="#"></a>
-                              <a href="#"></a>
-                              <a href="#"></a>
                          </div>
                     </div>
                     <cite className={"mb-3"}>

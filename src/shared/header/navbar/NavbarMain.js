@@ -4,15 +4,13 @@ import {
      Collapse,
      Navbar,
      NavbarToggler,
-     NavbarBrand,
      Nav,
      NavItem,
      NavLink,
      UncontrolledDropdown,
      DropdownToggle,
      DropdownMenu,
-     DropdownItem,
-     NavbarText
+     DropdownItem
 } from "reactstrap";
 
 const NavbarMain = props => {
