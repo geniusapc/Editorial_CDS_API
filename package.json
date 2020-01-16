@@ -1,11 +1,10 @@
 {
-  "name": "Editorial_fullStack",
+  "name": "Editorial_api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "nodemon -e scss -x \"npm run build-css\"",
     "server": "nodemon"
   },
   "keywords": [],
