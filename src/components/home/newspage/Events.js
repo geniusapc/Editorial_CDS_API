@@ -1,70 +1,55 @@
-import React, { useState, useEffect, useContext } from "react";
-import { EventContext } from "../../../shared/contextapi/EventProvider";
-import EventList from "./EventList";
-import Pagination from "../../pagination/Pagination";
-import Loader from "../../../shared/loader/Loader";
+import React,{useState} from 'react';
+import EventList from './EventList';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+
 
 const Events = props => {
-     const [newsItem, setNewsItem] = useContext(EventContext);
+     const [newsItem, setNewsItem] = useState([
+         { 
+          id: 1,
+          title : " News update",
+          text: "Belize's latest commitment to ocean conservation is its new Fisheries Resources Bill, for which the country partnered with the Environmental Defense Fund (EDF), an international non-governmental organisation. The bill, which focuses on effective management solutions for overfishing, passed its first assessment by the",
+          img: "https://source.unsplash.com/user/erondu/1600x900"
+          },
+         { 
+                    id: 2,
+          title : " News update",
+          text: "Belize's latest commitment to ocean conservation is its new Fisheries Resources Bill, for which the country partnered with the Environmental Defense Fund (EDF), an international non-governmental organisation. The bill, which focuses on effective management solutions for overfishing, passed its first assessment by the",
+          img: "https://source.unsplash.com/user/erondu/1600x900"
+          },
 
-     const [currentPage, setCurrentPage] = useState(1);
-     const [loader, setLoader] = useState(true);
-     const [postPerpage] = useState(6);
+         { 
+                    id: 3,
+          title : " News update",
+          text: "Belize's latest commitment to ocean conservation is its new Fisheries Resources Bill, for which the country partnered with the Environmental Defense Fund (EDF), an international non-governmental organisation. The bill, which focuses on effective management solutions for overfishing, passed its first assessment by the",
+          img: "https://source.unsplash.com/user/erondu/1600x900"
+          }
+     ]);
 
-     // const fetchEvents = async () => {
-     //      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-     //      setLoader(true);
-     //      const data = await res.json();
-     //      setLoader(true);
-     //      console.log(data);
-     //      setNewsItem(data);
-     //      setLoader(false);
-     //      console.log(newsItem);
-     // };
 
-     const paginate = pageNumber => setCurrentPage(pageNumber);
-
-     // useEffect(() => {
-     //      fetchEvents();
-     // }, []);
-
-     //Get the Current Page
-
-     const indexOfLastPost = currentPage * postPerpage;
-     const indexOfFirstPage = indexOfLastPost - postPerpage;
-     const currentPosts = newsItem.slice(indexOfFirstPage, indexOfLastPost);
 
      return (
-          <>
-               <div className="event-title">
+          <div>
+                <div className="event-title" >
                     <div>
-                         <span />
-                         <h3>EVENTS</h3>
-                         <span />
+                         <span/><h3>EVENTS</h3><span/>
                     </div>
-               </div>
+                </div> 
                <div className="container mx-auto event-grid">
-                    {loader ? (
-                         <Loader />
-                    ) : (
-                         currentPosts.map(news => (
-                              <EventList
-                                   key={news.id}
-                                   title={news.title}
-                                   image={news.img}
-                                   text={news.text}
-                              />
+                        
+                    {
+                         newsItem.map( news => (
+                         <EventList key={news.id} title={news.title} image={news.img} text={news.text}/>
                          ))
-                    )}
-                    <Pagination
-                         className=" center"
-                         postPerPage={postPerpage}
-                         totalPosts={newsItem.length}
-                         paginate={paginate}
-                    />
+                    }
                </div>
-          </>
-     );
-};
+          </div>
+     )
+}
 
-export default Events;
+
+export default Events
