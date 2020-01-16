@@ -7,6 +7,8 @@ import Footer from "../shared/footer/Footer";
 import Home from "../components/home/Home";
 import Gallery from "../components/gallery/Gallery";
 import ErrorPage from "./ErrorPage";
+import Login from "../components/login/Login";
+import Register from "../components/register/Register";
 
 const Layouts = () => {
      return (
@@ -20,6 +22,12 @@ const Layouts = () => {
                                    path="/gallery"
                                    exact
                                    component={Gallery}
+                              />
+                              <Route path="/login" exact component={Login} />
+                              <Route
+                                   path="/signup"
+                                   exact
+                                   component={Register}
                               />
                               <Route component={ErrorPage} />
                          </Switch>
