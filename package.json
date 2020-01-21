@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "server": "nodemon"
+    "start": "node index.js",
+    "server": "nodemon",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "2.4.3",
+    "concurrently": "^5.0.2",
     "express": "4.17.1",
     "express-async-errors": "^3.1.1",
     "express-fileupload": "1.1.5",
