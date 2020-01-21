@@ -1,25 +1,34 @@
 import React, { useState } from "react";
 import image from "../../images/slide1.png";
 
-// import axios from "axios";
+import axios from "axios";
 // import Cookie from "js-cookie";
+
+// NOTE:
+// 1. FOR THE LOGIN, USE THE DEFAULT adminPassword AND adminStateCode FROM THE config.js
+// 2. When the login button is clicked  a 'res.headers["x-auth-token"]' response containing a token will be sent to you,
+//   store the token in a cookie;
+// 3. TO store in a cookie check js-cookie
 
 const Login = props => {
      const [token, setToken] = useState();
      const [error, setError] = useState();
 
      const loginHandler = async e => {
-          //   e.preventDefault();
-          //   try {
-          //        let res = await axios.post("/api/user/login", {
-          //             stateCode: e.target.stateCode.value,
-          //             password: e.target.password.value
-          //        });
-          //        setToken(res.headers[("token", "x-auth-token")]);
-          //   } catch (e) {
-          //        if (e.response.status === 500) console.log(e);
-          //        else setError(e.response.data);
-          //   }
+          e.preventDefault();
+          try {
+               let res = await axios.post("/api/user/login", {
+                    stateCode: e.target.stateCode.value,
+                    password: e.target.password.value
+               });
+               setToken(res.headers["x-auth-token"]);
+               console.log(res.headers["x-auth-token"]);
+          } catch (e) {
+               // set ur error flash message here
+               if (e.response.status === 500) console.log(e);
+               else setError(e.response.data);
+               console.log(e.response.data);
+          }
      };
 
      return (
