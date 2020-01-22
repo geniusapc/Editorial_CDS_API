@@ -23,11 +23,11 @@ for more info check axios docs
 
 ## METHOD ----------- ENDPOINT ----------------- ADMIN PRIVILEGE
 
-GET ----------- /api/event ------------------------ X
-GET ----------- /api/event/:slugTitle ------------- X
-POST ---------- /api/event ------------------------ A
-DELETE -------- /api/event/:id -------------------- A
-PUT ----------- /api/event/:slugTitle ------------- A
+GET ----------- /api/event ------------------------ X  
+GET ----------- /api/event/:slugTitle ------------- X  
+POST ---------- /api/event ------------------------ A  
+DELETE -------- /api/event/:id -------------------- A  
+PUT ----------- /api/event/:slugTitle ------------- A  
 POST ---------- /api/event/comment/:eventId ------- X
 
 <!-- EVENT ENDPOINT DESCRIPTION -->
@@ -38,9 +38,9 @@ POST ---------- /api/event/comment/:eventId ------- X
 
 GET ----------- /api/user ----------------------- A  
 POST ---------- /api/user/registration ---------- X  
-POST ---------- /api/user/login ----------------- X
-POST ---------- /api/user/profile/:id ----------- E
-POST ---------- /api/user/permission/:rank/:id -- E
+POST ---------- /api/user/login ----------------- X  
+POST ---------- /api/user/profile/:id ----------- E  
+POST ---------- /api/user/permission/:rank/:id -- E  
 DELETE -------- /api/user/:id ------------------- E
 
 <!-- USER ENDPOINT DESCRIPTION -->
