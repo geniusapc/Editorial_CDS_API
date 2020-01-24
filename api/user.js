@@ -23,8 +23,8 @@ router.post("/registration", async (req, res) => {
   let user = await User.findOne({ where: { stateCode } });
   if (user) return res.status(400).send("User already exist");
 
-  user = await User.create({ stateCode, password });
-  return res.status(200).send(user);
+  await User.create({ stateCode, password });
+  return res.status(200).send("Registration successful");
 });
 
 router.post("/login", async (req, res) => {
@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
   let token = User.generateAuthToken({
     id: user.id,
     isAdmin: user.isAdmin,
-    stateCode: user.role
+    role: user.role
   });
   return res
     .status(200)
