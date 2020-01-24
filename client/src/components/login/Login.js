@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import image from "../../images/slide1.png";
-
 import axios from "axios";
 // import Cookie from "js-cookie";
 
@@ -32,10 +30,10 @@ const Login = props => {
      };
 
      return (
-          <div className="container mb-5">
+          <div className=" form-top mb-5">
+               <h2 className="primary text-center mt-5">Login</h2>
                <div className="form-container ">
                     <div className="form-wrapper">
-                         <img src={image} alt="" className="img-rounded" />
                          <form className="mt-5" onSubmit={loginHandler}>
                               <div className="form-div">
                                    <label htmlFor="name">

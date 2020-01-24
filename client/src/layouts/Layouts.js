@@ -9,13 +9,14 @@ import Gallery from "../components/gallery/Gallery";
 import ErrorPage from "./ErrorPage";
 import Login from "../components/login/Login";
 import Register from "../components/register/Register";
-
+import Contact from "../components/contact/Contact";
+import About from "../components/about/About";
 const Layouts = () => {
      return (
           <EventProvider>
                <div>
-                    <NavbarMain />
                     <Router>
+                         <NavbarMain />
                          <Switch>
                               <Route path="/" exact component={Home} />
                               <Route
@@ -29,6 +30,12 @@ const Layouts = () => {
                                    exact
                                    component={Register}
                               />
+                              <Route
+                                   path="/contact-us"
+                                   exact
+                                   component={Contact}
+                              />
+                              <Route path="/about-us" exact component={About} />
                               <Route component={ErrorPage} />
                          </Switch>
                     </Router>

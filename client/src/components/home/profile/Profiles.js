@@ -41,7 +41,7 @@ const Profiles = props => {
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="/">
                                              <i
                                                   className={
                                                        "fab fa-twitter 2x"
@@ -91,7 +91,7 @@ const Profiles = props => {
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="/">
                                              <i
                                                   className={
                                                        "fab fa-twitter 2x"

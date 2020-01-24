@@ -1,15 +1,15 @@
-import React from 'react';
-import logo from '../../../images/eds.svg';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../../images/eds.svg";
 
 const Logo = props => {
      return (
           <div>
-               <img src={logo} alt="editorial logo" />
+               <Link to="/">
+                    <img src={logo} alt="editorial logo" />
+               </Link>
           </div>
-     )
+     );
 };
-
-
 
 export default Logo;
