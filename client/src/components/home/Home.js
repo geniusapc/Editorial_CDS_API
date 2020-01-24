@@ -10,8 +10,8 @@ export const Home = () => {
                <LandingPage />
                <main className={"bg-primary container-fluid"}>
                     <Events />
-                    <Articles />
                </main>
+               <Articles />
                <Profile />
           </>
      );

@@ -32,7 +32,7 @@ const Login = props => {
      };
 
      return (
-          <div className="container mb-5">
+          <div className="container form-top mb-5">
                <div className="form-container ">
                     <div className="form-wrapper">
                          <img src={image} alt="" className="img-rounded" />

@@ -4,8 +4,8 @@ import image from "./slide2.jpg";
 
 const ArticlesList = props => {
      return (
-          <div className=" trend-box container mx-auto my-4 center main ">
-               <div className=" mb-4 mt-3 bg-white">
+          <div className=" trend-box  container mx-auto my-4 center main ">
+               <div className=" mb-4 mt-3 bg-white current-news">
                     <article className={"trending-news"}>
                          <h4>Trending News.</h4>
                          <div>
