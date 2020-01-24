@@ -119,7 +119,7 @@ html {
      }
 }
 
-// event page....
+// *event page....
 
 .event-grid {
      display: flex;
@@ -165,7 +165,7 @@ html {
      }
 }
 
-// Articles and trending news section..
+// *Articles and trending news section..
 .trend-box {
      background-color: $white;
 }
@@ -219,7 +219,7 @@ html {
      }
 }
 
-//Layouts....
+//*Layouts....
 
 .main {
      display: grid;
@@ -328,15 +328,8 @@ html {
      }
 }
 
-// .box {
-//      height: 100%;
-//      width: 100%;
-// }
-
 .events-pictures {
      box-shadow: 1px 0px 3px 2px rgb(226, 226, 226);
-     // height: 100%;
-     // width: 80%;
      border-radius: 0.9rem;
      cursor: pointer;
 
@@ -349,15 +342,13 @@ html {
 
 .flex-pics {
      display: flex;
-     flex-direction: column;
+     // flex-wrap: wrap-reverse;
 }
 
 .event-box {
      position: relative;
      text-align: center;
-     // align-items: center;
      margin: 0.2rem 1rem;
-     // padding: 20px;
 
      .title {
           position: absolute;
@@ -384,7 +375,7 @@ html {
      }
 }
 
-// Error page
+// *Error page
 
 .error {
      border-top: 3px $light solid;
@@ -404,19 +395,16 @@ html {
 
                img {
                     margin-top: 5rem;
-                    // background-repeat: no-repeat;
-                    // background-size: 100% 100%;
-                    // background-position: center;
                }
 
                h2 {
-                    margin: 4rem 0 r0em 0;
+                    margin: 4rem 0 0em 0;
                }
           }
      }
 }
 
-//Pagination...
+//*Pagination...
 .pagiination-wrapper {
      p {
           font-size: 1.2rem;
@@ -433,7 +421,41 @@ html {
      }
 }
 
-// footer
+//* contact Page
+
+.contact-page {
+     border-top: 2px solid $light;
+     height: 100%;
+}
+
+//*  About Page
+
+.about-page {
+     position: relative;
+     border: 2px solid $light;
+     height: 100%;
+     z-index: 2;
+
+     section {
+          box-shadow: 1px 0px 3px 2px rgb(226, 226, 226);
+          background: $white;
+          width: 400px;
+          height: 300px;
+          margin: 4rem auto;
+          border-radius: 10px;
+     }
+}
+
+.clip-about {
+     clip-path: polygon(0 0, 100% 100%, 74% 100%, 0% 100%);
+     position: absolute;
+     height: 100%;
+     width: 100%;
+     background: $primary;
+     z-index: -1;
+}
+
+//* footer
 
 .footer {
      background: rgba(0, 0, 0, 0.678);
@@ -490,11 +512,19 @@ html {
      font-size: 1rem;
 }
 
-//Forms
+//*Forms
+
+.form-top {
+     border-top: 2px $light solid;
+     h2 {
+          font-size: 30px;
+          text-transform: uppercase;
+     }
+}
 
 .form-container {
      position: relative;
-     margin: 10rem auto;
+     margin: 3rem 0.5rem;
      border: $primary 2px solid;
 }
 
@@ -550,7 +580,7 @@ form {
      }
 }
 
-// media Queries......
+// *media Queries......
 
 @media (min-width: 790px) {
      .event-grid {

@@ -8,14 +8,14 @@ import {
      CardSubtitle
 } from "reactstrap";
 
-const EventList = ({ title, text, image }) => {
+const EventList = ({ title, text }) => {
      return (
           <div className="my-3 mx-5">
                <Card>
                     <CardImg
                          top
                          width="100%"
-                         src={image}
+                         src={"image"}
                          alt="Card image cap"
                     />
                     <CardBody className="">

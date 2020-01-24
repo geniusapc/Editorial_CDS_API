@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input } from "reactstrap";
-import image from "../../images/slide1.png";
-// import axios from "axios";
+import axios from "axios";
 
 const Register = props => {
      const [error, setError] = useState();
@@ -23,10 +21,10 @@ const Register = props => {
      };
 
      return (
-          <div className="container mb-5">
+          <div className="container form-top mb-5">
+               <h2 className="primary text-center mt-5">Signup</h2>
                <div className="form-container ">
                     <div className="form-wrapper">
-                         <img src={image} alt="" className="img-rounded" />
                          <form className="mt-5" onSubmit={registrationHandler}>
                               <div className="form-div">
                                    <label htmlFor="name">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../logo/Logo";
+import { Link } from "react-router-dom";
 import {
      Collapse,
      Navbar,
@@ -27,7 +28,7 @@ const NavbarMain = props => {
                     <Collapse isOpen={isOpen} navbar>
                          <Nav className="primary ml-auto" navbar>
                               <NavItem className="nav">
-                                   <NavLink className="nav" href="/">
+                                   <NavLink className="nav" href="/about-us">
                                         About
                                    </NavLink>
                               </NavItem>
@@ -37,15 +38,23 @@ const NavbarMain = props => {
                                    </NavLink>
                               </NavItem>
                               <NavItem>
-                                   <NavLink href="/">Contact Us </NavLink>
+                                   <NavLink href="/contact-us">
+                                        Contact Us{" "}
+                                   </NavLink>
                               </NavItem>
                               <UncontrolledDropdown nav inNavbar>
                                    <DropdownToggle nav caret>
                                         Member
                                    </DropdownToggle>
                                    <DropdownMenu right>
-                                        <DropdownItem>Register</DropdownItem>
-                                        <DropdownItem>Login</DropdownItem>
+                                        <Link to="/signup">
+                                             <DropdownItem>
+                                                  Register
+                                             </DropdownItem>
+                                        </Link>
+                                        <Link to="/login">
+                                             <DropdownItem>Login</DropdownItem>
+                                        </Link>
                                         <DropdownItem divider />
                                         <DropdownItem>Admin</DropdownItem>
                                    </DropdownMenu>
