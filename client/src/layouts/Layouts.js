@@ -11,6 +11,7 @@ import Login from "../components/login/Login";
 import Register from "../components/register/Register";
 import Contact from "../components/contact/Contact";
 import About from "../components/about/About";
+import Admin from "../components/admin/Admin";
 const Layouts = () => {
      return (
           <EventProvider>
@@ -34,6 +35,11 @@ const Layouts = () => {
                                    path="/contact-us"
                                    exact
                                    component={Contact}
+                              />
+                              <Route
+                                   path="/admindashboard"
+                                   exact
+                                   component={Admin}
                               />
                               <Route path="/about-us" exact component={About} />
                               <Route component={ErrorPage} />
