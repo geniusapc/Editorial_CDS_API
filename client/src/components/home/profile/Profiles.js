@@ -34,21 +34,21 @@ const Profiles = props => {
 
                               <div className={"card__body-footer"}>
                                    <p>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-facebook-f 2x"
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-twitter 2x"
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-instagram 2x"
@@ -84,21 +84,21 @@ const Profiles = props => {
 
                               <div className={"card__body-footer"}>
                                    <p>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-facebook-f 2x"
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-twitter 2x"
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-instagram 2x"
@@ -134,21 +134,21 @@ const Profiles = props => {
 
                               <div className={"card__body-footer"}>
                                    <p>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-facebook-f 2x"
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-twitter 2x"
                                                   }
                                              ></i>
                                         </a>
-                                        <a href="/">
+                                        <a href="www.com.com">
                                              <i
                                                   className={
                                                        "fab fa-instagram 2x"

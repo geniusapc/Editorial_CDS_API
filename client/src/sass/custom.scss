@@ -451,14 +451,14 @@ html {
      position: absolute;
      height: 100%;
      width: 100%;
-     background: $primary;
+     background: #e9ecef;
      z-index: -1;
 }
 
 //* footer
 
 .footer {
-     background: rgba(0, 0, 0, 0.678);
+     background: rgba($primary, 0.7);
      color: $white;
      display: flex;
      flex-direction: column;
@@ -495,7 +495,7 @@ html {
                          padding: 0.6em;
                          border-top-right-radius: 7px;
                          border-bottom-right-radius: 7px;
-                         background: $primary;
+                         background: $danger;
                          border: none;
                          color: $white;
                     }
@@ -509,8 +509,12 @@ html {
 }
 
 .text-medium {
-     font-size: 1rem;
+     font-size: 1.3rem;
 }
+
+// .text-medium {
+//      font-size: 1rem;
+// }
 
 //*Forms
 
@@ -524,24 +528,15 @@ html {
 
 .form-container {
      position: relative;
-     margin: 3rem 0.5rem;
-     border: $primary 2px solid;
+     margin: 3rem auto;
+     border: $primary 1px solid;
 }
 
 .form-wrapper {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     text-align: center;
      padding: 10px 0 14px 0;
      height: 100%;
      width: 100%;
-
-     img {
-          position: absolute;
-          top: -45%;
-          left: 34%;
-     }
+     margin: 0 0 0 3.4rem;
 }
 
 form {
@@ -567,14 +562,25 @@ form {
                display: block;
                font-size: 1.2rem;
                color: $primary;
-               margin: 0.5rem 0 0 4rem;
-               text-align: left;
-
+               margin: 0.5rem;
                span {
                     color: $danger;
                     font-size: 1.3rem;
                     font-weight: bold;
                     margin: 0 0 0 0.3rem;
+               }
+          }
+
+          .submit-btn {
+               width: 80%;
+               border: none;
+               border-radius: $border-radius;
+               padding: 0.6rem;
+               margin: 0 0 0.6rem 0;
+               background-color: $primary;
+               color: $white;
+               &:hover {
+                    background-color: rgb(4, 82, 35);
                }
           }
      }

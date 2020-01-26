@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Cookie from "js-cookie";
 
 // NOTE:
@@ -9,23 +10,24 @@ import axios from "axios";
 // 3. TO store in a cookie check js-cookie
 
 const Login = props => {
-     const [token, setToken] = useState();
+     const [setToken] = useState();
      const [error, setError] = useState();
+     const [loading, setLoading] = useState();
 
      const loginHandler = async e => {
+          // const { stateCode, password } = e.target.elements;
           e.preventDefault();
+          setLoading(true);
           try {
                let res = await axios.post("/api/user/login", {
-                    stateCode: e.target.stateCode.value,
-                    password: e.target.password.value
+                    stateCode: e.value,
+                    password: e.value
                });
                setToken(res.headers["x-auth-token"]);
-               console.log(res.headers["x-auth-token"]);
+               setLoading(false);
           } catch (e) {
-               // set ur error flash message here
-               if (e.response.status === 500) console.log(e);
-               else setError(e.response.data);
-               console.log(e.response.data);
+               //* set ur error flash message here
+               setError(e.response.data);
           }
      };
 
@@ -34,7 +36,8 @@ const Login = props => {
                <h2 className="primary text-center mt-5">Login</h2>
                <div className="form-container ">
                     <div className="form-wrapper">
-                         <form className="mt-5" onSubmit={loginHandler}>
+                         <p className="error-message">{error && error}</p>
+                         <form className="mt-5 " onSubmit={loginHandler}>
                               <div className="form-div">
                                    <label htmlFor="name">
                                         State Code <span>*</span>
@@ -56,11 +59,22 @@ const Login = props => {
                                    />
                               </div>
                               <div className="form-div">
-                                   <input
-                                        type="submit"
-                                        value="Login "
-                                        className=" my-3 btn-primary btn px-4"
-                                   />
+                                   <button className="submit-btn" type="submit">
+                                        {loading ? (
+                                             <FontAwesomeIcon
+                                                  style={{
+                                                       marginRight: "1rem",
+                                                       marginTop: ".4rem"
+                                                  }}
+                                                  icon="spinner"
+                                                  size="1x"
+                                                  color="#fffb00f6"
+                                                  spin
+                                             />
+                                        ) : (
+                                             "Login"
+                                        )}
+                                   </button>
                               </div>
                          </form>
                     </div>
