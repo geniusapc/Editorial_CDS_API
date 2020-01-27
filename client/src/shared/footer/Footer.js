@@ -34,8 +34,8 @@ const Footer = props => {
                               </p>
                          </div>
                     </div>
-                    <cite className={"mb-3"}>
-                         <small className={" "}>
+                    <address className={"mb-3 text-medium"}>
+                         <small className={"text-medium "}>
                               made with{" "}
                               <FontAwesomeIcon
                                    style={{
@@ -46,11 +46,10 @@ const Footer = props => {
                                    color="#dc3545"
                               />
                               by cmc
-                              <span className={"primary "}>WebCode</span> &
-                              prince
-                              <span className={"primary"}>Arthur</span>
+                              <span>WebCode</span> & prince
+                              <span>Arthur</span>
                          </small>
-                    </cite>
+                    </address>
                     <p className={"mt-1 pb-4 flow text-medium"}>
                          <small className={"mt-1 pb-4"}>
                               Editoral cds groupsaki &copy; {getYear}

@@ -1,12 +1,30 @@
-import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import React, { useState } from "react";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import axios from "axios";
 
 const Contact = props => {
+     const [notify, setNotify] = useState();
+     const messageHandler = async e => {
+          e.preventDefault();
+          // const { name,code,pnumber,email,message } = e.target.elements;
+          try {
+               let res = await axios.post("/api/user/contact", {
+                    name: e.value,
+                    code: e.value,
+                    pnumber: e.value,
+                    email: e.value,
+                    message: e.value
+               });
+               setNotify(res.data);
+          } catch (e) {}
+     };
+
      return (
           <div className="contact-page ">
                <div className="container m-auto p-3">
                     <h3 className="primary text-center py-4">Contact Us </h3>
-                    <Form>
+                    <Form onSubmit={messageHandler}>
+                         {notify && <span>notify</span>}
                          <FormGroup>
                               <Label className="primary" for="name">
                                    Name
@@ -25,8 +43,27 @@ const Contact = props => {
                               <Input
                                    type="text"
                                    name="code"
-                                   id="statecode"
                                    placeholder="your state code"
+                              />
+                         </FormGroup>
+                         <FormGroup>
+                              <Label for="statecode" className="primary">
+                                   Phone Number
+                              </Label>
+                              <Input
+                                   type="number"
+                                   name="pnumber"
+                                   placeholder="your phone number"
+                              />
+                         </FormGroup>
+                         <FormGroup>
+                              <Label for="statecode" className="primary">
+                                   Email
+                              </Label>
+                              <Input
+                                   type="email"
+                                   name="email"
+                                   placeholder="your Email"
                               />
                          </FormGroup>
                          <FormGroup>
@@ -35,12 +72,14 @@ const Contact = props => {
                               </Label>
                               <Input
                                    type="textarea"
-                                   name="text"
-                                   id="exampleText"
+                                   name="message"
                                    placeholder="type your message here ......."
                               />
                          </FormGroup>
-                         <Button className="bg-primary text-white btn py-2 px-5">
+                         <Button
+                              type="submit"
+                              className="bg-primary text-white btn py-2 px-5"
+                         >
                               Submit
                          </Button>
                     </Form>
