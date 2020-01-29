@@ -8,12 +8,14 @@ const gallery = require("./gallery");
 const user = require("./user");
 const about = require("./about");
 const event = require("./event");
+const leaders = require("./leaders");
 
-module.exports = function(app) {
+module.exports = app => {
   app.use("/api/event", event);
   app.use("/api/contact", contact);
   app.use("/api/gallery", gallery);
   app.use("/api/user", user);
   app.use("/api/about", about);
+  app.use("/api/leaders", leaders);
   app.use(errorHandler);
 };
