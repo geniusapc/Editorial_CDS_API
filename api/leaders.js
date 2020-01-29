@@ -8,7 +8,7 @@ const fs = require("fs");
 
 const Leader = require("../model/leaders");
 const auth = require("../middleware/auth");
-const { admin, editor } = require("../middleware/auth");
+const { editor } = require("../middleware/auth");
 const localPath = require("../path");
 const path = require("path");
 
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
   res.status(200).json(Leaders);
 });
 
-router.put("/:title", async (req, res) => {
+router.put("/:title", [auth, editor], async (req, res) => {
   let { title } = req.params;
   let { name, position } = req.body;
 
