@@ -47,9 +47,9 @@ const Events = () => {
                     <Button className="bg-primary text-white btn py-2 px-5 mr-2">
                          Edit
                     </Button>
-                    <Button className="bg-danger text-white btn py-2 px-5 mr-2">
+                    {/*}Button className="bg-danger text-white btn py-2 px-5 mr-2">
                          Delete
-                    </Button>
+     </Button>*/}
                </Form>
           </div>
      );

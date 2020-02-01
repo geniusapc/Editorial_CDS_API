@@ -15,19 +15,22 @@ const Login = props => {
      const [loading, setLoading] = useState();
 
      const loginHandler = async e => {
-          // const { stateCode, password } = e.target.elements;
+          const { stateCode, password } = e.target.elements;
           e.preventDefault();
           setLoading(true);
           try {
                let res = await axios.post("/api/user/login", {
-                    stateCode: e.value,
-                    password: e.value
+                    stateCode: stateCode.value,
+                    password: password.value
                });
+               console.log(res);
+
                setToken(res.headers["x-auth-token"]);
                setLoading(false);
           } catch (e) {
                //* set ur error flash message here
                setError(e.response.data);
+               setLoading(false);
           }
      };
 

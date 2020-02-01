@@ -1,28 +1,50 @@
 import React, { useState } from "react";
+// import { EventContext } from "../../shared/contextapi/EventProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { store } from "react-notifications-component";
+// import "react-notifications-component/dist/theme.css";
+// import "animate.css";
 import axios from "axios";
+// import { not } from "joi";
 
 const Register = props => {
      const [error, setError] = useState();
      const [notify, setNotify] = useState();
      const [loading, setLoading] = useState();
+     // const [notificationAlert] = useContext(EventContext);
 
-     const registrationHandler = async e => {
-          e.preventDefault();
-          // const { stateCode, password, confirmPassword } = e.target.elements;
+     // const cleanUp = (message, type) => {
+     //      const notificationAlert = (message, type) => {
+     //           store.addNotification({
+     //                title: "Alert",
+     //                message: `${message}`,
+     //                type: `${type}`, // 'default', 'success', 'info', 'warning'
+     //                container: "top-center", // where to position the notifications
+     //                animationIn: ["animated", "fadeIn"], // animate.css classes that's applied
+     //                animationOut: ["animated", "fadeOut"], // animate.css classes that's applied
+     //                dismiss: {
+     //                     duration: 1000
+     //                }
+     //           });
+     //      };
+     //      setTimeout(() => {
+     //           notificationAlert(message, type);
+     //      }, 2000);
+     // };
+
+     const jj = async event => {
+          event.preventDefault();
           try {
-               setLoading(true);
-               let res = await axios.post("/api/user/registeration", {
-                    stateCode: e.value,
-                    password: e.value,
-                    confirmPassword: e.value
+               let res = await axios.post("/api/user/registration", {
+                    stateCode: "0Y/19A/0131",
+                    password: "cmcwebcode7",
+                    confirmPassword: "cmcwebcode7"
                });
-               setNotify(res.data);
-               setLoading(false);
           } catch (e) {
-               setError(e.response.data);
+               console.log(e.response);
           }
      };
+     //  notificationAlert(error, "danger");
 
      return (
           <div className=" form-top mb-5">
@@ -30,8 +52,8 @@ const Register = props => {
                <div className="form-container ">
                     <div className="form-wrapper">
                          {notify && <p>{notify}</p>}
-                         <form className="mt-5" onSubmit={registrationHandler}>
-                              <p className="error-message">{error && error}</p>
+                         <form className="mt-5" onSubmit={jj}>
+                              <p className="error-message"></p>
                               <div className="form-div">
                                    <label htmlFor="name">
                                         State Code <span>*</span>
@@ -39,7 +61,7 @@ const Register = props => {
                                    <input
                                         type="text"
                                         placeholder="state code"
-                                        name="stateCode"
+                                        name="statecode"
                                    />
                               </div>
                               <div className="form-div">
@@ -59,7 +81,7 @@ const Register = props => {
                                    <input
                                         type="password"
                                         placeholder="password"
-                                        name="password"
+                                        name="confirmpassword"
                                    />
                               </div>
                               <div className="form-div">

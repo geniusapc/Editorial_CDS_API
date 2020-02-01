@@ -2,11 +2,11 @@ import React from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Pagination = ({ postPerPage, totalPosts, paginate }) => {
-     const pageNumbers = [];
+     let pageNumbers = [];
 
-     for (let i = 1; i < Math.ceil(totalPosts / postPerPage); i++) {
-          return pageNumbers.push(i);
-          // console.log(i);
+     for (let n = 1; n < Math.ceil(totalPosts / postPerPage); n++) {
+          pageNumbers.push(n);
+          // console.log(n);
      }
 
      // console.log(pageNumbers);

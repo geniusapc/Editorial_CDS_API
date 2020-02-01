@@ -15,6 +15,7 @@ const Admin = () => {
                          <About />
                          <Gallery />
                          <Events />
+                         <Contact />
                     </div>
                </div>
           </div>
