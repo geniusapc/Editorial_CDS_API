@@ -1,5 +1,6 @@
 import React from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import EventProvider from "./shared/contextapi/EventProvider";
 import {
      faEnvelope,
      faKey,
@@ -48,7 +49,9 @@ library.add(
 const App = () => {
      return (
           <>
-               <Layouts />
+               <EventProvider>
+                    <Layouts />
+               </EventProvider>
           </>
      );
 };

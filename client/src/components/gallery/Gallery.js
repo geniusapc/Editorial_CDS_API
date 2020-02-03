@@ -14,16 +14,21 @@ const Gallery = () => {
                     const res = await axois.get("/api/gallery");
 
                     setEventPictures(res.data);
+                    console.log(res.data);
                     setLaoding(false);
-               } catch (error) {}
+               } catch (error) {
+                    console.log(error.data);
+               }
           };
           const getPastLeaders = async () => {
                try {
                     setLaoding(true);
-                    const res = await axois.get("/api/gallery");
+                    const res = await axois.get("/api/pastleaders");
                     setPastleaders(res.data);
                     setLaoding(false);
-               } catch (error) {}
+               } catch (error) {
+                    console.log(error.data);
+               }
           };
           getPastLeaders();
           getGallery();

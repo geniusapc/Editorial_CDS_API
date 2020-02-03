@@ -29,9 +29,7 @@ const Footer = props => {
 
                     <div className={"social__icons"}>
                          <div className={"social__icons-box"}>
-                              <p className={"primary"}>
-                                   <strong>follow us on</strong>
-                              </p>
+                              <blockquote>follow us on</blockquote>
                          </div>
                     </div>
                     <address className={"mb-3 text-medium"}>
