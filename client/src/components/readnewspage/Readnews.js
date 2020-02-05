@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 const Readnews = ({ match }) => {
-     const [posts, setPosts] = useState([
+     const [posts] = useState([
           {
                userId: 1,
                id: 1,
-               title:
-                    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+               title: "sunt",
                body:
                     "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
           },
@@ -718,24 +717,31 @@ const Readnews = ({ match }) => {
      const [news, setNews] = useState([]);
 
      useEffect(() => {
+          const printId = id => console.log(id);
+          printId(match.params.id);
+
           const getData = (posts, id) => {
                posts.filter(post => {
                     if (post.title === id) {
-                         // console.log(post.body);
-                         setNews(post);
-                         console.log(news);
-                         // return true;
+                         console.log(post);
+                         let title = post.title;
+                         let body = post.body;
+                         loadData(title, body);
                     }
                });
           };
           getData(posts, match.params.id);
      }, []);
 
-     // console.log(posts);
+     const loadData = (title, body) => setNews({ title: title, body: body });
+     console.log(news);
 
      return (
           <div>
-               <div>{posts.body}</div>
+               <div>
+                    <h3>{news.title}</h3>
+                    <p>{news.body}</p>
+               </div>
           </div>
      );
 };

@@ -10,7 +10,7 @@ import {
      CardSubtitle
 } from "reactstrap";
 
-const EventList = ({ title, text, img }) => {
+const EventList = ({ title, text, img, id }) => {
      return (
           <Link to={`/news/${title}`}>
                <div className="my-3 mx-5">
