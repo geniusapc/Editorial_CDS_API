@@ -32,9 +32,8 @@ const Events = () => {
                <h3 className="primary">Events</h3>
                <button
                     onClick={() => {
-                         // removeCookie(["auth-token"]);
-
-                         return console.log(cookies["auth-token"]);
+                         const value = cookies["auth-token"];
+                         return console.log(String(value));
                     }}
                >
                     get Cookies
