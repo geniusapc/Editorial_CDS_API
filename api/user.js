@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
   let token = User.generateAuthToken({
     id: user.id,
     isAdmin: user.isAdmin,
-    stateCode: user.role
+    role: user.role
   });
   return res
     .status(200)

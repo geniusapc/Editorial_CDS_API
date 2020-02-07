@@ -1,29 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { useCookies } from "react-cookie";
+import formData from "form-data";
+// import { useCookies } from "react-cookie";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const Events = () => {
-     const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
+     // const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
+     const [image, setImage] = useState({ preview: "", raw: "" });
+     const [displayEvent, setDisplayEvent] = useState([]);
+
+     useEffect(() => {
+          const getAllNews = async () => {
+               try {
+                    const res = await axios.get("/api/event");
+                    setDisplayEvent(res.data);
+                    console.log(res.data);
+               } catch (error) {
+                    console.log(error.response.data);
+               }
+          };
+          getAllNews();
+     }, []);
+
+     const handleChange = e => {
+          setImage({
+               preview: URL.createObjectURL(e.target.files[0]),
+               raw: e.target.files[0]
+          });
+     };
      const updateEvents = async e => {
           e.preventDefault();
-          const value = cookies["auth-token"];
-          const { title, text, date, imagefile } = e.target.elements;
+          // const value = cookies["auth-token"];
+          const { title, text, date } = e.target.elements;
+          const titleData = title.value,
+               textData = text.value,
+               dateData = date.value;
+          const data = new formData();
+          data.append("title", titleData);
+          data.append("text", textData);
+          data.append("date", dateData);
+          data.append("imagefile", image.raw, image.raw.jpg);
+
           try {
-               const res = await axios.post("/api/event", {
+               const res = await axios.post("/api/event", data, {
                     headers: {
-                         "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaXNBZG1pbiI6ZmFsc2UsInN0YXRlQ29kZSI6IlVTRVIiLCJpYXQiOjE1ODA5MzkxNzJ9.Uep8TMtgTtdAjMHaosLtLulTwSs9SltNtaUBduszbgw`
-                    },
-                    data: {
-                         title: title.value,
-                         text: text.value,
-                         date: date.value,
-                         imagefile: imagefile.value
+                         "conent-type": "multipart/form-data",
+                         "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo`
                     }
                });
-               console.log(res);
+               console.log(displayEvent);
           } catch (error) {
-               console.log(error.data);
+               console.log(error.response);
           }
      };
 
@@ -31,10 +59,10 @@ const Events = () => {
           <div className="my-5">
                <h3 className="primary">Events</h3>
                <button
-                    onClick={() => {
-                         const value = cookies["auth-token"];
-                         return console.log(String(value));
-                    }}
+               // onClick={() => {
+               //      const value = cookies["auth-token"];
+               //      return console.log(String(value));
+               // }}
                >
                     get Cookies
                </button>
@@ -69,7 +97,13 @@ const Events = () => {
                          <Label for="file" className="primary">
                               file
                          </Label>
-                         <Input type="file" name="imagefile" />
+                         <Input
+                              type="file"
+                              // name="file"
+                              // value={image}
+                              required
+                              onChange={handleChange}
+                         />
                     </FormGroup>
                     <Button
                          type="submit"
@@ -84,6 +118,25 @@ const Events = () => {
                          Delete
      </Button>*/}
                </Form>
+               <>
+                    {displayEvent.splice(0, 10).map(event => (
+                         <div key={event.title}>
+                              <div className={"trending"}>
+                                   <img
+                                        height="30"
+                                        width="30"
+                                        className={""}
+                                        src={event.imageName}
+                                        alt="news"
+                                   />
+                                   <h5>{event.title}</h5>
+                              </div>
+                         </div>
+                    ))}
+               </>
+               <Link to="all-events-posted">
+                    <button>See All</button>
+               </Link>
           </div>
      );
 };

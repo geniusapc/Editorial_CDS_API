@@ -10,6 +10,7 @@
           "axios": "^0.19.1",
           "bootstrap": "^4.4.1",
           "cra-template": "1.0.0",
+          "form-data": "^3.0.0",
           "install": "^0.13.0",
           "node-sass": "^4.13.0",
           "npm": "^6.13.4",
