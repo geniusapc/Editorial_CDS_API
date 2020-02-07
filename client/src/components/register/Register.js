@@ -1,58 +1,40 @@
 import React, { useState } from "react";
 // import { EventContext } from "../../shared/contextapi/EventProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { store } from "react-notifications-component";
-// import "react-notifications-component/dist/theme.css";
-// import "animate.css";
+
 import axios from "axios";
-// import { not } from "joi";
 
 const Register = props => {
      const [error, setError] = useState();
      const [notify, setNotify] = useState();
      const [loading, setLoading] = useState();
-     // const [notificationAlert] = useContext(EventContext);
 
-     // const cleanUp = (message, type) => {
-     //      const notificationAlert = (message, type) => {
-     //           store.addNotification({
-     //                title: "Alert",
-     //                message: `${message}`,
-     //                type: `${type}`, // 'default', 'success', 'info', 'warning'
-     //                container: "top-center", // where to position the notifications
-     //                animationIn: ["animated", "fadeIn"], // animate.css classes that's applied
-     //                animationOut: ["animated", "fadeOut"], // animate.css classes that's applied
-     //                dismiss: {
-     //                     duration: 1000
-     //                }
-     //           });
-     //      };
-     //      setTimeout(() => {
-     //           notificationAlert(message, type);
-     //      }, 2000);
-     // };
-
-     const jj = async event => {
+     const registerUser = async event => {
           event.preventDefault();
           try {
+               setLoading(true);
                let res = await axios.post("/api/user/registration", {
-                    stateCode: "0Y/19A/0131",
-                    password: "cmcwebcode7",
-                    confirmPassword: "cmcwebcode7"
+                    stateCode: "OY/19A/7000",
+                    password: "cmcwebcode40",
+                    confirmPassword: "cmcwebcode40"
                });
+               console.log(res);
+               setNotify(res.data);
+               setLoading(false);
           } catch (e) {
-               console.log(e.response);
+               console.log(e.response.data);
+               setError(e.response.data);
+               setLoading(false);
           }
      };
-     //  notificationAlert(error, "danger");
 
      return (
           <div className=" form-top mb-5">
                <h2 className="primary text-center mt-5">Signup</h2>
                <div className="form-container ">
                     <div className="form-wrapper">
-                         {notify && <p>{notify}</p>}
-                         <form className="mt-5" onSubmit={jj}>
+                         {<p>{notify ? notify : error}</p>}
+                         <form className="mt-5" onSubmit={registerUser}>
                               <p className="error-message"></p>
                               <div className="form-div">
                                    <label htmlFor="name">

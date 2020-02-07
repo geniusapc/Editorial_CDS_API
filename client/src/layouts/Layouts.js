@@ -27,7 +27,7 @@ const Layouts = () => {
                          <Route path="/signup" exact component={Register} />
                          <Route path="/contact-us" exact component={Contact} />
                          <Route
-                              path="/admindashboard"
+                              path="/admin-dashboard"
                               exact
                               component={Admin}
                          />

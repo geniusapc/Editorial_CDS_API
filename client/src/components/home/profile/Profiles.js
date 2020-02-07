@@ -1,5 +1,5 @@
 import React from "react";
-import image from "./slide3.jpg";
+// import image from "./slide3.jpg";
 
 const Profiles = props => {
      return (
@@ -13,8 +13,8 @@ const Profiles = props => {
                                    <div className={"card__body-img "}>
                                         <img
                                              className={"img-rounded"}
-                                             src={image}
-                                             alt=""
+                                             src="https://res.cloudinary.com/cmcwebcode/image/upload/v1574429979/IMG-20191122-WA0003_rzilld.jpg"
+                                             alt="head"
                                         />
                                    </div>
                               </div>
@@ -34,27 +34,9 @@ const Profiles = props => {
 
                               <div className={"card__body-footer"}>
                                    <p>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-facebook-f 2x"
-                                                  }
-                                             ></i>
-                                        </a>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-twitter 2x"
-                                                  }
-                                             ></i>
-                                        </a>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-instagram 2x"
-                                                  }
-                                             ></i>
-                                        </a>
+                                        <a href="www.com.com">social</a>
+                                        <a href="www.com.com">social</a>
+                                        <a href="www.com.com">social</a>
                                    </p>
                               </div>
                          </div>
@@ -63,48 +45,29 @@ const Profiles = props => {
                                    <div className={"card__body-img "}>
                                         <img
                                              className={"img-rounded"}
-                                             src={image}
+                                             src="https://res.cloudinary.com/cmcwebcode/image/upload/v1574429943/IMG-20191114-WA0020_warnsv.jpg"
                                              alt=""
                                         />
                                    </div>
                               </div>
                               <div className={"card__body-title"}>
-                                   <h3>Mr Atere I.O</h3>
+                                   <h3>Okpara Ifeanyi Dominic</h3>
                               </div>
                               <div className={"card__body-text mt-1 p-3"}>
                                    <p>
                                         <strong>
-                                             Saki-West Local government
-                                             Inspector
+                                             OY/19A/2951
                                              <br />
-                                             (LGI)
+                                             Corper Liason Officer (CLO)
                                         </strong>
                                    </p>
                               </div>
 
                               <div className={"card__body-footer"}>
                                    <p>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-facebook-f 2x"
-                                                  }
-                                             ></i>
-                                        </a>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-twitter 2x"
-                                                  }
-                                             ></i>
-                                        </a>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-instagram 2x"
-                                                  }
-                                             ></i>
-                                        </a>
+                                        <a href="www.com.com">social</a>
+                                        <a href="www.com.com">social</a>
+                                        <a href="www.com.com">social</a>
                                    </p>
                               </div>
                          </div>
@@ -113,48 +76,28 @@ const Profiles = props => {
                                    <div className={"card__body-img "}>
                                         <img
                                              className={"img-rounded"}
-                                             src={image}
-                                             alt=""
+                                             src="https://res.cloudinary.com/cmcwebcode/image/upload/v1573994923/Capture_tuydzi.png"
+                                             alt="leader"
                                         />
                                    </div>
                               </div>
                               <div className={"card__body-title"}>
-                                   <h3>Mr Atere I.O</h3>
+                                   <h3>Chinweike Michael Chinonso</h3>
                               </div>
                               <div className={"card__body-text mt-1 p-3"}>
                                    <p>
                                         <strong>
-                                             Saki-West Local government
-                                             Inspector
-                                             <br />
-                                             (LGI)
+                                             OY/19A/0131
+                                             <br /> Editor in Chief
                                         </strong>
                                    </p>
                               </div>
 
                               <div className={"card__body-footer"}>
                                    <p>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-facebook-f 2x"
-                                                  }
-                                             ></i>
-                                        </a>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-twitter 2x"
-                                                  }
-                                             ></i>
-                                        </a>
-                                        <a href="www.com.com">
-                                             <i
-                                                  className={
-                                                       "fab fa-instagram 2x"
-                                                  }
-                                             ></i>
-                                        </a>
+                                        <a href="www.com.com">social</a>
+                                        <a href="www.com.com">social</a>
+                                        <a href="www.com.com">social</a>
                                    </p>
                               </div>
                          </div>

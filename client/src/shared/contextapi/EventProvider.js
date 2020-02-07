@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { store } from 'react-notifications-component';
+// import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 
@@ -807,22 +807,22 @@ const EventProvider = ({ children }) => {
           // }
      ]);
 
-     const notificationAlert= (message,type)=> {
-          store.addNotification({
-               title: 'Alert',
-               message: `${message}`,
-               type: `${type}`,                         // 'default', 'success', 'info', 'warning'
-               container: 'top-center',                // where to position the notifications
-               animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
-               animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
-               dismiss: {
-                 duration: 2000 
-               }
-             })
-     }
+     // const notificationAlert= (message,type)=> {
+     //      store.addNotification({
+     //           title: 'Alert',
+     //           message: `${message}`,
+     //           type: `${type}`,                         // 'default', 'success', 'info', 'warning'
+     //           container: 'top-center',                // where to position the notifications
+     //           animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+     //           animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+     //           dismiss: {
+     //             duration: 2000 
+     //           }
+     //      //    })
+     // }
 
      return (
-          <EventContext.Provider value={[newsItem, setNewsItem,posts,setPosts,notificationAlert]}>
+          <EventContext.Provider value={"me"}>
                {children}
           </EventContext.Provider>
      );

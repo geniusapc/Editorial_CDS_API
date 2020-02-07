@@ -1,23 +1,29 @@
 import React from "react";
+import { useCookies } from "react-cookie";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
 const About = () => {
+     const [cookies] = useCookies(["auth-token"]);
      const UpdateAbout = async e => {
           e.preventDefault();
+          const value = cookies["auth-token"];
           const { message } = e.target.elements;
           try {
                const res = await axios.put(`/api/about`, {
                     headers: {
-                         "x-auth-token": "testing"
+                         " Content-Type": " application/json",
+                         "x-auth-token":
+                              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaXNBZG1pbiI6ZmFsc2UsInN0YXRlQ29kZSI6IlVTRVIiLCJpYXQiOjE1ODA5NDE4NzB9.MFO3WXo1XbSKX-I2WIsBi6sjSoOaWHazpM683-YUBfs"
                     },
                     body: {
-                         about: message.value
+                         about: "testing"
                     }
                });
                console.log(res);
           } catch (error) {
                console.log(error.data);
+               // console.log(value);
           }
      };
 

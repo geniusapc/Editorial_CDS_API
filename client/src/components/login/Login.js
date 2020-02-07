@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Cookie from "js-cookie";
@@ -9,10 +11,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //   store the token in a cookie;
 // 3. TO store in a cookie check js-cookie
 
-const Login = props => {
-     const [setToken] = useState();
+const Login = ({ history }) => {
      const [error, setError] = useState();
      const [loading, setLoading] = useState();
+     const [cookies, setCookie] = useCookies(["auth-token"]);
 
      const loginHandler = async e => {
           const { stateCode, password } = e.target.elements;
@@ -22,21 +24,39 @@ const Login = props => {
                let res = await axios.post("/api/user/login", {
                     stateCode: stateCode.value,
                     password: password.value
+                    // stateCode: "OY/19A/7000",
+                    // password: "cmcwebcode40"
                });
-               console.log(res);
-
-               setToken(res.headers["x-auth-token"]);
+               let auth = res.headers["x-auth-token"];
+               setCookie("auth-token", auth, {
+                    path: "/"
+               });
+               history.push("/admin-dashboard");
                setLoading(false);
           } catch (e) {
                //* set ur error flash message here
-               setError(e.response.data);
-               setLoading(false);
+               if (e.response.status === 400) {
+                    setError(e.response.data);
+                    setLoading(false);
+               }
           }
      };
 
      return (
           <div className=" form-top mb-5">
                <h2 className="primary text-center mt-5">Login</h2>
+               <button
+                    onClick={() => {
+                         const value = cookies["auth-token"];
+                         if (value === true) {
+                              console.log(true);
+                         } else {
+                              console.log("no token");
+                         }
+                    }}
+               >
+                    get Cookies
+               </button>
                <div className="form-container ">
                     <div className="form-wrapper">
                          <p className="error-message">{error && error}</p>
@@ -86,4 +106,4 @@ const Login = props => {
      );
 };
 
-export default Login;
+export default withRouter(Login);
