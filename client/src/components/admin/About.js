@@ -1,29 +1,32 @@
 import React from "react";
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
 const About = () => {
-     const [cookies] = useCookies(["auth-token"]);
+     // const [cookies] = useCookies(["auth-token"]);
      const UpdateAbout = async e => {
           e.preventDefault();
-          const value = cookies["auth-token"];
+          // const value = cookies["auth-token"];
           const { message } = e.target.elements;
+          // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo
           try {
-               const res = await axios.put(`/api/about`, {
-                    headers: {
-                         " Content-Type": " application/json",
-                         "x-auth-token":
-                              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaXNBZG1pbiI6ZmFsc2UsInN0YXRlQ29kZSI6IlVTRVIiLCJpYXQiOjE1ODA5NDE4NzB9.MFO3WXo1XbSKX-I2WIsBi6sjSoOaWHazpM683-YUBfs"
+               console.log("yyyyy");
+               const res = await axios.put(
+                    "/api/about",
+                    {
+                         about: message.value
                     },
-                    body: {
-                         about: "testing"
+                    {
+                         headers: {
+                              "x-auth-token":
+                                   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo"
+                         }
                     }
-               });
+               );
                console.log(res);
           } catch (error) {
-               console.log(error.data);
-               // console.log(value);
+               console.log(error.response);
           }
      };
 

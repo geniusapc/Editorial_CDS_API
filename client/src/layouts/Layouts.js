@@ -13,6 +13,7 @@ import Contact from "../components/contact/Contact";
 import About from "../components/about/About";
 import NewsPage from "../components/readnewspage/Readnews";
 import Admin from "../components/admin/Admin";
+import AdminEvent from "../components/admin/adminList/EventList";
 
 const Layouts = () => {
      return (
@@ -33,6 +34,11 @@ const Layouts = () => {
                          />
                          <Route path="/about-us" exact component={About} />
                          <Route path="/news/:id" exact component={NewsPage} />
+                         <Route
+                              path="all-events-posted"
+                              exact
+                              component={AdminEvent}
+                         />
                          <Route component={ErrorPage} />
                     </Switch>
 
