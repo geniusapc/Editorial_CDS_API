@@ -1,6 +1,6 @@
 import React from "react";
 import { useCookies } from "react-cookie";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 
 import About from "./About";
 import Events from "./Events";
@@ -35,4 +35,4 @@ const Admin = ({ history }) => {
      );
 };
 
-export default withRouter(Admin);
+export default Admin;
