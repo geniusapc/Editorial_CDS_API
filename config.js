@@ -12,10 +12,6 @@ let prod = {
 let dev = {
   // db name = pgsql
   port: 8080,
-  ip: "localhost",
-  get host() {
-    return `http://${this.ip}:${this.port}`;
-  }, // this change has not bin effected on prod
   jwtPass: "princearthur",
   adminPassword: "princearthur",
   adminStateCode: "arthurandcmc",

@@ -20,6 +20,9 @@ router.get("/", async (req, res, next) => {
     limit,
     include: [{ model: Comment }]
   });
+  events.map(
+    e => (e.dataValues.imagePath = `${path.galleryFolder}/${e.imageName}`)
+  );
   return res.status(200).json(events);
 });
 
@@ -62,7 +65,7 @@ router.post("/", [auth, admin], async (req, res) => {
 router.delete("/:id", [auth, admin], async (req, res) => {
   let { id } = req.params;
   let event = await Event.findByPk(id, { attributes: ["imageName"] });
-  if (!event) return res.status(400).send("invalid user id");
+  if (!event) return res.status(400).send("invalid Event id");
 
   fs.unlink(path.postFolder + `/${event.imageName}`, e => {
     if (e) res.status(500).send(e);
@@ -71,11 +74,11 @@ router.delete("/:id", [auth, admin], async (req, res) => {
   return res.status(200).send("deleted succefully");
 });
 
-router.put("/:slugTitle", [auth, admin], async (req, res) => {
+router.put("/:id", [auth, admin], async (req, res) => {
   let { title, text } = req.body;
-  let { slugTitle } = req.params;
+  let { id } = req.params;
 
-  let event = await Event.findOne({ where: { slugTitle } });
+  let event = await Event.findByPk(id);
   if (!event) return res.status(400).send("Event does not exist");
 
   let { error: inputError } = Event.validateInputText({ text, title });
@@ -93,19 +96,19 @@ router.put("/:slugTitle", [auth, admin], async (req, res) => {
     updateFields.imageName = imageName;
   }
 
-  await Event.update(updateFields, { where: { slugTitle } });
+  await Event.update(updateFields, { where: { id } });
   return res.status(200).send("Event Updated succefully");
 });
 
 router.post("/comment/:eventId", async (req, res) => {
   let { eventId } = req.params;
-  let { name, slugTitle, comment } = req.body;
+  let { name, comment } = req.body;
   let { error } = Comment.validate({ eventId, name, comment });
 
   if (error) return res.status(422).send(error.details[0].message);
-  await Comment.create({ name, eventId, slugTitle, comment });
+  await Comment.create({ name, eventId, comment });
 
-  return res.status(201).send("success");
+  return res.status(201).send("comments inserted successfully");
 });
 
 router.put("/like/:slugTitle", auth, async (req, res) => {

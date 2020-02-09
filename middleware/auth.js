@@ -23,6 +23,7 @@ module.exports.admin = (req, res, next) => {
 
 module.exports.editor = (req, res, next) => {
   if (req.user.role !== "EDITOR" || !req.user.isAdmin) {
+    console.log(req.user);
     return res.status(403).send("Access denied");
   }
   next();
