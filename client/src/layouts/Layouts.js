@@ -26,19 +26,21 @@ const Layouts = () => {
                          <Route path="/gallery" exact component={Gallery} />
                          <Route path="/login" exact component={Login} />
                          <Route path="/signup" exact component={Register} />
+
+                         <Route path="/about-us" exact component={About} />
+                         <Route
+                              path="/all-events-posted"
+                              exact
+                              component={AdminEvent}
+                         />
+                         <Route path="/news/:id" exact component={NewsPage} />
                          <Route path="/contact-us" exact component={Contact} />
                          <Route
                               path="/admin-dashboard"
                               exact
                               component={Admin}
                          />
-                         <Route path="/about-us" exact component={About} />
-                         <Route path="/news/:id" exact component={NewsPage} />
-                         <Route
-                              path="all-events-posted"
-                              exact
-                              component={AdminEvent}
-                         />
+
                          <Route component={ErrorPage} />
                     </Switch>
 

@@ -9,6 +9,8 @@ const Events = () => {
      // const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
      const [image, setImage] = useState({ preview: "", raw: "" });
      const [displayEvent, setDisplayEvent] = useState([]);
+     const [notify, setNotify] = useState("");
+     const [error, setError] = useState("");
 
      useEffect(() => {
           const getAllNews = async () => {
@@ -50,14 +52,18 @@ const Events = () => {
                     }
                });
                console.log(displayEvent);
+               setNotify(res.response.data);
           } catch (error) {
                console.log(error.response);
+               setError(error.response);
           }
      };
 
      return (
           <div className="my-5">
                <h3 className="primary">Events</h3>
+               <span className="alert-success">{notify && notify.data}</span>
+               <span className="alert-danger">{error && error.data}</span>
                <button
                // onClick={() => {
                //      const value = cookies["auth-token"];
@@ -75,6 +81,7 @@ const Events = () => {
                               type="text"
                               name="title"
                               placeholder="type event title..."
+                              required
                          />
                     </FormGroup>
                     <FormGroup>
@@ -85,6 +92,7 @@ const Events = () => {
                               type="textarea"
                               name="text"
                               placeholder="type events message here ......."
+                              required
                          />
                     </FormGroup>
                     <FormGroup>
@@ -134,8 +142,8 @@ const Events = () => {
                          </div>
                     ))}
                </>
-               <Link to="all-events-posted">
-                    <button>See All</button>
+               <Link to="/all-events-posted">
+                    <button className="btn btn-primary m-3">See All</button>
                </Link>
           </div>
      );
