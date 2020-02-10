@@ -35,7 +35,7 @@ const Events = () => {
           e.preventDefault();
           // const value = cookies["auth-token"];
           const { title, text, date } = e.target.elements;
-          const titleData = title.value,
+          let titleData = title.value,
                textData = text.value,
                dateData = date.value;
           const data = new formData();
@@ -51,10 +51,8 @@ const Events = () => {
                          "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo`
                     }
                });
-               console.log(displayEvent);
-               setNotify(res.response.data);
+               setNotify(res.statusText);
           } catch (error) {
-               console.log(error.response);
                setError(error.response);
           }
      };
@@ -62,8 +60,13 @@ const Events = () => {
      return (
           <div className="my-5">
                <h3 className="primary">Events</h3>
-               <span className="alert-success">{notify && notify.data}</span>
-               <span className="alert-danger">{error && error.data}</span>
+               <div>
+                    {notify ? (
+                         <p className="alert-success">{notify}</p>
+                    ) : (
+                         <span className="alert-danger">{error.data}</span>
+                    )}
+               </div>
                <button
                // onClick={() => {
                //      const value = cookies["auth-token"];

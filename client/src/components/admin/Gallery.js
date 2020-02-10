@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import formData from "form-data";
@@ -8,6 +9,19 @@ const Gallery = () => {
      const [displayGallery, setDisplayGallery] = useState([]);
      const [notify, setNotify] = useState([]);
      const [error, setError] = useState("");
+
+     useEffect(() => {
+          const getAllGallery = async () => {
+               try {
+                    const res = await axios.get("/api/gallery");
+                    setDisplayGallery(res.data);
+                    console.log(res.data);
+               } catch (error) {
+                    console.log(error.response.data);
+               }
+          };
+          getAllGallery();
+     }, []);
 
      const handleChange = e => {
           setImage({
@@ -33,22 +47,17 @@ const Gallery = () => {
                     }
                });
 
-               // setDisplayGallery(res.data);
-               // console.log(res.data);
-               // console.log(displayGallery);
-
-               setNotify(res);
-               console.log(notify);
+               setNotify(res.statusText);
           } catch (error) {
-               // console.log(error);
-               // setError(error.response);
+               setError(error.response);
           }
      };
-     // <span className="alert-success">{notify && notify.data}</span>
-     // <span className="alert-danger">{error && error.data}</span>
+
      return (
           <div className="my-5">
                <h3 className="primary">Gallery</h3>
+               <span className="alert-success">{notify && notify}</span>
+               <span className="alert-danger">{error && error}</span>
 
                <Form onSubmit={UploadGallery}>
                     <FormGroup>
@@ -75,6 +84,25 @@ const Gallery = () => {
                          Submit
                     </Button>
                </Form>
+               <div className="my-2">
+                    {displayGallery.splice(0, 5).map(event => (
+                         <div key={event.id}>
+                              <div className={"trending"}>
+                                   <img
+                                        height="30"
+                                        width="30"
+                                        className={""}
+                                        src={event.imageName}
+                                        alt="news"
+                                   />
+                                   <h5>{event.text}</h5>
+                              </div>
+                         </div>
+                    ))}
+               </div>
+               <Link to="/all-galleries-posted">
+                    <button className="btn btn-primary m-3">See All</button>
+               </Link>
           </div>
      );
 };

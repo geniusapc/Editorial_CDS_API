@@ -24,8 +24,6 @@ const Login = ({ history }) => {
                let res = await axios.post("/api/user/login", {
                     stateCode: stateCode.value,
                     password: password.value
-                    // stateCode: "OY/19A/7000",
-                    // password: "cmcwebcode40"
                });
                let auth = res.headers["x-auth-token"];
                setCookie("auth-token", auth, {
@@ -41,25 +39,24 @@ const Login = ({ history }) => {
                }
           }
      };
-
+     // // <button
+     // //      onClick={() => {
+     // //           const value = cookies["auth-token"];
+     // //           if (value === true) {
+     // //                console.log(true);
+     // //           } else {
+     // //                console.log("no token");
+     // //           }
+     // //      }}
+     // >
+     //      get Cookies
+     // </button>
      return (
           <div className=" form-top mb-5">
                <h2 className="primary text-center mt-5">Login</h2>
-               <button
-                    onClick={() => {
-                         const value = cookies["auth-token"];
-                         if (value === true) {
-                              console.log(true);
-                         } else {
-                              console.log("no token");
-                         }
-                    }}
-               >
-                    get Cookies
-               </button>
                <div className="form-container ">
                     <div className="form-wrapper">
-                         <p className="error-message">{error && error}</p>
+                         <span className="alert-danger">{error && error}</span>
                          <form className="mt-5 " onSubmit={loginHandler}>
                               <div className="form-div">
                                    <label htmlFor="name">

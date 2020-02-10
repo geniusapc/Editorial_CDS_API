@@ -11,18 +11,18 @@ const Register = props => {
 
      const registerUser = async event => {
           event.preventDefault();
+          const { code, password, confirmPassword } = event.target.elements;
           try {
                setLoading(true);
                let res = await axios.post("/api/user/registration", {
-                    stateCode: "OY/19A/7000",
-                    password: "cmcwebcode40",
-                    confirmPassword: "cmcwebcode40"
+                    stateCode: code.value,
+                    password: password.value,
+                    confirmPassword: confirmPassword.value
                });
                console.log(res);
-               setNotify(res.data);
+               setNotify("Registration successful");
                setLoading(false);
           } catch (e) {
-               console.log(e.response.data);
                setError(e.response.data);
                setLoading(false);
           }
@@ -33,7 +33,14 @@ const Register = props => {
                <h2 className="primary text-center mt-5">Signup</h2>
                <div className="form-container ">
                     <div className="form-wrapper">
-                         {<p>{notify ? notify : error}</p>}
+                         {notify ? (
+                              <p className="alert-success">{notify}</p>
+                         ) : (
+                              <span className="alert-danger error">
+                                   {error}
+                              </span>
+                         )}
+
                          <form className="mt-5" onSubmit={registerUser}>
                               <p className="error-message"></p>
                               <div className="form-div">
@@ -43,7 +50,7 @@ const Register = props => {
                                    <input
                                         type="text"
                                         placeholder="state code"
-                                        name="statecode"
+                                        name="code"
                                    />
                               </div>
                               <div className="form-div">
@@ -63,7 +70,7 @@ const Register = props => {
                                    <input
                                         type="password"
                                         placeholder="password"
-                                        name="confirmpassword"
+                                        name="confirmPassword"
                                    />
                               </div>
                               <div className="form-div">

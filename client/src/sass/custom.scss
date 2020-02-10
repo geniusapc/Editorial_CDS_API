@@ -335,7 +335,7 @@ html {
 
 .flex-pics {
      display: flex;
-     // flex-wrap: wrap-reverse;
+     flex-wrap: wrap-reverse;
 }
 
 .event-box {
@@ -573,6 +573,30 @@ form {
                }
           }
      }
+}
+
+//***Admin****//
+
+.scroll {
+     max-height: 300px;
+     max-width: auto;
+     margin: auto;
+     border: 2px $light solid;
+     scroll-behavior: smooth;
+     overflow-y: scroll;
+}
+
+.gallery-list {
+     ol {
+          li {
+               border-bottom: 1px solid $light;
+          }
+     }
+}
+
+.error {
+     word-wrap: break-word;
+     max-width: 30px;
 }
 
 // *media Queries......

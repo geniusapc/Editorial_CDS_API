@@ -3,23 +3,19 @@ import axios from "axios";
 
 const EventList = () => {
      const [displayEvent, setDisplayEvent] = useState([]);
-     const [newsId, setNewsId] = useState("");
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
 
      const getEventId = async id => {
-          setNewsId(id);
-
           try {
-               const res = await axios.delete(`/api/event/${newsId}`, {
+               const res = await axios.delete(`/api/event/${id}`, {
                     headers: {
                          "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo`
                     }
                });
-               console.log(newsId);
-               setNotify(res.response);
+               setNotify(res.data);
           } catch (error) {
-               setError(error.response);
+               setError(error);
           }
      };
 
@@ -39,8 +35,8 @@ const EventList = () => {
      return (
           <div className="container m-auto text-center">
                <h3 className="text-primary mb-2">All Events For Admin</h3>
-               <span className="alert-success">{notify && notify.data}</span>
-               <span className="alert-danger">{error && error.data}</span>
+               <span className="alert-success">{notify && notify}</span>
+               <span className="alert-danger">{error && error}</span>
                <ol>
                     {displayEvent.map(event => (
                          <li className="my-3" key={event.title}>
