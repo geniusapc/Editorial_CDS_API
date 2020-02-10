@@ -1,6 +1,6 @@
 import React from "react";
 import { useCookies } from "react-cookie";
-// import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import About from "./About";
 import Events from "./Events";
@@ -16,7 +16,7 @@ const Admin = ({ history }) => {
                          ADMIN DASHBOARD
                     </h2>
                     <button
-                         className="btn-sm btn-primary"
+                         className="btn-sm btn-primary py-1 px-2"
                          onClick={() => {
                               removeCookie(["auth-token"]);
                               history.push("/login");
@@ -24,6 +24,12 @@ const Admin = ({ history }) => {
                     >
                          Logout{" "}
                     </button>
+                    <Link to="/all-users">
+                         <button className="btn-sm btn-primary mx-5 py-1 px-2">
+                              All Users
+                         </button>
+                    </Link>
+
                     <div>
                          <About />
                          <Gallery />
