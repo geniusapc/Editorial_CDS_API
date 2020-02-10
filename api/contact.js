@@ -6,7 +6,12 @@ const { editor } = require("../middleware/auth");
 
 router.get("/", auth, async (req, res) => {
   let limit = req.query.limit ? req.query.limit : null;
-  let contactUs = await ContactUs.findAll({ limit });
+
+  let status = () => {
+    let status = req.query.status;
+    return { status };
+  };
+  let contactUs = await ContactUs.findAll({ limit, where: { ...status() } });
   return res.status(200).json(contactUs);
 });
 
@@ -14,7 +19,7 @@ router.get("/:id", [auth, editor], async (req, res) => {
   let { id } = req.params;
   let contactUs = await ContactUs.findByPk(id);
   if (!contactUs) return res.status(400).send("id does not exist");
-  ContactUs.update({ status: "read" }, { where: { id } });
+  await ContactUs.update({ status: "read" }, { where: { id } });
   return res.status(200).json(contactUs);
 });
 

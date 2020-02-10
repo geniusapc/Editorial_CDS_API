@@ -1,5 +1,7 @@
 const { join } = require("path");
 module.exports = path = {
   postFolder: join(__dirname, "public", "img", "post"),
-  galleryFolder: join(__dirname, "public", "img", "gallery")
+  galleryFolder: join(__dirname, "public", "img", "gallery"),
+  leadersFolder: join(__dirname, "public", "img", "leaders")
+
 };

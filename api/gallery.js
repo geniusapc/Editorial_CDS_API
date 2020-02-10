@@ -12,6 +12,11 @@ const fs = require("fs");
 router.get("/", async (req, res) => {
   let limit = req.query.limit ? req.query.limit : null;
   const gallery = await Gallery.findAll({ limit });
+
+  gallery.map(
+    e => (e.dataValues.imagePath = `${path.galleryFolder}/${e.imageName}`)
+  );
+
   res.status(200).json(gallery);
 });
 
@@ -31,12 +36,14 @@ router.post("/", [auth, admin], async (req, res) => {
 
 router.delete("/:id", [auth, admin], async (req, res) => {
   let { id } = req.params;
-  let gallery = Gallery.findByPk(1, { attributes: [src] });
-  await Gallery.destroy({ where: { id } });
-  fs.unlink(path.galleryFolder + `/${gallery.src}`, e => {
-    if (e) console.log(e);
+  let gallery = await Gallery.findByPk(id, { attributes: ["imageName"] });
+  if (!gallery) return res.send("invalid gallery ID");
+
+  fs.unlink(`${path.galleryFolder}/${gallery.imageName}`, e => {
+    if (e) return res.status(500).send(e);
   });
-  return res.status(200).send("your gallery was deleted succcessfully");
+  await Gallery.destroy({ where: { id } });
+  return res.status(200).send("Gallery deleted succcessfully");
 });
 
 const getImgProps = file => {
