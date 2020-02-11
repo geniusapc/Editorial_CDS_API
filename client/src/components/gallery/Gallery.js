@@ -17,7 +17,7 @@ const Gallery = () => {
                     console.log(res.data);
                     setLaoding(false);
                } catch (error) {
-                    console.log(error.data);
+                    console.log(error);
                }
           };
           const getPastLeaders = async () => {
@@ -27,7 +27,7 @@ const Gallery = () => {
                     setPastleaders(res.data);
                     setLaoding(false);
                } catch (error) {
-                    console.log(error.data);
+                    console.log(error);
                }
           };
           getPastLeaders();
@@ -42,20 +42,23 @@ const Gallery = () => {
                          {loading && <Loading />}
                          <div className="events-pictures p-3 mt-2 mx-auto">
                               <h3>All Events</h3>
-                              <div className="flex-pics">
+                              <div className="flex-pics scroll">
                                    {eventPictures.length ? (
                                         eventPictures.map(event => (
                                              <div
-                                                  className="event-box m-2 "
+                                                  className="event-box m-5 "
                                                   key={event.id}
                                              >
-                                                  <div className="picture">
+                                                  <div className="title">
                                                        {event.text}
                                                   </div>
-                                                  <div className="title">
-                                                       <span>
-                                                            {event.title}
-                                                       </span>
+                                                  <div className="pictures">
+                                                       <img
+                                                            src={
+                                                                 event.imageName
+                                                            }
+                                                            alt="gallery"
+                                                       />
                                                   </div>
                                              </div>
                                         ))
@@ -72,14 +75,17 @@ const Gallery = () => {
                                    {pastLeaders.length ? (
                                         pastLeaders.map(past => (
                                              <div
-                                                  className="event-box m-2 p-1"
+                                                  className="event-box m-5 p-1"
                                                   key={past.id}
                                              >
-                                                  <div className="picture">
+                                                  <div className="title">
                                                        {past.text}
                                                   </div>
-                                                  <div className="title">
-                                                       <span>{past.title}</span>
+                                                  <div className="pictures">
+                                                       <img
+                                                            src={past.imageName}
+                                                            alt="gallery"
+                                                       />
                                                   </div>
                                              </div>
                                         ))

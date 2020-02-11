@@ -14,6 +14,8 @@ import About from "../components/about/About";
 import NewsPage from "../components/readnewspage/Readnews";
 import Admin from "../components/admin/Admin";
 import AdminEvent from "../components/admin/adminList/EventList";
+import AdminGallery from "../components/admin/adminList/GalleryList";
+import UserList from "../components/admin/adminList/UserList";
 
 const Layouts = () => {
      return (
@@ -33,6 +35,12 @@ const Layouts = () => {
                               exact
                               component={AdminEvent}
                          />
+                         <Route
+                              path="/all-galleries-posted"
+                              exact
+                              component={AdminGallery}
+                         />
+                         <Route path="/all-users" exact component={UserList} />
                          <Route path="/news/:id" exact component={NewsPage} />
                          <Route path="/contact-us" exact component={Contact} />
                          <Route

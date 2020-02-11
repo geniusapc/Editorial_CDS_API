@@ -1,22 +1,40 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
 const Contact = props => {
      const [notify, setNotify] = useState();
+     const [error, setError] = useState();
+     const [loading, setLoading] = useState();
      const messageHandler = async e => {
           e.preventDefault();
-          // const { name,code,pnumber,email,message } = e.target.elements;
+          const { name, code, pnumber, email, message } = e.target.elements;
+          const userName = name.value;
+          const config = { header: { "content-type": "application/json" } };
           try {
-               let res = await axios.post("/api/user/contact", {
-                    name: e.value,
-                    code: e.value,
-                    pnumber: e.value,
-                    email: e.value,
-                    message: e.value
+               setLoading(true);
+               await axios.post("/api/contact", config, {
+                    name: name.value,
+                    stateCode: code.value,
+                    pnumber: pnumber.value,
+                    email: email.value,
+                    message: message.value
+                    // name: "mike",
+                    // stateCode: "OY/19A/0131",
+                    // pnumber: "0803336474647",
+                    // email: "mick@gmail.com",
+                    // message: "cdsnhcjshdckhjdsbkjchsbkjdchb"
                });
-               setNotify(res.data);
-          } catch (e) {}
+               name.value = "";
+               setNotify(
+                    `Thank you ${userName} Admin has received your message`
+               );
+               setLoading(false);
+          } catch (e) {
+               setError(e.response.data);
+               setLoading(false);
+          }
      };
 
      return (
@@ -24,7 +42,13 @@ const Contact = props => {
                <div className="container m-auto p-3">
                     <h3 className="primary text-center py-4">Contact Us </h3>
                     <Form onSubmit={messageHandler}>
-                         {notify && <span>notify</span>}
+                         <div>
+                              {notify ? (
+                                   <p className="alert-success">{notify}</p>
+                              ) : (
+                                   <span className="alert-danger">{error}</span>
+                              )}
+                         </div>
                          <FormGroup>
                               <Label className="primary" for="name">
                                    Name
@@ -32,8 +56,9 @@ const Contact = props => {
                               <Input
                                    type="text"
                                    name="name"
-                                   id="name"
+                                   // id="name"
                                    placeholder="Your name"
+                                   // required
                               />
                          </FormGroup>
                          <FormGroup>
@@ -44,6 +69,7 @@ const Contact = props => {
                                    type="text"
                                    name="code"
                                    placeholder="your state code"
+                                   // required
                               />
                          </FormGroup>
                          <FormGroup>
@@ -54,6 +80,7 @@ const Contact = props => {
                                    type="number"
                                    name="pnumber"
                                    placeholder="your phone number"
+                                   // required
                               />
                          </FormGroup>
                          <FormGroup>
@@ -64,6 +91,7 @@ const Contact = props => {
                                    type="email"
                                    name="email"
                                    placeholder="your Email"
+                                   // required
                               />
                          </FormGroup>
                          <FormGroup>
@@ -74,14 +102,28 @@ const Contact = props => {
                                    type="textarea"
                                    name="message"
                                    placeholder="type your message here ......."
+                                   // required
                               />
                          </FormGroup>
-                         <Button
+                         <button
+                              className="btn btn-primary py-3 px-5"
                               type="submit"
-                              className="bg-primary text-white btn py-2 px-5"
                          >
-                              Submit
-                         </Button>
+                              {loading ? (
+                                   <FontAwesomeIcon
+                                        style={{
+                                             marginRight: "1rem",
+                                             marginTop: ".4rem"
+                                        }}
+                                        icon="spinner"
+                                        size="1x"
+                                        color="#fffb00f6"
+                                        spin
+                                   />
+                              ) : (
+                                   "Register"
+                              )}
+                         </button>
                     </Form>
                </div>
           </div>
