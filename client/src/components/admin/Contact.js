@@ -19,7 +19,7 @@ const Contact = props => {
                }
           };
 
-          // getTableData();
+          getTableData();
      }, []);
      return (
           <Table bordered hover>
@@ -27,8 +27,6 @@ const Contact = props => {
                     <tr>
                          <th>Id</th>
                          <th>Name</th>
-                         <th>State Code</th>
-                         <th>Email</th>
                          <th>phone Number</th>
                          <th>Message</th>
                          <th>Status</th>
@@ -39,14 +37,12 @@ const Contact = props => {
                <tbody>
                     <tr>
                          <th scope="row">1</th>
-                         <td>{tableData}</td>
-                         <td>Otto</td>
                          <td>@mdo</td>
                          <td>Mark</td>
                          <td>Otto</td>
                          <td>@mdo</td>
                          <td>@mdo</td>
-                         <td>
+                         <td className="text-center">
                               {" "}
                               <FontAwesomeIcon
                                    style={{

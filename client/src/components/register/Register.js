@@ -29,69 +29,74 @@ const Register = props => {
      };
 
      return (
-          <div className=" form-top mb-5">
-               <h2 className="primary text-center mt-5">Signup</h2>
-               <div className="form-container ">
-                    <div className="form-wrapper">
-                         {notify ? (
-                              <p className="alert-success">{notify}</p>
-                         ) : (
-                              <span className="alert-danger error">
-                                   {error}
-                              </span>
-                         )}
+          <div className="">
+               <div className="form-image">
+                    <h2 className="text-white text-center py-4">SIGN UP</h2>
+                    <div className="form-container ">
+                         <div className="form-wrapper">
+                              {notify ? (
+                                   <p className="alert-success">{notify}</p>
+                              ) : (
+                                   <span className="alert-danger error">
+                                        {error}
+                                   </span>
+                              )}
 
-                         <form className="mt-5" onSubmit={registerUser}>
-                              <p className="error-message"></p>
-                              <div className="form-div">
-                                   <label htmlFor="name">
-                                        State Code <span>*</span>
-                                   </label>
-                                   <input
-                                        type="text"
-                                        placeholder="state code"
-                                        name="code"
-                                   />
-                              </div>
-                              <div className="form-div">
-                                   <label htmlFor="name">
-                                        Password<span>*</span>
-                                   </label>
-                                   <input
-                                        type="password"
-                                        placeholder="password"
-                                        name="password"
-                                   />
-                              </div>
-                              <div className="form-div">
-                                   <label htmlFor="name">
-                                        Confirm Password<span>*</span>
-                                   </label>
-                                   <input
-                                        type="password"
-                                        placeholder="password"
-                                        name="confirmPassword"
-                                   />
-                              </div>
-                              <div className="form-div">
-                                   <button className="submit-btn" type="submit">
-                                        {loading ? (
-                                             <FontAwesomeIcon
-                                                  style={{
-                                                       marginRight: "1rem",
-                                                       marginTop: ".4rem"
-                                                  }}
-                                                  icon="spinner"
-                                                  size="1x"
-                                                  color="#fffb00f6"
-                                                  spin
-                                             />
-                                        ) : (
-                                             "Register"
-                                        )}
-                                   </button>
-                              </div>
-                         </form>
+                              <form className="mt-5" onSubmit={registerUser}>
+                                   <p className="error-message"></p>
+                                   <div className="form-div">
+                                        <label htmlFor="name">
+                                             State Code <span>*</span>
+                                        </label>
+                                        <input
+                                             type="text"
+                                             placeholder="state code"
+                                             name="code"
+                                        />
+                                   </div>
+                                   <div className="form-div">
+                                        <label htmlFor="name">
+                                             Password<span>*</span>
+                                        </label>
+                                        <input
+                                             type="password"
+                                             placeholder="password"
+                                             name="password"
+                                        />
+                                   </div>
+                                   <div className="form-div">
+                                        <label htmlFor="name">
+                                             Confirm Password<span>*</span>
+                                        </label>
+                                        <input
+                                             type="password"
+                                             placeholder="password"
+                                             name="confirmPassword"
+                                        />
+                                   </div>
+                                   <div className="form-div">
+                                        <button
+                                             className="submit-btn"
+                                             type="submit"
+                                        >
+                                             {loading ? (
+                                                  <FontAwesomeIcon
+                                                       style={{
+                                                            marginRight: "1rem",
+                                                            marginTop: ".4rem"
+                                                       }}
+                                                       icon="spinner"
+                                                       size="1x"
+                                                       color="#fffb00f6"
+                                                       spin
+                                                  />
+                                             ) : (
+                                                  "Register"
+                                             )}
+                                        </button>
+                                   </div>
+                              </form>
+                         </div>
                     </div>
                </div>
           </div>

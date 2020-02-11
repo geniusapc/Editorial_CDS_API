@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const EventList = () => {
      const [displayEvent, setDisplayEvent] = useState([]);
+          const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
 
      const getEventId = async id => {
           try {
+                const value = cookies["auth-token"];
                const res = await axios.delete(`/api/event/${id}`, {
                     headers: {
-                         "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo`
+                         "x-auth-token": `${value}`
                     }
                });
                setNotify(res.data);
@@ -30,13 +33,18 @@ const EventList = () => {
                }
           };
           getAllNews();
-     }, []);
+     }, [notify]);
 
      return (
+          <div className="form-top">
           <div className="container m-auto text-center">
                <h3 className="text-primary mb-2">All Events For Admin</h3>
-               <span className="alert-success">{notify && notify}</span>
-               <span className="alert-danger">{error && error}</span>
+                 {notify ? (
+                         <span className="alert-success">{notify}</span>
+                    ) : (
+                         <span className="alert-danger">{error}</span>
+                    )}
+                     <span> <strong  className="text-primary"> Total Events Uploaded</strong> : {displayEvent.length}</span>
                <ol>
                     {displayEvent.map(event => (
                          <li className="my-3" key={event.title}>
@@ -73,6 +81,7 @@ const EventList = () => {
                          </li>
                     ))}
                </ol>
+          </div>
           </div>
      );
 };

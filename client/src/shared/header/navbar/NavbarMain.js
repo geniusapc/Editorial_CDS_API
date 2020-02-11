@@ -26,8 +26,8 @@ const NavbarMain = props => {
                     <h4 className={"B ml-3 primary"}>EDITORIAL CDS GROUP</h4>
                     <NavbarToggler className={"toggle"} onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
-                         <Nav className="primary ml-auto" navbar>
-                              <NavItem className="primary">
+                         <Nav className=" text-primaryprimary ml-auto" navbar>
+                              <NavItem className=" text-primary">
                                    <NavLink className="nav" href="/about-us">
                                         About
                                    </NavLink>

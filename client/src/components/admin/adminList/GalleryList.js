@@ -15,10 +15,12 @@ const GalleryList = () => {
                          "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo`
                     }
                });
-               setNotify(res.response);
+               console.log(res);
+               
+               setNotify(res);
           } catch (error) {
-               console.log(error.response);
-               setError(error.response);
+               
+               setError(error);
           }
      };
 
@@ -29,18 +31,23 @@ const GalleryList = () => {
                     setDisplayGallery(res.data);
                     console.log(res.data);
                } catch (error) {
-                    console.log(error.response);
+                    setError(error)
                }
           };
           getAllGallery();
-     }, []);
+     }, [notify]);
 
      return (
-          <div className="container m-auto text-center">
+          <div className="form-top">
+          <div className="container my-4 mx-auto text-center">
                <h3 className="text-primary mb-2">All Galleries For Admin</h3>
-               <span className="alert-success">{notify && notify.data}</span>
-               <span className="alert-danger">{error && error.data}</span>
+              {notify ? (
+                         <span className="alert-success">{notify.data}</span>
+                    ) : (
+                         <span className="alert-danger">{error.data}</span>
+                    )}
                <div className="scroll mx-auto">
+                    <span> <strong  className="text-primary"> Total pictures uploaded</strong> : {displayGallery.length}</span>
                     <ol className="gallery-list">
                          {displayGallery.map(event => (
                               <li className="my-3" key={event.id}>
@@ -57,16 +64,10 @@ const GalleryList = () => {
                                         </span>
                                         <p>{event.createdAt}</p>
                                         <span className="trending">
-                                             <button
-                                                  className=" btn btn-primary m-2 "
-                                                  type="submit"
-                                             >
-                                                  Edit
-                                             </button>
 
                                              <button
                                                   type="submit"
-                                                  className="btn btn-danger m-2"
+                                                  className="btn btn-md btn-danger m-2"
                                                   onClick={() =>
                                                        getGalleryById(event.id)
                                                   }
@@ -79,6 +80,7 @@ const GalleryList = () => {
                          ))}
                     </ol>
                </div>
+          </div>
           </div>
      );
 };
