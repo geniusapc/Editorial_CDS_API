@@ -30,7 +30,7 @@ const Register = props => {
 
      return (
           <div className="">
-               <div className="form-image">
+               <div className="form-image ">
                     <h2 className="text-white text-center py-4">SIGN UP</h2>
                     <div className="form-container ">
                          <div className="form-wrapper">
