@@ -13,9 +13,7 @@ router.get("/", async (req, res) => {
   let limit = req.query.limit ? req.query.limit : null;
   const gallery = await Gallery.findAll({ limit });
 
-  gallery.map(
-    e => (e.dataValues.imagePath = `${path.galleryFolder}/${e.imageName}`)
-  );
+  gallery.map(e => (e.dataValues.image = `/img/gallery/${e.imageName}`));
 
   res.status(200).json(gallery);
 });

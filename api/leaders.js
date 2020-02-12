@@ -14,13 +14,7 @@ const path = require("path");
 
 router.get("/", async (req, res) => {
   let Leaders = await Leader.findAll({ order: [["id"]] });
-  Leaders.map(
-    e =>
-      (e.dataValues.imagePath = `${path.resolve(
-        localPath.leadersFolder,
-        e.imageName
-      )}`)
-  );
+  Leaders.map(e => (e.dataValues.image = `/img/leaders/${e.imageName}`));
   res.status(200).json(Leaders);
 });
 
