@@ -12,10 +12,13 @@ import Register from "../components/register/Register";
 import Contact from "../components/contact/Contact";
 import About from "../components/about/About";
 import NewsPage from "../components/readnewspage/Readnews";
+
+//***********ADMIN COMPS ******** *//
 import Admin from "../components/admin/Admin";
 import AdminEvent from "../components/admin/adminList/EventList";
 import AdminGallery from "../components/admin/adminList/GalleryList";
 import UserList from "../components/admin/adminList/UserList";
+import Leaders from "../components/admin/adminList/LeadersProfile";
 
 const Layouts = () => {
      return (
@@ -39,6 +42,11 @@ const Layouts = () => {
                               path="/all-galleries-posted"
                               exact
                               component={AdminGallery}
+                         />
+                         <Route
+                              path="/leaders"
+                              exact
+                              component={Leaders}
                          />
                          <Route path="/all-users" exact component={UserList} />
                          <Route path="/news/:id" exact component={NewsPage} />

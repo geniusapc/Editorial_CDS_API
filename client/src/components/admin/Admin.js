@@ -1,6 +1,7 @@
 import React from "react";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
+import { Button } from "reactstrap";
 
 import About from "./About";
 import Events from "./Events";
@@ -15,19 +16,27 @@ const Admin = ({ history }) => {
                     <h2 className="primary text-center my-4">
                          ADMIN DASHBOARD
                     </h2>
-                    <button
-                         className="btn-sm btn-primary py-1 px-2"
+                    <Button
+                          className="bg-primary mr-2 text-white btn py-2 px-5"
                          onClick={() => {
                               removeCookie(["auth-token"]);
                               history.push("/login");
                          }}
                     >
                          Logout{" "}
-                    </button>
+                    </Button>
                     <Link to="/all-users">
-                         <button className="btn-sm btn-primary mx-5 py-1 px-2">
+                         <Button    className="bg-primary text-white mr-2 btn py-2 px-5">
                               All Users
-                         </button>
+                         </Button>
+                    </Link>
+                    <Link to="/leaders">
+                      <Button
+                        
+                         className="bg-primary text-white btn py-2 px-5"
+                    >
+                         Leaders Profile
+                    </Button>
                     </Link>
 
                     <div>

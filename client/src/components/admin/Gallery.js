@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 import formData from "form-data";
 
 const Gallery = () => {
+         const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
      const [image, setImage] = useState({ preview: "", raw: "" });
      const [displayGallery, setDisplayGallery] = useState([]);
      const [notify, setNotify] = useState([]);
@@ -21,7 +23,7 @@ const Gallery = () => {
                }
           };
           getAllGallery();
-     }, []);
+     }, [notify]);
 
      const handleChange = e => {
           setImage({
@@ -31,7 +33,7 @@ const Gallery = () => {
      };
      const UploadGallery = async e => {
           e.preventDefault();
-          // const value = cookies["auth-token"];
+          const value = cookies["auth-token"];
           const { text } = e.target.elements;
           const titleData = text.value;
 
@@ -43,10 +45,9 @@ const Gallery = () => {
                const res = await axios.post("/api/gallery", data, {
                     headers: {
                          "conent-type": "multipart/form-data",
-                         "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo`
+                         "x-auth-token": `${value}`
                     }
                });
-
                setNotify(res.statusText);
           } catch (error) {
                setError(error.response);
@@ -92,7 +93,7 @@ const Gallery = () => {
                                         height="30"
                                         width="30"
                                         className={""}
-                                        src={event.imageName}
+                                        src={event.imagePath}
                                         alt="news"
                                    />
                                    <h5>{event.text}</h5>
