@@ -1,14 +1,12 @@
 const express = require("express");
-const auth = require("../middleware/auth");
-const { admin } = require("../middleware/auth");
 const errorHandler = require("../middleware/errorHandling");
 
-const contact = require("./contact");
-const gallery = require("./gallery");
-const user = require("./user");
-const about = require("./about");
-const event = require("./event");
-const leaders = require("./leaders");
+const contact = require("../api/contact");
+const gallery = require("../api/gallery");
+const user = require("../api/user");
+const about = require("../api/about");
+const event = require("../api/event");
+const leaders = require("../api/leaders");
 
 module.exports = app => {
   app.use("/api/event", event);

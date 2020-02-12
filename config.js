@@ -19,7 +19,7 @@ let dev = {
     host: "localhost",
     user: "postgres",
     database: "editorial",
-    password: "cmc"
+    password: "youngenius"
   }
 };
 
