@@ -23,7 +23,7 @@ const Gallery = () => {
           const getPastLeaders = async () => {
                try {
                     setLaoding(true);
-                    const res = await axois.get("/api/pastleaders");
+                    const res = await axois.get("/api/leaders");
                     setPastleaders(res.data);
                     setLaoding(false);
                } catch (error) {
@@ -54,9 +54,7 @@ const Gallery = () => {
                                                   </div>
                                                   <div className="pictures">
                                                        <img
-                                                            src={
-                                                                 event.imageName
-                                                            }
+                                                            src={event.image}
                                                             alt="gallery"
                                                        />
                                                   </div>
@@ -83,7 +81,7 @@ const Gallery = () => {
                                                   </div>
                                                   <div className="pictures">
                                                        <img
-                                                            src={past.imageName}
+                                                            src={past.image}
                                                             alt="gallery"
                                                        />
                                                   </div>

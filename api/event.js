@@ -20,9 +20,7 @@ router.get("/", async (req, res, next) => {
     limit,
     include: [{ model: Comment }]
   });
-  events.map(
-    e => (e.dataValues.imagePath = `${path.galleryFolder}/${e.imageName}`)
-  );
+  events.map(e => (e.dataValues.image = `/img/event/${e.imageName}`));
   return res.status(200).json(events);
 });
 
