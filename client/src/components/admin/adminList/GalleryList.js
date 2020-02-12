@@ -16,10 +16,9 @@ const GalleryList = () => {
                     }
                });
                console.log(res);
-               
+
                setNotify(res);
           } catch (error) {
-               
                setError(error);
           }
      };
@@ -31,7 +30,7 @@ const GalleryList = () => {
                     setDisplayGallery(res.data);
                     console.log(res.data);
                } catch (error) {
-                    setError(error)
+                    setError(error);
                }
           };
           getAllGallery();
@@ -39,48 +38,58 @@ const GalleryList = () => {
 
      return (
           <div className="form-top">
-          <div className="container my-4 mx-auto text-center">
-               <h3 className="text-primary mb-2">All Galleries For Admin</h3>
-              {notify ? (
+               <div className="container my-4 mx-auto text-center">
+                    <h3 className="text-primary mb-2">
+                         All Galleries For Admin
+                    </h3>
+                    {notify ? (
                          <span className="alert-success">{notify.data}</span>
                     ) : (
                          <span className="alert-danger">{error.data}</span>
                     )}
-               <div className="scroll mx-auto">
-                    <span> <strong  className="text-primary"> Total pictures uploaded</strong> : {displayGallery.length}</span>
-                    <ol className="gallery-list">
-                         {displayGallery.map(event => (
-                              <li className="my-3" key={event.id}>
-                                   <span className="m-auto text-center">
-                                        <span className={"trending"}>
-                                             <img
-                                                  height="30"
-                                                  width="30"
-                                                  className={""}
-                                                  src={event.imageName}
-                                                  alt="news"
-                                             />
-                                             <h5>{event.text}</h5>
+                    <div className="scroll mx-auto">
+                         <span>
+                              {" "}
+                              <strong className="text-primary">
+                                   {" "}
+                                   Total pictures uploaded
+                              </strong>{" "}
+                              : {displayGallery.length}
+                         </span>
+                         <ol className="gallery-list">
+                              {displayGallery.map(event => (
+                                   <li className="my-3" key={event.id}>
+                                        <span className="m-auto text-center">
+                                             <span className={"trending"}>
+                                                  <img
+                                                       height="30"
+                                                       width="30"
+                                                       className={""}
+                                                       src={event.imagePath}
+                                                       alt="news"
+                                                  />
+                                                  <h5>{event.text}</h5>
+                                             </span>
+                                             <p>{event.createdAt}</p>
+                                             <span className="trending">
+                                                  <button
+                                                       type="submit"
+                                                       className="btn btn-md btn-danger m-2"
+                                                       onClick={() =>
+                                                            getGalleryById(
+                                                                 event.id
+                                                            )
+                                                       }
+                                                  >
+                                                       Delete
+                                                  </button>
+                                             </span>
                                         </span>
-                                        <p>{event.createdAt}</p>
-                                        <span className="trending">
-
-                                             <button
-                                                  type="submit"
-                                                  className="btn btn-md btn-danger m-2"
-                                                  onClick={() =>
-                                                       getGalleryById(event.id)
-                                                  }
-                                             >
-                                                  Delete
-                                             </button>
-                                        </span>
-                                   </span>
-                              </li>
-                         ))}
-                    </ol>
+                                   </li>
+                              ))}
+                         </ol>
+                    </div>
                </div>
-          </div>
           </div>
      );
 };
