@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
     limit,
     include: [{ model: Comment }]
   });
-  events.map(e => (e.dataValues.image = `/img/event/${e.imageName}`));
+  events.map(e => (e.dataValues.image = `/img/post/${e.imageName}`));
   return res.status(200).json(events);
 });
 
@@ -37,6 +37,7 @@ router.get("/:slugTitle", async (req, res) => {
   });
 
   if (!event) return res.status(400).send("Event not found");
+  event.map(e => (e.dataValues.image = `/img/post/${e.imageName}`));
   return res.status(200).json(event);
 });
 

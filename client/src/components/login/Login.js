@@ -36,6 +36,7 @@ const Login = ({ history }) => {
                     setError(e.response.data);
                     setLoading(false);
                }
+               setLoading(false);
           }
      };
 

@@ -50,6 +50,8 @@ const Events = () => {
                          "x-auth-token": `${value}`
                     }
                });
+               console.log(res.data);
+
                setNotify(res.statusText);
           } catch (error) {
                setError(error.response);
@@ -99,11 +101,7 @@ const Events = () => {
                          <Label for="file" className="primary">
                               file
                          </Label>
-                         <Input
-                              type="file"
-                              required
-                              onChange={handleChange}
-                         />
+                         <Input type="file" required onChange={handleChange} />
                     </FormGroup>
                     <Button
                          type="submit"
@@ -114,9 +112,6 @@ const Events = () => {
                     <Button className="bg-primary text-white btn py-2 px-5 mr-2">
                          Edit
                     </Button>
-                    {/*}Button className="bg-danger text-white btn py-2 px-5 mr-2">
-                         Delete
-     </Button>*/}
                </Form>
                <>
                     {displayEvent.splice(0, 10).map(event => (
@@ -125,11 +120,10 @@ const Events = () => {
                                    <img
                                         height="30"
                                         width="30"
-                                        className={""}
-                                        src={event.imageName}
+                                        src={`/img/post/${event.imageName}`}
                                         alt="news"
                                    />
-                                   <h5>{event.title}</h5>
+                                   <h6>{event.title}</h6>
                               </div>
                          </div>
                     ))}

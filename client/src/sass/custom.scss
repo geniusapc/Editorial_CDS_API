@@ -453,7 +453,7 @@ html {
           url("../images/show.JPG");
      background-position: center;
      background-size: cover;
-     height: 55vh;
+     height: 65vh;
 }
 
 //* footer
@@ -525,7 +525,7 @@ html {
 
 .form-container {
      position: relative;
-     margin: 1rem auto;
+     margin: 2rem auto 3rem auto;
      border-radius: 10px;
      background-color: rgba($white, 0.7);
      width: 80%;
@@ -536,7 +536,7 @@ html {
      // height: 100%;
      width: 100%;
      // margin: 0 0 0 3.4rem;
-     margin: -2rem 3.2rem;
+     margin: -2rem 3rem;
 }
 
 form {
@@ -585,6 +585,27 @@ form {
 
 //***Admin****//
 
+.edit-form {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     // margin: 0 2rem;
+     transition: all 0.2s ease-out;
+     background-color: $primary;
+     color: $white;
+     padding: 0 1rem;
+
+     span {
+          text-align: right;
+          font-size: 25px;
+          cursor: pointer;
+          &:hover {
+               color: $danger;
+          }
+     }
+}
+
 .scroll {
      max-height: 300px;
      max-width: auto;
@@ -600,11 +621,6 @@ form {
                border-bottom: 1px solid $light;
           }
      }
-}
-
-.error {
-     word-wrap: break-word;
-     max-width: 30px;
 }
 
 // *media Queries......

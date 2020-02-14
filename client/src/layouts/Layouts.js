@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import ReactNotifications from "react-notifications-component";
 
 import NavbarMain from "../shared/header/navbar/NavbarMain";
 import Footer from "../shared/footer/Footer";
@@ -25,7 +24,6 @@ const Layouts = () => {
           <Router>
                <div>
                     <NavbarMain />
-                    <ReactNotifications />
                     <Switch>
                          <Route path="/" exact component={Home} />
                          <Route path="/gallery" exact component={Gallery} />

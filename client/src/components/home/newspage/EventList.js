@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Moment from "react-moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
      Card,
@@ -10,25 +11,45 @@ import {
      CardSubtitle
 } from "reactstrap";
 
-const EventList = ({ title, text, img, id }) => {
+const EventList = ({ title, text, image, time }) => {
      return (
           <Link to={`/news/${title}`}>
                <div className="my-3 mx-5">
                     <Card>
                          <CardImg
                               top
-                              width="100%"
-                              src={img}
+                              height="200"
+                              width="400"
+                              src={image}
                               alt="Card image cap"
+                              style={{
+                                   borderRadius: "8px",
+                                   backgroundPosition: "center",
+                                   backgroundSize: "cover"
+                              }}
                          />
                          <CardBody className="">
                               <CardTitle>
-                                   <h2 className="primary"> {title}</h2>
+                                   <h3 className="primary">{title}</h3>
                               </CardTitle>
                               <CardSubtitle className="my-3">
-                                   Card subtitle
+                                   <span>
+                                        {" "}
+                                        <FontAwesomeIcon
+                                             style={{
+                                                  marginRight: ".2rem",
+                                                  marginTop: ".2rem"
+                                             }}
+                                             icon="clock"
+                                             size="1x"
+                                             color="grey"
+                                        />
+                                        <Moment fromNow>{time}</Moment>
+                                   </span>
                               </CardSubtitle>
-                              <CardText className="">{text}....</CardText>
+                              <CardText className="">
+                                   {text.slice(0, 150)}....
+                              </CardText>
                          </CardBody>
                          <div className="comment">
                               <div>
