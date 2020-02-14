@@ -17,10 +17,12 @@ const Events = props => {
                try {
                     setLoading(true);
                     const res = await axios.get("/api/event");
-                    // setPosts([]);
-                    setLoading(true);
+                    console.log(res.data);
+
+                    setPosts(res.data);
+                    setLoading(false);
                } catch (error) {
-                    console.log(error.response.data);
+                    console.log(error);
                }
           };
           getAllNews();
@@ -44,13 +46,13 @@ const Events = props => {
                     {loading ? (
                          <Loading />
                     ) : (
-                         currentPost.map(news => (
+                         posts.map(news => (
                               <EventList
                                    key={news.id}
-                                   id={news.id}
                                    title={news.title}
                                    text={news.text}
-                                   img={news.img}
+                                   image={news.image}
+                                   time={news.createdAt}
                               />
                          ))
                     )}

@@ -1,4 +1,7 @@
 import React from "react";
+import Moment from "react-moment";
+import "moment-timezone";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import EventProvider from "./shared/contextapi/EventProvider";
 import {
@@ -19,7 +22,8 @@ import {
      faComment,
      faShare,
      faHeart,
-     faPager
+     faPager,
+     faClock
 } from "@fortawesome/free-solid-svg-icons";
 
 import Layouts from "./layouts/Layouts";
@@ -43,7 +47,8 @@ library.add(
      faComment,
      faHeart,
      faShare,
-     faPager
+     faPager,
+     faClock
 );
 
 const App = () => {

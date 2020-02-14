@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 import formData from "form-data";
 
 const Gallery = () => {
-         const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
+     const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
      const [image, setImage] = useState({ preview: "", raw: "" });
      const [displayGallery, setDisplayGallery] = useState([]);
      const [notify, setNotify] = useState([]);
@@ -49,6 +49,7 @@ const Gallery = () => {
                     }
                });
                setNotify(res.statusText);
+               text = "";
           } catch (error) {
                setError(error.response);
           }
@@ -76,7 +77,7 @@ const Gallery = () => {
                          <Label name="text" for="text" className="primary">
                               Gallery Name
                          </Label>
-                         <Input type="text" name="text" />
+                         <Input type="text" name="text" required />
                     </FormGroup>
                     <Button
                          type="submit"
@@ -93,7 +94,7 @@ const Gallery = () => {
                                         height="30"
                                         width="30"
                                         className={""}
-                                        src={event.imagePath}
+                                        src={event.image}
                                         alt="news"
                                    />
                                    <h5>{event.text}</h5>

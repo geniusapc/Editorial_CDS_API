@@ -14,25 +14,27 @@ const Contact = props => {
           const config = { header: { "content-type": "application/json" } };
           try {
                setLoading(true);
-               await axios.post("/api/contact", config, {
-                    name: name.value,
-                    stateCode: code.value,
-                    pnumber: pnumber.value,
-                    email: email.value,
-                    message: message.value
-                    // name: "mike",
-                    // stateCode: "OY/19A/0131",
-                    // pnumber: "0803336474647",
-                    // email: "mick@gmail.com",
-                    // message: "cdsnhcjshdckhjdsbkjchsbkjdchb"
-               });
+               await axios.post(
+                    "/api/contact",
+                    {
+                         name: name.value,
+                         stateCode: code.value,
+                         pnumber: pnumber.value,
+                         email: email.value,
+                         message: message.value
+                    },
+                    config
+               );
                name.value = "";
                setNotify(
-                    `Thank you ${userName} Admin has received your message`
+                    `Thank you ${userName} ,
+                    Admin has received your message`
                );
                setLoading(false);
           } catch (e) {
                setError(e.response.data);
+               console.log(e);
+
                setLoading(false);
           }
      };

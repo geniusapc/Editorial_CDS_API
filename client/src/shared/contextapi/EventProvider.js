@@ -1,7 +1,5 @@
 import React, { useState, createContext } from "react";
-// import { store } from 'react-notifications-component';
-import 'react-notifications-component/dist/theme.css';
-import 'animate.css';
+
 
 export const EventContext = createContext();
 

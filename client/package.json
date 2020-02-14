@@ -12,13 +12,17 @@
           "cra-template": "1.0.0",
           "form-data": "^3.0.0",
           "install": "^0.13.0",
+          "moment": "^2.24.0",
+          "moment-timezone": "^0.5.27",
           "node-sass": "^4.13.0",
           "npm": "^6.13.4",
           "react": "^16.12.0",
           "react-cookie": "^4.0.3",
           "react-dom": "^16.12.0",
+          "react-moment": "^0.9.7",
           "react-router-dom": "^5.1.2",
           "react-scripts": "3.3.0",
+          "react-share": "^4.0.1",
           "reactstrap": "^8.2.0"
      },
      "scripts": {

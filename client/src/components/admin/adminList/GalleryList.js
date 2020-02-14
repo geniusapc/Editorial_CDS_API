@@ -65,7 +65,7 @@ const GalleryList = () => {
                                                        height="30"
                                                        width="30"
                                                        className={""}
-                                                       src={event.imagePath}
+                                                       src={event.image}
                                                        alt="news"
                                                   />
                                                   <h5>{event.text}</h5>
