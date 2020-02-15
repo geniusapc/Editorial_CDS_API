@@ -10,10 +10,7 @@ const Profiles = props => {
                     const res = await axois.get("/api/leaders");
 
                     setLeaders(res.data);
-                    console.log(res.data);
-               } catch (error) {
-                    console.log(error);
-               }
+               } catch (error) {}
           };
 
           getLeadersProfile();
@@ -30,7 +27,7 @@ const Profiles = props => {
                                         <div className={"card__body-img "}>
                                              <img
                                                   className={"img-rounded"}
-                                                  src={lead.imagePath}
+                                                  src={lead.image}
                                                   alt="head"
                                              />
                                         </div>
@@ -44,13 +41,13 @@ const Profiles = props => {
                                         </p>
                                    </div>
 
-                                   <div className={"card__body-footer"}>
+                                   {/*} <div className={"card__body-footer"}>
                                         <p>
                                              <a href="www.com.com">social</a>
                                              <a href="www.com.com">social</a>
                                              <a href="www.com.com">social</a>
                                         </p>
-                                   </div>
+                         </div>*/}
                               </div>
                          ))}
                     </div>

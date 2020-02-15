@@ -42,20 +42,24 @@ const Events = props => {
                     </div>
                </div>
 
-               <div className="container mx-auto event-grid">
+               <div className="container event-grid">
                     {loading ? (
                          <Loading />
                     ) : (
                          posts.map(news => (
-                              <EventList
-                                   key={news.id}
-                                   title={news.title}
-                                   text={news.text}
-                                   image={news.image}
-                                   time={news.createdAt}
-                              />
+                              <div className="container-fluid" key={news.id}>
+                                   <EventList
+                                        key={news.id}
+                                        title={news.title}
+                                        text={news.text}
+                                        image={news.image}
+                                        time={news.createdAt}
+                                   />
+                              </div>
                          ))
                     )}
+               </div>
+               <div className="text-center">
                     <Pagination
                          postsPerPage={postsPerPage}
                          totalPosts={posts}

@@ -14,11 +14,9 @@ const Gallery = () => {
                     const res = await axois.get("/api/gallery");
 
                     setEventPictures(res.data);
-                    console.log(res.data);
+
                     setLaoding(false);
-               } catch (error) {
-                    console.log(error);
-               }
+               } catch (error) {}
           };
           const getPastLeaders = async () => {
                try {
@@ -26,9 +24,7 @@ const Gallery = () => {
                     const res = await axois.get("/api/leaders");
                     setPastleaders(res.data);
                     setLaoding(false);
-               } catch (error) {
-                    console.log(error);
-               }
+               } catch (error) {}
           };
           getPastLeaders();
           getGallery();
@@ -56,6 +52,8 @@ const Gallery = () => {
                                                        <img
                                                             src={event.image}
                                                             alt="gallery"
+                                                            height="200"
+                                                            weight="200"
                                                        />
                                                   </div>
                                              </div>
@@ -83,6 +81,8 @@ const Gallery = () => {
                                                        <img
                                                             src={past.image}
                                                             alt="gallery"
+                                                            height="200"
+                                                            weight="200"
                                                        />
                                                   </div>
                                              </div>

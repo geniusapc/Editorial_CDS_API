@@ -1,9 +1,9 @@
 import React from "react";
-import Moment from "react-moment";
+// import Moment from "react-moment";
 import "moment-timezone";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import EventProvider from "./shared/contextapi/EventProvider";
+// import EventProvider from "./shared/contextapi/EventProvider";
 import {
      faEnvelope,
      faKey,
@@ -54,9 +54,7 @@ library.add(
 const App = () => {
      return (
           <>
-               <EventProvider>
-                    <Layouts />
-               </EventProvider>
+               <Layouts />
           </>
      );
 };
