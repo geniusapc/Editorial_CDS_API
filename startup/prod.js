@@ -1,6 +1,8 @@
+const express = require("express");
 const helmet = require("helmet");
-// const compression = require("compression");
 const path = require("path");
+
+// const compression = require("compression");
 
 module.exports = app => {
   if (process.env.NODE_ENV === "production") {
