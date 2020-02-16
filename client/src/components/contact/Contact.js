@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
@@ -26,15 +26,10 @@ const Contact = props => {
                     config
                );
                name.value = "";
-               setNotify(
-                    `Thank you ${userName} ,
-                    Admin has received your message`
-               );
+               setNotify(`Thank you ${userName} for messaging the Team`);
                setLoading(false);
           } catch (e) {
                setError(e.response.data);
-               console.log(e);
-
                setLoading(false);
           }
      };

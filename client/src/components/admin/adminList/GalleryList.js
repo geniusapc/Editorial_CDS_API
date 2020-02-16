@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+
 import axios from "axios";
 
 const GalleryList = () => {
      const [displayGallery, setDisplayGallery] = useState([]);
+     const [cookies] = useCookies(["auth-token"]);
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
 
      const getGalleryById = async id => {
-          console.log(id);
-
+          const value = cookies["auth-token"];
           try {
                const res = await axios.delete(`/api/gallery/${id}`, {
                     headers: {
-                         "x-auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkVESVRPUiIsImlhdCI6MTU4MDk5OTQ4NX0.5eRfUxRWa-ANnx9z5celKvyf48wJyFHNqxuxi2MOrNo`
+                         "x-auth-token": `${value}`
                     }
                });
-               console.log(res);
 
                setNotify(res);
           } catch (error) {
@@ -28,7 +29,6 @@ const GalleryList = () => {
                try {
                     const res = await axios.get("/api/gallery");
                     setDisplayGallery(res.data);
-                    console.log(res.data);
                } catch (error) {
                     setError(error);
                }

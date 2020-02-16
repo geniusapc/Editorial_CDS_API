@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Events = props => {
      const [currentPage, setCurrentPage] = useState(1);
-     const [postsPerPage] = useState(6);
+     // const [postsPerPage] = useState(3);
      const [loading, setLoading] = useState();
      const [posts, setPosts] = useState([]);
 
@@ -17,17 +17,14 @@ const Events = props => {
                try {
                     setLoading(true);
                     const res = await axios.get("/api/event");
-                    console.log(res.data);
 
                     setPosts(res.data);
                     setLoading(false);
-               } catch (error) {
-                    console.log(error);
-               }
+               } catch (error) {}
           };
           getAllNews();
      }, []);
-
+     const postsPerPage = 3;
      const indexOfLastPost = currentPage * postsPerPage;
      const indexOfFirstPost = indexOfLastPost - postsPerPage;
      const currentPost = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -42,23 +39,27 @@ const Events = props => {
                     </div>
                </div>
 
-               <div className="container mx-auto event-grid">
+               <div className="container event-grid">
                     {loading ? (
                          <Loading />
                     ) : (
-                         posts.map(news => (
-                              <EventList
-                                   key={news.id}
-                                   title={news.title}
-                                   text={news.text}
-                                   image={news.image}
-                                   time={news.createdAt}
-                              />
+                         currentPost.map(news => (
+                              <div className="container-fluid" key={news.id}>
+                                   <EventList
+                                        key={news.id}
+                                        title={news.title}
+                                        text={news.text}
+                                        image={news.image}
+                                        time={news.createdAt}
+                                   />
+                              </div>
                          ))
                     )}
+               </div>
+               <div className="align-content-center">
                     <Pagination
-                         postsPerPage={postsPerPage}
-                         totalPosts={posts}
+                         postsPerPage={2}
+                         totalPosts={posts.length}
                          paginate={paginate}
                     />
                </div>

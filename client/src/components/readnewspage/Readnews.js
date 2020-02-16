@@ -3,8 +3,15 @@ import Moment from "react-moment";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+// import {
+//      FacebookShareButton,
+//      TwitterShareButton,
+//      WhatsappShareButton
+// } from "react-share";
+import { FacebookIcon, WhatsappIcon } from "react-share";
 
 const Readnews = ({ match }) => {
+     const url = window.location.href;
      const [news, setNews] = useState([]);
      const [name, setName] = useState();
      const [text, setText] = useState();
@@ -82,7 +89,8 @@ const Readnews = ({ match }) => {
                ) : (
                     <div className="container-sm my-3">
                          <h3 className="text-primary my-5">{news.title}</h3>
-                         <div>
+
+                         <div className="mb-2">
                               <img
                                    src={news.image}
                                    alt="news image"
@@ -104,6 +112,22 @@ const Readnews = ({ match }) => {
                               />
                               <Moment fromNow>{news.time}</Moment>
                          </span>
+                         <div className="mt-2">
+                              <FacebookIcon
+                                   iconFillColor={"blue"}
+                                   size={32}
+                                   round={true}
+                                   url={`http://localhost:3000/news/${news.title}`}
+                                   children={news.title}
+                              />
+                              <WhatsappIcon
+                                   iconFillColor={"green"}
+                                   size={32}
+                                   round={true}
+                                   url={`http://localhost:3000/news/${news.title}`}
+                                   children={news.title}
+                              />
+                         </div>
                          <p className="my-3">{news.body}</p>
                          <div className="my-3">
                               <Form onSubmit={messageHandler}>

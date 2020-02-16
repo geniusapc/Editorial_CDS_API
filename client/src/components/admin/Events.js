@@ -17,9 +17,7 @@ const Events = () => {
                try {
                     const res = await axios.get("/api/event");
                     setDisplayEvent(res.data);
-               } catch (error) {
-                    console.log(error.response.data);
-               }
+               } catch (error) {}
           };
           getAllNews();
      }, [notify]);
@@ -50,8 +48,6 @@ const Events = () => {
                          "x-auth-token": `${value}`
                     }
                });
-               console.log(res.data);
-
                setNotify(res.statusText);
           } catch (error) {
                setError(error.response);

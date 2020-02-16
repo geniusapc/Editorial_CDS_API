@@ -18,6 +18,7 @@ import AdminEvent from "../components/admin/adminList/EventList";
 import AdminGallery from "../components/admin/adminList/GalleryList";
 import UserList from "../components/admin/adminList/UserList";
 import Leaders from "../components/admin/adminList/LeadersProfile";
+import PrivateRoute from "../shared/PrivateRoute";
 
 const Layouts = () => {
      return (
@@ -41,20 +42,16 @@ const Layouts = () => {
                               exact
                               component={AdminGallery}
                          />
-                         <Route
-                              path="/leaders"
-                              exact
-                              component={Leaders}
-                         />
+                         <Route path="/leaders" exact component={Leaders} />
                          <Route path="/all-users" exact component={UserList} />
                          <Route path="/news/:id" exact component={NewsPage} />
                          <Route path="/contact-us" exact component={Contact} />
-                         <Route
-                              path="/admin-dashboard"
+
+                         <PrivateRoute
                               exact
+                              path="/admin-dashboard"
                               component={Admin}
                          />
-
                          <Route component={ErrorPage} />
                     </Switch>
 
@@ -63,5 +60,11 @@ const Layouts = () => {
           </Router>
      );
 };
+
+// <Route
+// path="/admin-dashboard"
+// exact
+// component={Admin}
+// />
 
 export default Layouts;

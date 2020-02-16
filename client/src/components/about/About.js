@@ -19,19 +19,21 @@ const About = () => {
           getAbout();
      }, []);
      return (
-          <div className="about-page">
-               <div className="clip-about"></div>
-               <div className="">
-                    <section className="p-3">
-                         <h2 className="primary text-center">
-                              About The Editorial Crew
-                         </h2>
-                         {loading ? (
-                              <Loading />
-                         ) : (
-                              <p className="mt-5">{about}</p>
-                         )}
-                    </section>
+          <div className="about-anime">
+               <div className="about-page ">
+                    <div className="clip-about"></div>
+                    <div className="about-anime">
+                         <section className="p-3">
+                              <h2 className="primary text-center">
+                                   About The Editorial Crew
+                              </h2>
+                              {loading ? (
+                                   <Loading />
+                              ) : (
+                                   <p className="mt-5">{about}</p>
+                              )}
+                         </section>
+                    </div>
                </div>
           </div>
      );

@@ -17,10 +17,7 @@ const Gallery = () => {
                try {
                     const res = await axios.get("/api/gallery");
                     setDisplayGallery(res.data);
-                    console.log(res.data);
-               } catch (error) {
-                    console.log(error.response.data);
-               }
+               } catch (error) {}
           };
           getAllGallery();
      }, [notify]);

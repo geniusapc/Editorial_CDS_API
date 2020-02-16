@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -91,6 +91,11 @@ const Login = ({ history }) => {
                                              )}
                                         </button>
                                    </div>
+                                   <span>Don't have an account ?</span>{" "}
+                                   <Link to="/signup" className="text-primary">
+                                        {" "}
+                                        Signup here
+                                   </Link>
                               </form>
                          </div>
                     </div>

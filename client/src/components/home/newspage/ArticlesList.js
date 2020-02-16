@@ -84,7 +84,9 @@ const ArticlesList = props => {
                          <a
                               href="https://en.wikipedia.org/wiki/History_of_Nigeria"
                               target="_blanck"
-                              className={"btn-primary mt-5  ml-3   py-1 px-3"}
+                              className={
+                                   "btn-primary btn mt-3  ml-3   py-2 px-5"
+                              }
                          >
                               read more
                          </a>
