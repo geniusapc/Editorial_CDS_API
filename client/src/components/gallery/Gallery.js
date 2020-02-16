@@ -31,18 +31,18 @@ const Gallery = () => {
      }, []);
 
      return (
-          <div className="gallery-container">
+          <div className="gallery-container form-top">
                <div className="gallery">
                     <h1 className="primary mb-5 mt-3 text-center">Gallery</h1>
                     <div className="box">
                          {loading && <Loading />}
                          <div className="events-pictures p-3 mt-2 mx-auto">
                               <h3>All Events</h3>
-                              <div className="flex-pics scroll">
+                              <div className="row container scroll">
                                    {eventPictures.length ? (
                                         eventPictures.map(event => (
                                              <div
-                                                  className="event-box m-5 "
+                                                  className="event-box  col-md-3 m-5 "
                                                   key={event.id}
                                              >
                                                   <div className="title">
@@ -52,8 +52,8 @@ const Gallery = () => {
                                                        <img
                                                             src={event.image}
                                                             alt="gallery"
-                                                            height="200"
-                                                            weight="200"
+                                                            // height="300"
+                                                            // weight="300"
                                                        />
                                                   </div>
                                              </div>

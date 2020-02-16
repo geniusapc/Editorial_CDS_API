@@ -16,13 +16,13 @@ const Profiles = props => {
           getLeadersProfile();
      }, []);
      return (
-          <div className={"profile"}>
+          <div className={"profile "}>
                <div className={"clip-path"}></div>
-               <div className={"profile-info"}>
-                    <h2 className={"primary mx-auto"}>Our Leaders</h2>
+               <div className={"profile-info my-4"}>
+                    <h2 className={"primary mx-auto "}>Our Leaders</h2>
                     <div className={"event-grid"}>
                          {leaders.map(lead => (
-                              <div className={"card m-5"} key={lead.id}>
+                              <div className={"card px-5 m-5"} key={lead.id}>
                                    <div className={"card__body  p-2"}>
                                         <div className={"card__body-img "}>
                                              <img

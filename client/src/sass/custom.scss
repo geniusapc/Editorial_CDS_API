@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+@import "./animation";
 //* bootsrtap variables to edit later
 
 $primary: #008736;
@@ -24,6 +26,11 @@ $border-radius-sm: 0.3rem;
 
 html {
      font-size: 80%;
+}
+
+body {
+     font-family: "Raleway", sans-serif;
+     line-height: 1.7;
 }
 
 ::-webkit-scrollbar {
@@ -61,13 +68,20 @@ html {
           color: $primary;
      }
 }
+.card-image-event {
+     height: 200px;
+     width: 300px;
+     background-repeat: no-repeat;
+     background-size: 100% 100%;
+     background-position: center;
+}
 
 //* Landing page....
 
 .section-a {
      position: relative;
      background: linear-gradient(rgba(0, 135, 54, 0.3), rgba(0, 135, 54, 0.4)),
-          url("https://source.unsplash.com/user/erondu/1600x900");
+          url("../images/slide1.png");
      background-repeat: no-repeat;
      background-size: 100% 100%;
      background-position: center;
@@ -112,6 +126,11 @@ html {
                }
           }
      }
+}
+
+.land-btn {
+     background-color: transparent;
+     border: none;
 }
 
 // *event page....
@@ -266,8 +285,8 @@ html {
      background: $white;
      position: relative;
      color: $black;
-     max-height: 80%;
-     width: auto;
+     // max-height: 80%;
+     // width: auto;
 
      &__body {
           display: flex;
@@ -309,7 +328,6 @@ html {
 //* Gallery section...
 
 .gallery-container {
-     border-top: 2px solid $primary;
      overflow-y: scroll;
 
      .gallery {
@@ -342,13 +360,25 @@ html {
      position: relative;
      text-align: center;
      margin: 0.2rem 1rem;
+     max-height: 400px;
+     max-width: 400px;
+
+     .pictures {
+          img {
+               // display: none;
+               height: 200px;
+               width: 200px;
+               background-size: cover;
+               background-position: center;
+          }
+     }
 
      .title {
           position: absolute;
           transform: translate(-50%, -50%);
           top: 50%;
           left: 50%;
-          width: 100%;
+          width: 200px;
           height: 100%;
           background-color: rgba($primary, 0.9);
           color: $white;
@@ -360,7 +390,8 @@ html {
 
      &:hover .title {
           display: block;
-          transition: all 0.1s ease-out;
+          transition: all 0.3s ease-out;
+          border: $warning 2px solid;
      }
 
      .title {
@@ -399,19 +430,49 @@ html {
 
 //*Pagination...
 .pagiination-wrapper {
+     text-align: center;
      p {
           font-size: 1.2rem;
           color: $white;
      }
 }
 .page-grid {
-     display: grid;
-     grid-template-columns: repeat(10, 1fr);
+     display: flex;
+     // grid-template-columns: repeat(10, 1fr);
      margin: 0 0.5rem 0 0;
+     cursor: pointer;
 
      li {
+          border-radius: 50%;
+          background-color: $white;
           list-style-type: none;
+          margin: 8px;
+          height: 20px;
+          width: 20px;
+          text-align: center;
+          // a {
+          //      // padding: 7px;
+          // }
+
+          &:hover {
+               background-color: $light;
+               color: $primary;
+               transform: scale(1.4);
+               transition: transform 0.2s ease-in;
+          }
      }
+
+     // .round {
+     //      list-style-type: none;
+     //      border-radius: 50%;
+     // }
+}
+
+.active-link {
+     background-color: $light;
+     color: $primary;
+     transform: scale(1.4);
+     transition: transform 0.2s ease-in;
 }
 
 //* contact Page
@@ -453,7 +514,7 @@ html {
           url("../images/show.JPG");
      background-position: center;
      background-size: cover;
-     height: 65vh;
+     height: 70vh;
 }
 
 //* footer
@@ -533,7 +594,7 @@ html {
 
 .form-wrapper {
      padding: 10px 0 14px 0;
-     // height: 100%;
+
      width: 100%;
      // margin: 0 0 0 3.4rem;
      margin: -2rem 3rem;

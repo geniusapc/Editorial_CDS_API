@@ -35,10 +35,7 @@ const EventList = () => {
                try {
                     const res = await axios.get("/api/event");
                     setDisplayEvent(res.data);
-                    console.log(res.data);
-               } catch (error) {
-                    console.log(error.response);
-               }
+               } catch (error) {}
           };
           getAllNews();
      }, [notify]);

@@ -25,10 +25,9 @@ const About = () => {
                          }
                     }
                );
-               console.log(res);
+
                setNotify("about Page Updated");
           } catch (error) {
-               console.log(error);
                setError("server error, please refresh");
           }
      };
@@ -37,7 +36,6 @@ const About = () => {
           const getAbout = async () => {
                try {
                     const res = await axios.get("/api/about");
-                    console.log(res);
 
                     setText(res.data.about);
                } catch (error) {}
