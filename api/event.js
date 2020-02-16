@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const { Sequelize } = require("sequelize");
+const Op = Sequelize.Op;
 require("express-async-errors");
 
 const fileUpload = require("express-fileupload");
@@ -16,6 +18,24 @@ router.get("/", async (req, res, next) => {
   let limit = req.query.limit ? req.query.limit : null;
 
   let events = await Event.findAll({
+    order: [["createdAt", "DESC"]],
+    limit,
+    include: [{ model: Comment }]
+  });
+  events.map(e => (e.dataValues.image = `/img/post/${e.imageName}`));
+  return res.status(200).json(events);
+});
+
+router.get("/search/:title", async (req, res, next) => {
+  let limit = req.query.limit ? req.query.limit : null;
+  let { title } = req.params;
+
+  let events = await Event.findAll({
+    where: {
+      title: {
+        [Op.iLike]: `%${title}%`
+      }
+    },
     order: [["createdAt", "DESC"]],
     limit,
     include: [{ model: Comment }]
