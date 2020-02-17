@@ -1,73 +1,44 @@
-import React from "react";
-
-import image from "./slide2.jpg";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+// import image from "./slide2.jpg";
 
 const ArticlesList = props => {
+     const [displayEvent, setDisplayEvent] = useState([]);
+     useEffect(() => {
+          const getAllNews = async () => {
+               try {
+                    const res = await axios.get("/api/event");
+                    setDisplayEvent(res.data);
+               } catch (error) {}
+          };
+          getAllNews();
+     }, []);
      return (
           <div className=" trend-box  container mx-auto  center main ">
                <div className=" mb-4 mt-3 bg-white current-news">
                     <article className={"trending-news"}>
-                         <h4>Trending News.</h4>
-                         <div>
-                              <div className={"trending"}>
-                                   <img
-                                        height="30"
-                                        width="30"
-                                        className={""}
-                                        src={image}
-                                        alt="news"
-                                   />
-                                   <h5>Cras justo odio</h5>
-                              </div>
-                         </div>
-                         <div>
-                              <div>
-                                   <div className={"trending"}>
-                                        <img
-                                             height="30"
-                                             width="30"
-                                             className={""}
-                                             src={image}
-                                             alt="news"
-                                        />
-                                        <h5>Cras justo odio</h5>
+                         <h4 className="bg-primary text-white p-2 mx-2">
+                              Trending News.
+                         </h4>
+                         {displayEvent.sort().map(event => (
+                              <Link to={`/news/${event.title}`}>
+                                   <div>
+                                        <div className={"trending"}>
+                                             <img
+                                                  height="30"
+                                                  width="30"
+                                                  style={{
+                                                       borderRadius: "6px"
+                                                  }}
+                                                  src={event.image}
+                                                  alt="news"
+                                             />
+                                             <h5>{event.title}</h5>
+                                        </div>
                                    </div>
-                              </div>
-                              <div className={"trending"}>
-                                   <img
-                                        height="30"
-                                        width="30"
-                                        className={""}
-                                        src={image}
-                                        alt="news"
-                                   />
-                                   <h5>Cras justo odio</h5>
-                              </div>
-                         </div>
-                         <div>
-                              <div className={"trending"}>
-                                   <img
-                                        height="30"
-                                        width="30"
-                                        className={""}
-                                        src={image}
-                                        alt="news"
-                                   />
-                                   <h5>Cras justo odio</h5>
-                              </div>
-                         </div>
-                         <div>
-                              <div className={"trending"}>
-                                   <img
-                                        height="30"
-                                        width="30"
-                                        className={""}
-                                        src={image}
-                                        alt="news"
-                                   />
-                                   <h5>Cras justo odio</h5>
-                              </div>
-                         </div>
+                              </Link>
+                         ))}
                     </article>
                </div>
                <div className={"articles mb-5 "}>

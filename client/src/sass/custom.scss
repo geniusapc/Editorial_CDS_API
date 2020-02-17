@@ -61,11 +61,11 @@ body {
 
 .nav {
      font-weight: 400;
-     font-size: 16px;
-     color: $primary;
+     font-size: 17px;
+     color: $primary !important;
 
      &:hover {
-          color: $primary;
+          color: darken($primary, 60%) !important;
      }
 }
 .card-image-event {
@@ -107,7 +107,7 @@ body {
                border: 1px solid $light;
                justify-content: space-between;
                border-radius: $border-radius;
-               background: $white;
+               background: rgba($white, 0.8);
 
                input {
                     border: none;

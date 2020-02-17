@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useCookies } from "react-cookie";
 import { Redirect, Route } from "react-router-dom";
-import { EventProvider } from "../shared/contextapi/EventProvider";
+import { EventContext } from "../shared/contextapi/EventProvider";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-     const [user] = useContext(EventProvider);
+     const [user] = useContext(EventContext);
      //      const [cookies] = useCookies(["auth-token"]);
      // \
      //      const value = cookies["auth-token"];
@@ -13,11 +13,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           <Route
                {...rest}
                render={props =>
-                    value ? (
-                         <Component {...props} />
-                    ) : (
-                         <Redirect to={"/login"} />
-                    )
+                    user ? <Component {...props} /> : <Redirect to={"/login"} />
                }
           />
      );
