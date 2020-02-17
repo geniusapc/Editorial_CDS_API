@@ -8,7 +8,7 @@ export const Home = () => {
      return (
           <>
                <LandingPage />
-               <main className={"bg-primary container-fluid"}>
+               <main className={"bg-primary "}>
                     <Events />
                </main>
                <Articles />

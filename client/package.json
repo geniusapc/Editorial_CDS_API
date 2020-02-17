@@ -1,9 +1,10 @@
 {
-     "name": "weight_tracker",
+     "name": "editorial_cds_group",
      "version": "0.1.0",
      "private": true,
      "dependencies": {
           "@fortawesome/fontawesome-svg-core": "^1.2.26",
+          "@fortawesome/free-brands-svg-icons": "^5.12.1",
           "@fortawesome/free-solid-svg-icons": "^5.12.0",
           "@fortawesome/react-fontawesome": "^0.1.8",
           "animate.css": "^3.7.2",
@@ -19,10 +20,12 @@
           "react": "^16.12.0",
           "react-cookie": "^4.0.3",
           "react-dom": "^16.12.0",
+          "react-hooks-paginator": "^0.4.3",
           "react-moment": "^0.9.7",
           "react-router-dom": "^5.1.2",
           "react-scripts": "3.3.0",
           "react-share": "^4.0.1",
+          "react-typed": "^1.2.0",
           "reactstrap": "^8.2.0"
      },
      "scripts": {

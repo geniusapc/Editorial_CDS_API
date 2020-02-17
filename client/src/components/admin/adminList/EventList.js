@@ -35,10 +35,7 @@ const EventList = () => {
                try {
                     const res = await axios.get("/api/event");
                     setDisplayEvent(res.data);
-                    console.log(res.data);
-               } catch (error) {
-                    console.log(error.response);
-               }
+               } catch (error) {}
           };
           getAllNews();
      }, [notify]);
@@ -60,15 +57,14 @@ const EventList = () => {
      const updateEvent = async e => {
           e.preventDefault();
           const value = cookies["auth-token"];
-          const { name, position } = e.target.elements;
-          let nameData = name.value,
-               positionData = position.value;
+          const value = cookies["auth-token"];
           const data = new formData();
-          data.append("name", nameData);
-          data.append("position", positionData);
+          data.append("title", title);
+          data.append("text", text);
+          data.append("date", date);
           data.append("imagefile", image.raw, image.raw.jpg);
           try {
-               const res = await axios.put(`/api/leaders/${title}`, data, {
+               const res = await axios.put(`/api/event/${postId}`, data, {
                     headers: {
                          "conent-type": "multipart/form-data",
                          "x-auth-token": `${value}`

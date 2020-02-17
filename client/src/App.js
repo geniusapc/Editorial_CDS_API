@@ -1,5 +1,5 @@
 import React from "react";
-import Moment from "react-moment";
+// import Moment from "react-moment";
 import "moment-timezone";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -55,6 +55,7 @@ const App = () => {
      return (
           <>
                <EventProvider>
+                    {" "}
                     <Layouts />
                </EventProvider>
           </>

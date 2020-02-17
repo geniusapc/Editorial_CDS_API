@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 
 const LeadersProfile = () => {
      const [leaders, setLeaders] = useState([]);
-     const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
+     const [cookies] = useCookies(["auth-token"]);
      const [image, setImage] = useState({ preview: "", raw: "" });
      const [form, setForm] = useState(false);
      const [title, setTitle] = useState();

@@ -14,7 +14,7 @@ import {
 const EventList = ({ title, text, image, time }) => {
      return (
           <Link to={`/news/${title}`}>
-               <div className="my-3 mx-5">
+               <div className="my-4 container-fluid">
                     <Card>
                          <CardImg
                               top
@@ -23,9 +23,11 @@ const EventList = ({ title, text, image, time }) => {
                               src={image}
                               alt="Card image cap"
                               style={{
+                                   height: "500p",
                                    borderRadius: "8px",
                                    backgroundPosition: "center",
-                                   backgroundSize: "cover"
+                                   backgroundSize: "cover",
+                                   height: "500px important!"
                               }}
                          />
                          <CardBody className="">

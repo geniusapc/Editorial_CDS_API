@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { EventContext } from "../../shared/contextapi/EventProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Register = props => {
@@ -95,6 +95,11 @@ const Register = props => {
                                              )}
                                         </button>
                                    </div>
+                                   <span> Have an account already ?</span>{" "}
+                                   <Link to="/login" className="text-primary">
+                                        {" "}
+                                        Login here
+                                   </Link>
                               </form>
                          </div>
                     </div>

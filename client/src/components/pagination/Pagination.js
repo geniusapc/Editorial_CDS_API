@@ -1,28 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Pagination = ({ postPerPage, totalPosts, paginate }) => {
+const Pagination = ({ totalPosts, paginate }) => {
+     const [active, isActive] = useState(false);
      let pageNumbers = [];
 
-     for (let n = 1; n < Math.ceil(totalPosts / postPerPage); n++) {
+     for (let n = 1; n < Math.ceil(totalPosts / 2); n++) {
           pageNumbers.push(n);
-          // console.log(n);
      }
-
-     // console.log(pageNumbers);
      return (
-          <nav className="pagination-wrapper">
-               <h5 className="text-white ml-5 font-italic">view news page</h5>
-               <ul className=" page-grid">
+          <nav className="pagination-wrapper text-center">
+               <ul className=" page-grid mx-5">
                     {pageNumbers.map(number => (
-                         <li key={number} className="">
-                              <a
-                                   href="www.xnklaxkja.com"
-                                   onClick={() => paginate(number)}
-                                   className="page-link"
+                         <li key={number} className="round">
+                              <span
+                                   href="#"
+                                   onClick={() => {
+                                        paginate(number);
+                                        isActive(true);
+                                   }}
+                                   className={active ? "active-link" : ""}
                               >
                                    {number}
-                              </a>
+                              </span>
                          </li>
                     ))}
                </ul>
