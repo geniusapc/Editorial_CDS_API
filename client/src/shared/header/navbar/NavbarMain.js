@@ -23,7 +23,7 @@ const NavbarMain = props => {
           <div className={"py-2"}>
                <Navbar color="white" light expand="md">
                     <Logo></Logo>
-                    <h4 className={"B ml-3 primary"}>EDITORIAL CDS GROUP</h4>
+                    <h4 className={" ml-3 primary"}>EDITORIAL CDS GROUP</h4>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                          <Nav className=" text-primary primary ml-auto" navbar>
@@ -33,26 +33,26 @@ const NavbarMain = props => {
                                    </NavLink>
                               </NavItem>
                               <NavItem>
-                                   <NavLink href="/gallery">
+                                   <NavLink className="nav" href="/gallery">
                                         Our Gallery{" "}
                                    </NavLink>
                               </NavItem>
                               <NavItem>
-                                   <NavLink href="/contact-us">
+                                   <NavLink className="nav" href="/contact-us">
                                         Contact Us{" "}
                                    </NavLink>
                               </NavItem>
                               <UncontrolledDropdown nav inNavbar>
-                                   <DropdownToggle nav caret>
+                                   <DropdownToggle nav caret className="nav">
                                         Member
                                    </DropdownToggle>
                                    <DropdownMenu right>
-                                        <Link to="/signup">
+                                        <Link className="nav" to="/signup">
                                              <DropdownItem>
                                                   Register
                                              </DropdownItem>
                                         </Link>
-                                        <Link to="/login">
+                                        <Link className="nav" to="/login">
                                              <DropdownItem>Login</DropdownItem>
                                         </Link>
                                         <DropdownItem divider />

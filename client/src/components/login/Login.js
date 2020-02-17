@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useCookies } from "react-cookie";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { EventContext } from "../../shared/contextapi/EventProvider";
 
 /*NOTE:
  *1. FOR THE LOGIN, USE THE DEFAULT adminPassword AND adminStateCode FROM THE config.js
@@ -12,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Login = ({ history }) => {
      const [error, setError] = useState();
+     const [user, setUser] = useContext(EventContext);
      const [loading, setLoading] = useState();
      const [cookies, setCookie] = useCookies(["auth-token"]);
 
@@ -28,6 +30,7 @@ const Login = ({ history }) => {
                setCookie("auth-token", auth, {
                     path: "/"
                });
+               setUser(true);
                history.push("/admin-dashboard");
                setLoading(false);
           } catch (e) {

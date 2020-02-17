@@ -23,7 +23,7 @@ const LandingPage = props => {
                return;
           } else {
                try {
-                    const res = await axios.get(`/api/event?limit=${search}`);
+                    const res = await axios.get(`/api/event/search/${search}`);
                     setPosts(res.data);
                     console.log(res.data);
                } catch (error) {}
@@ -76,7 +76,7 @@ const LandingPage = props => {
                                    {posts.map(post => (
                                         <Link to={`/news/${post.title}`}>
                                              <ListGroupItem>
-                                                  <span className="text-black">
+                                                  <span className="text-black m-1">
                                                        {post.title}
                                                   </span>{" "}
                                              </ListGroupItem>
