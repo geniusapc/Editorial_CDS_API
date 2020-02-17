@@ -57,7 +57,6 @@ const EventList = () => {
      const updateEvent = async e => {
           e.preventDefault();
           const value = cookies["auth-token"];
-          const value = cookies["auth-token"];
           const data = new formData();
           data.append("title", title);
           data.append("text", text);
