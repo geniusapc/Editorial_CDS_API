@@ -9,7 +9,8 @@ Event.init(
   {
     title: DataTypes.STRING,
     slugTitle: DataTypes.STRING,
-    imageName: DataTypes.STRING,
+    image: DataTypes.STRING,
+    imageId: DataTypes.STRING,
     text: DataTypes.TEXT,
     likes: { type: Sequelize.ARRAY(Sequelize.INTEGER), defaultValue: [] }
   },
@@ -50,12 +51,6 @@ Event.validateInputText = schemaCompare =>
       .max(225)
       .required()
   });
-
-Event.uploadImage = function(image, path) {
-  image.mv(path, err => {
-    if (err) return this.res.status(500).send(err);
-  });
-};
 
 sequelize.sync();
 

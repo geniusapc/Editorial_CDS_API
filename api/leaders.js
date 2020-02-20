@@ -1,20 +1,21 @@
 const router = require("express").Router();
 require("express-async-errors");
 
+const cloudinary = require("../model/cloudinary");
 const fileUpload = require("express-fileupload");
-router.use(fileUpload());
-
-const fs = require("fs");
+router.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/"
+  })
+);
 
 const Leader = require("../model/leaders");
 const auth = require("../middleware/auth");
 const { editor } = require("../middleware/auth");
-const localPath = require("../path");
-const path = require("path");
 
 router.get("/", async (req, res) => {
   let Leaders = await Leader.findAll({ order: [["id"]] });
-  Leaders.map(e => (e.dataValues.image = `/img/leaders/${e.imageName}`));
   res.status(200).json(Leaders);
 });
 
@@ -40,36 +41,20 @@ router.put("/:title", [auth, editor], async (req, res) => {
       where: { title: title.toUpperCase() }
     });
 
-    if (leaders.imageName) {
-      fs.unlink(path.resolve(localPath.leadersFolder, leaders.imageName), e => {
-        if (e) return res.status(500).send(e);
-      });
+    if (leaders.imageId) {
+      await cloudinary.uploader.destroy(leaders.imageId);
     }
 
-    let { imagefile, uploadPath, imageName, mimetype } = getImgProps(req.files);
+    let { tempFilePath, mimetype } = req.files.imagefile;
     let { error: imageErr } = Leader.validationImage({ mimetype });
     if (imageErr) return res.status(422).send(error.details[0].message);
-    imagefile.mv(uploadPath, err => {
-      if (err) return res.status(500).send(err);
-    });
-
-    updateFields.imageName = imageName;
+    let { url, public_id } = await cloudinary.uploader.upload(tempFilePath);
+    updateFields.image = url;
+    updateFields.imageId = public_id;
   }
 
   await Leader.update(updateFields, { where: { title: title.toUpperCase() } });
   return res.status(200).send("profile updated successfully");
 });
-
-let getImgProps = file => {
-  let {
-    imagefile,
-    imagefile: { mimetype }
-  } = file;
-  let date = new Date().toISOString().replace(/:/g, "");
-
-  let imageName = `${date}leader.jpg`;
-  let uploadPath = `${localPath.leadersFolder}/${imageName}`;
-  return { uploadPath, imageName, mimetype, imagefile };
-};
 
 module.exports = router;
