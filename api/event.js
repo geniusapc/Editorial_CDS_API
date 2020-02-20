@@ -1,12 +1,17 @@
+require("express-async-errors");
 const router = require("express").Router();
+const slugify = require("slugify");
 const { Sequelize } = require("sequelize");
 const Op = Sequelize.Op;
-require("express-async-errors");
 
+const cloudinary = require("../model/cloudinary");
 const fileUpload = require("express-fileupload");
-router.use(fileUpload());
-const slugify = require("slugify");
-const fs = require("fs");
+router.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/"
+  })
+);
 
 const auth = require("../middleware/auth");
 const { admin, editor } = require("../middleware/auth");
@@ -22,7 +27,6 @@ router.get("/", async (req, res, next) => {
     limit,
     include: [{ model: Comment }]
   });
-  events.map(e => (e.dataValues.image = `/img/post/${e.imageName}`));
   return res.status(200).json(events);
 });
 
@@ -40,7 +44,6 @@ router.get("/search/:title", async (req, res, next) => {
     limit,
     include: [{ model: Comment }]
   });
-  events.map(e => (e.dataValues.image = `/img/post/${e.imageName}`));
   return res.status(200).json(events);
 });
 
@@ -57,7 +60,6 @@ router.get("/:slugTitle", async (req, res) => {
   });
 
   if (!event) return res.status(400).send("Event not found");
-  event.map(e => (e.dataValues.image = `/img/post/${e.imageName}`));
   return res.status(200).json(event);
 });
 
@@ -66,29 +68,28 @@ router.post("/", [auth, admin], async (req, res) => {
   if (!req.files || !req.files.imagefile)
     return res.status(400).send("Image is required");
 
-  let { imagefile, uploadPath, imageName, mimetype } = getImgProps(req.files);
+  let { tempFilePath, mimetype } = req.files.imagefile;
+
   let { error } = Event.validate({ mimetype, text, title, date });
   if (error) return res.status(422).send(error.details[0].message);
 
   let slugTitle = slugify(title);
+  let { url, public_id } = await cloudinary.uploader.upload(tempFilePath);
   let [data, created] = await Event.findOrCreate({
     where: { slugTitle },
-    defaults: { imageName, text, title, createdAt: date }
+    defaults: { image: url, imageId: public_id, text, title, createdAt: date }
   });
   if (!created) return res.status(400).send("Event already exist");
 
-  Event.uploadImage(imagefile, uploadPath);
   return res.status(201).json(data);
 });
 
 router.delete("/:id", [auth, admin], async (req, res) => {
   let { id } = req.params;
-  let event = await Event.findByPk(id, { attributes: ["imageName"] });
+  let event = await Event.findByPk(id, { attributes: ["imageId"] });
   if (!event) return res.status(400).send("invalid Event id");
 
-  fs.unlink(path.postFolder + `/${event.imageName}`, e => {
-    if (e) res.status(500).send(e);
-  });
+  await cloudinary.uploader.destroy(event.imageId);
   Event.destroy({ where: { id } });
   return res.status(200).send("deleted succefully");
 });
@@ -105,14 +106,13 @@ router.put("/:id", [auth, admin], async (req, res) => {
   let updateFields = { text, title };
 
   if (!!req.files && !!req.files.imagefile) {
-    fs.unlink(path.postFolder + `/${event.imageName}`, e => {
-      if (e) return res.status(500).send(e);
-    });
-    let { imagefile, uploadPath, imageName, mimetype } = getImgProps(req.files);
+    await cloudinary.uploader.destroy(event.imageId);
+    let { tempFilePath, mimetype } = req.files.imagefile;
     let { error } = Event.validationImage({ mimetype });
     if (error) return res.status(422).send(error.details[0].message);
-    Event.uploadImage(imagefile, uploadPath);
-    updateFields.imageName = imageName;
+    let { url, public_id } = await cloudinary.uploader.upload(tempFilePath);
+    updateFields.image = url;
+    updateFields.imageId = public_id;
   }
 
   await Event.update(updateFields, { where: { id } });
@@ -130,7 +130,7 @@ router.post("/comment/:eventId", async (req, res) => {
   return res.status(201).send("comments inserted successfully");
 });
 
-router.put("/like/:slugTitle", auth, async (req, res) => {
+router.put("/like/id", auth, async (req, res) => {
   // let {slugTitle} = req.params;
   // let event =await Event.findOne({where:{slugTitle}});
   // if(!event) return res.status(400).send('Event not found');
@@ -139,17 +139,5 @@ router.put("/like/:slugTitle", auth, async (req, res) => {
   // await Event.update({likes}, {where:{slugTitle}} )
   // return  res.status(200).send("success")
 });
-
-let getImgProps = file => {
-  let {
-    imagefile,
-    imagefile: { mimetype }
-  } = file;
-  let date = new Date().toISOString().replace(/:/g, "");
-
-  let imageName = `${date}event.jpg`;
-  let uploadPath = `${path.postFolder}/${imageName}`;
-  return { uploadPath, imageName, mimetype, imagefile };
-};
 
 module.exports = router;

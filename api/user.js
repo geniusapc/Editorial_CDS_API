@@ -44,10 +44,11 @@ router.post("/login", async (req, res) => {
     isAdmin: user.isAdmin,
     role: user.role
   });
+  delete user.dataValues.password;
   return res
     .status(200)
     .header("x-auth-token", token)
-    .send("login successful");
+    .send(user);
 });
 
 router.get("/profile/:id", [auth, admin, editor], async (req, res) => {

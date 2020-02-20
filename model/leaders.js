@@ -6,7 +6,8 @@ class Leaders extends Model {}
 
 Leaders.init(
   {
-    imageName: DataTypes.STRING,
+    image: DataTypes.STRING,
+    imageId: DataTypes.STRING,
     name: DataTypes.STRING,
     title: {
       type: Sequelize.STRING,
@@ -22,18 +23,9 @@ Leaders.init(
     modelName: "leader"
   }
 );
-Leaders.findCreateFind({
-  where: { title: "LGI" },
-  defaults: { imageName: "", name: "", position: "" }
-});
-Leaders.findCreateFind({
-  where: { title: "CLO" },
-  defaults: { imageName: "", name: "", position: "" }
-});
-Leaders.findCreateFind({
-  where: { title: "EDITOR" },
-  defaults: { imageName: "", name: "", position: "" }
-});
+Leaders.findCreateFind({ where: { title: "LGI" } });
+Leaders.findCreateFind({ where: { title: "CLO" } });
+Leaders.findCreateFind({ where: { title: "EDITOR" } });
 
 Leaders.validate = schemaCompare => {
   return Joi.validate(schemaCompare, {
@@ -52,7 +44,6 @@ Leaders.validationImage = schemaCompare => {
       .required()
   });
 };
-
 
 sequelize.sync();
 
