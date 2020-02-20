@@ -3,6 +3,7 @@ import { Card, CardTitle, CardText } from "reactstrap";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import formData from "form-data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
 
 const LeadersProfile = () => {
@@ -13,6 +14,7 @@ const LeadersProfile = () => {
      const [title, setTitle] = useState();
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
+             const [loading, setLoading] = useState();
      useEffect(() => {
           const getLeadersProfile = async () => {
                try {
@@ -44,6 +46,7 @@ const LeadersProfile = () => {
           data.append("imagefile", image.raw, image.raw.jpg);
 
           try {
+               setLoading(true)
                const res = await axios.put(`/api/leaders/${title}`, data, {
                     headers: {
                          "conent-type": "multipart/form-data",
@@ -51,8 +54,10 @@ const LeadersProfile = () => {
                     }
                });
                setNotify(res.data);
+               setLoading(false)
           } catch (error) {
                setError(error.response.data);
+               setLoading(false)
           }
      };
 
@@ -132,7 +137,16 @@ const LeadersProfile = () => {
                                    type="submit"
                                    className="bg-warning  text-white btn btn-block mb-3"
                               >
-                                   Submit
+                                    {loading ?   <FontAwesomeIcon
+                              style={{
+                                   marginRight: "1rem",
+                                   marginTop: ".4rem"
+                              }}
+                              icon="spinner"
+                              size="1x"
+                              color="yellow"
+                              spin
+                         />: "Submit"}
                               </Button>
                          </Form>
                     </div>

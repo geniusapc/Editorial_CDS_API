@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import formData from "form-data";
 import { useCookies } from "react-cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const EventList = () => {
      const [displayEvent, setDisplayEvent] = useState([]);
@@ -14,6 +15,8 @@ const EventList = () => {
      const [date, setDate] = useState("");
      const [postId, setPostId] = useState("");
      const [form, setForm] = useState(false);
+        const [loading, setLoading] = useState();
+
      const [image, setImage] = useState({ preview: "", raw: "" });
 
      const getEventId = async id => {
@@ -63,6 +66,7 @@ const EventList = () => {
           data.append("date", date);
           data.append("imagefile", image.raw, image.raw.jpg);
           try {
+               setLoading(true)
                const res = await axios.put(`/api/event/${postId}`, data, {
                     headers: {
                          "conent-type": "multipart/form-data",
@@ -70,8 +74,10 @@ const EventList = () => {
                     }
                });
                setNotify(res.data);
+                  setLoading(false)
           } catch (error) {
                setError(error.response.data);
+               setLoading(false)
           }
      };
 
@@ -199,7 +205,16 @@ const EventList = () => {
                               type="submit"
                               className="bg-warning  text-white btn btn-block mb-3"
                          >
-                              Submit
+                             {loading ?   <FontAwesomeIcon
+                              style={{
+                                   marginRight: "1rem",
+                                   marginTop: ".4rem"
+                              }}
+                              icon="spinner"
+                              size="1x"
+                              color="yellow"
+                              spin
+                         />: "Submit"}
                          </Button>
                     </Form>
                </div>

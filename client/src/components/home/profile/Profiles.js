@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axois from "axios";
-
 const Profiles = props => {
      const [leaders, setLeaders] = useState([]);
 
@@ -22,6 +21,7 @@ const Profiles = props => {
                     <h2 className={"primary mx-auto "}>Our Leaders</h2>
                     <div className={"event-grid"}>
                          {leaders.map(lead => (
+                             
                               <div className={"card px-5 m-5"} key={lead.id}>
                                    <div className={"card__body  p-2"}>
                                         <div className={"card__body-img "}>
@@ -48,7 +48,9 @@ const Profiles = props => {
                                              <a href="www.com.com">social</a>
                                         </p>
                          </div>*/}
+                         
                               </div>
+                              
                          ))}
                     </div>
                </div>

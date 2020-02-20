@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import ScrollAnimation from 'react-animate-on-scroll';
+import "animate.css/animate.min.css";
 import Typed from "react-typed";
 import axios from "axios";
 
@@ -33,10 +35,14 @@ const LandingPage = props => {
      return (
           <section className={"section-a"}>
                <div className={"page "}>
+                    <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
                     <h1 className={"mb-3"}>
                          Welcome To Editoral And Publicity
                          <br /> CDS Group Saki-West Zone
                     </h1>
+                    </ScrollAnimation >
+                    <ScrollAnimation animateIn='bounceInRight'
+                           animateOut='bounceOutLeft'>
                     <em className="text-white m-3 h4  italic">
                          <span className="mr-2">We</span>
                          <Typed
@@ -46,7 +52,8 @@ const LandingPage = props => {
                               loop
                          />
                     </em>
-                    <div className={"pb-5"}>
+                    </ScrollAnimation>
+                    <div className={"pb-5 mt-2"}>
                          <div className={"search-btn"}>
                               <form onSubmit={searchhEvent}>
                                    <input

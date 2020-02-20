@@ -13,6 +13,7 @@ import {
 
 const EventList = ({ title, text, image, time }) => {
      return (
+          
           <Link to={`/news/${title}`}>
                <div className="my-4 container-fluid">
                     <Card>
@@ -91,6 +92,7 @@ const EventList = ({ title, text, image, time }) => {
                     </Card>
                </div>
           </Link>
+         
      );
 };
 
