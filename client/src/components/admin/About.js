@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
 const About = () => {
@@ -8,12 +9,15 @@ const About = () => {
      const [text, setText] = useState("");
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
+     const [loading, setLoading] = useState();
+
      const UpdateAbout = async e => {
           e.preventDefault();
           const value = cookies["auth-token"];
           const { message } = e.target.elements;
 
           try {
+               setLoading(true);
                const res = await axios.put(
                     "/api/about",
                     {
@@ -27,8 +31,10 @@ const About = () => {
                );
 
                setNotify("about Page Updated");
+               setLoading(false);
           } catch (error) {
                setError("server error, please refresh");
+               setLoading(false);
           }
      };
 
@@ -71,7 +77,20 @@ const About = () => {
                          type="submit"
                          className="bg-primary text-white btn py-2 px-5"
                     >
-                         Submit
+                         {loading ? (
+                              <FontAwesomeIcon
+                                   style={{
+                                        marginRight: ".2rem",
+                                        marginTop: ".2rem"
+                                   }}
+                                   icon="spinner"
+                                   size="1x"
+                                   color="yellow"
+                                   spin
+                              />
+                         ) : (
+                              "  Submit"
+                         )}
                     </Button>
                </Form>
           </div>

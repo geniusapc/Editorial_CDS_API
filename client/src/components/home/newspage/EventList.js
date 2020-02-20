@@ -15,20 +15,17 @@ const EventList = ({ title, text, image, time }) => {
      return (
           
           <Link to={`/news/${title}`}>
-               <div className="my-4 container-fluid">
+               <div className="my-4 event-body">
                     <Card>
                          <CardImg
                               top
                               height="200"
-                              width="400"
                               src={image}
                               alt="Card image cap"
+                              className="card-image-event"
                               style={{
-                                   height: "500p",
-                                   borderRadius: "8px",
                                    backgroundPosition: "center",
-                                   backgroundSize: "cover",
-                                   height: "500px important!"
+                                   backgroundSize: "cover"
                               }}
                          />
                          <CardBody className="">

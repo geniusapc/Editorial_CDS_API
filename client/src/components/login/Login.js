@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useCookies } from "react-cookie";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { EventContext } from "../../shared/contextapi/EventProvider";
 
@@ -48,34 +49,46 @@ const Login = ({ history }) => {
                <div className="form-image">
                     <h2 className="text-white text-center py-5 ">LOGIN</h2>
                     <div className="form-container my-auto ">
-                         <div className="form-wrapper">
+                         <div className="form-wrapper mx-4">
                               <span className="alert-danger">
                                    {error && error}
                               </span>
-                              <form className="mt-5 " onSubmit={loginHandler}>
-                                   <div className="form-div">
-                                        <label htmlFor="name">
-                                             State Code <span>*</span>
-                                        </label>
-                                        <input
+                              <Form className="mt-5 " onSubmit={loginHandler}>
+                                   <FormGroup>
+                                        <Label
+                                             htmlFor="name"
+                                             className="text-primary"
+                                        >
+                                             State Code{" "}
+                                             <span className="text-danger">
+                                                  *
+                                             </span>
+                                        </Label>
+                                        <Input
                                              type="text"
                                              placeholder="state code"
                                              name="stateCode"
                                         />
-                                   </div>
-                                   <div className="form-div">
-                                        <label htmlFor="name">
-                                             Password<span>*</span>
-                                        </label>
-                                        <input
+                                   </FormGroup>
+                                   <FormGroup>
+                                        <Label
+                                             htmlFor="name"
+                                             className="text-primary"
+                                        >
+                                             Password
+                                             <span className="text-danger">
+                                                  *
+                                             </span>
+                                        </Label>
+                                        <Input
                                              type="password"
                                              placeholder="password"
                                              name="password"
                                         />
-                                   </div>
-                                   <div className="form-div">
-                                        <button
-                                             className="submit-btn"
+                                   </FormGroup>
+                                   <FormGroup>
+                                        <Button
+                                             className="mt-2 btn bg-primary text-white px-3 btn-block"
                                              type="submit"
                                         >
                                              {loading ? (
@@ -92,14 +105,14 @@ const Login = ({ history }) => {
                                              ) : (
                                                   "Login"
                                              )}
-                                        </button>
-                                   </div>
+                                        </Button>
+                                   </FormGroup>
                                    <span>Don't have an account ?</span>{" "}
                                    <Link to="/signup" className="text-primary">
                                         {" "}
                                         Signup here
                                    </Link>
-                              </form>
+                              </Form>
                          </div>
                     </div>
                </div>

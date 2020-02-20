@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const Register = props => {
      const [error, setError] = useState();
@@ -32,51 +33,67 @@ const Register = props => {
           <div className="">
                <div className="form-image ">
                     <h2 className="text-white text-center py-4">SIGN UP</h2>
-                    <div className="form-container ">
-                         <div className="form-wrapper">
+                    <div className="form-container mb-5">
+                         <div className="form-wrapper mx-4">
                               {notify ? (
-                                   <p className="alert-success">{notify}</p>
+                                   <span className="alert-success">
+                                        {notify}
+                                   </span>
                               ) : (
                                    <span className="alert-danger error">
                                         {error}
                                    </span>
                               )}
 
-                              <form className="mt-5" onSubmit={registerUser}>
-                                   <p className="error-message"></p>
-                                   <div className="form-div">
-                                        <label htmlFor="name">
-                                             State Code <span>*</span>
-                                        </label>
-                                        <input
+                              <Form onSubmit={registerUser}>
+                                   <FormGroup>
+                                        <Label
+                                             htmlFor="name"
+                                             className="text-primary"
+                                        >
+                                             State Code{" "}
+                                             <span className="text-danger">
+                                                  *
+                                             </span>
+                                        </Label>
+                                        <Input
                                              type="text"
                                              placeholder="state code"
                                              name="code"
                                         />
-                                   </div>
-                                   <div className="form-div">
-                                        <label htmlFor="name">
-                                             Password<span>*</span>
-                                        </label>
-                                        <input
+                                   </FormGroup>
+                                   <FormGroup>
+                                        <Label
+                                             htmlFor="name"
+                                             className="text-primary"
+                                        >
+                                             Password
+                                             <span className="text-danger">
+                                                  *
+                                             </span>
+                                        </Label>
+                                        <Input
                                              type="password"
                                              placeholder="password"
                                              name="password"
                                         />
-                                   </div>
-                                   <div className="form-div">
-                                        <label htmlFor="name">
+                                   </FormGroup>
+                                   <FormGroup>
+                                        <Label
+                                             htmlFor="name"
+                                             className="text-primary"
+                                        >
                                              Confirm Password<span>*</span>
-                                        </label>
-                                        <input
+                                        </Label>
+                                        <Input
                                              type="password"
                                              placeholder="password"
                                              name="confirmPassword"
                                         />
-                                   </div>
-                                   <div className="form-div">
-                                        <button
-                                             className="submit-btn"
+                                   </FormGroup>
+                                   <FormGroup>
+                                        <Button
+                                             className=" mt-2 btn bg-primary text-white px-3 btn-block"
                                              type="submit"
                                         >
                                              {loading ? (
@@ -93,14 +110,17 @@ const Register = props => {
                                              ) : (
                                                   "Register"
                                              )}
-                                        </button>
-                                   </div>
-                                   <span> Have an account already ?</span>{" "}
-                                   <Link to="/login" className="text-primary">
-                                        {" "}
-                                        Login here
-                                   </Link>
-                              </form>
+                                        </Button>
+                                        <span> Have an account already ?</span>{" "}
+                                        <Link
+                                             to="/login"
+                                             className="text-primary"
+                                        >
+                                             {" "}
+                                             Login here
+                                        </Link>
+                                   </FormGroup>
+                              </Form>
                          </div>
                     </div>
                </div>

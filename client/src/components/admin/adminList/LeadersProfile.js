@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardTitle, CardText } from "reactstrap";
+import { Card, CardTitle, CardText, CardImg } from "reactstrap";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import formData from "form-data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
+
 
 const LeadersProfile = () => {
      const [leaders, setLeaders] = useState([]);
@@ -14,7 +15,7 @@ const LeadersProfile = () => {
      const [title, setTitle] = useState();
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
-             const [loading, setLoading] = useState();
+     const [loading, setLoading] = useState();
      useEffect(() => {
           const getLeadersProfile = async () => {
                try {
@@ -59,6 +60,7 @@ const LeadersProfile = () => {
                setError(error.response.data);
                setLoading(false)
           }
+
      };
 
      return (
@@ -75,6 +77,13 @@ const LeadersProfile = () => {
                     <div className={"event-grid"}>
                          {leaders.map(lead => (
                               <Card body key={lead.id} className="my-2 mx-2">
+                                   <CardImg
+                                        // className="card-img"
+                                        src={lead.image}
+                                        height="200"
+                                        weight="200"
+                                        alt="laed"
+                                   />
                                    <CardTitle>{lead.name}</CardTitle>
                                    <CardText>{lead.title}.</CardText>
                                    <button

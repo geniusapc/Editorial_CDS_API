@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import formData from "form-data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const Events = () => {
      const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
      const [image, setImage] = useState({ preview: "", raw: "" });
-     const [displayEvent, setDisplayEvent] = useState([]);
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
-
-     useEffect(() => {
-          const getAllNews = async () => {
-               try {
-                    const res = await axios.get("/api/event");
-                    setDisplayEvent(res.data);
-               } catch (error) {}
-          };
-          getAllNews();
-     }, [notify]);
+     const [loading, setLoading] = useState();
 
      const handleChange = e => {
           setImage({
@@ -42,6 +33,7 @@ const Events = () => {
           data.append("imagefile", image.raw, image.raw.jpg);
 
           try {
+               setLoading(true);
                const res = await axios.post("/api/event", data, {
                     headers: {
                          "conent-type": "multipart/form-data",
@@ -49,8 +41,10 @@ const Events = () => {
                     }
                });
                setNotify(res.statusText);
+               setLoading(false);
           } catch (error) {
                setError(error.response);
+               setLoading(false);
           }
      };
 
@@ -59,7 +53,7 @@ const Events = () => {
                <h3 className="primary">Events</h3>
                <div>
                     {notify ? (
-                         <p className="alert-success">{notify}</p>
+                         <span className="alert-success">{notify}</span>
                     ) : (
                          <span className="alert-danger">{error.data}</span>
                     )}
@@ -103,27 +97,24 @@ const Events = () => {
                          type="submit"
                          className="bg-primary text-white btn py-2 px-5 mr-2"
                     >
-                         Submit
+                         {loading ? (
+                              <FontAwesomeIcon
+                                   style={{
+                                        marginRight: ".2rem",
+                                        marginTop: ".2rem"
+                                   }}
+                                   icon="clock"
+                                   size="1x"
+                                   color="yellow"
+                              />
+                         ) : (
+                              "  Submit"
+                         )}
                     </Button>
                     <Button className="bg-primary text-white btn py-2 px-5 mr-2">
                          Edit
                     </Button>
                </Form>
-               <>
-                    {displayEvent.splice(0, 10).map(event => (
-                         <div key={event.title}>
-                              <div className={"trending"}>
-                                   <img
-                                        height="30"
-                                        width="30"
-                                        src={`/img/post/${event.imageName}`}
-                                        alt="news"
-                                   />
-                                   <h6>{event.title}</h6>
-                              </div>
-                         </div>
-                    ))}
-               </>
                <Link to="/all-events-posted">
                     <button className="btn btn-primary m-3">See All</button>
                </Link>

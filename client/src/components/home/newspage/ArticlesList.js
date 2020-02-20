@@ -24,7 +24,7 @@ const ArticlesList = props => {
                               Trending News.
                          </h4>
                          {displayEvent.sort().map(event => (
-                              <Link to={`/news/${event.title}`}>
+                              <Link to={`/news/${event.title}`} key={event.id}>
                                    <div>
                                         <div className={"trending"}>
                                              <img

@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
 import formData from "form-data";
 
 const Gallery = () => {
      const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
      const [image, setImage] = useState({ preview: "", raw: "" });
-     const [displayGallery, setDisplayGallery] = useState([]);
      const [notify, setNotify] = useState([]);
      const [error, setError] = useState("");
-
-     useEffect(() => {
-          const getAllGallery = async () => {
-               try {
-                    const res = await axios.get("/api/gallery");
-                    setDisplayGallery(res.data);
-               } catch (error) {}
-          };
-          getAllGallery();
-     }, [notify]);
+     const [loading, setLoading] = useState();
 
      const handleChange = e => {
           setImage({
@@ -39,6 +30,7 @@ const Gallery = () => {
           data.append("imagefile", image.raw, image.raw.jpg);
 
           try {
+               setLoading(true);
                const res = await axios.post("/api/gallery", data, {
                     headers: {
                          "conent-type": "multipart/form-data",
@@ -47,8 +39,10 @@ const Gallery = () => {
                });
                setNotify(res.statusText);
                text = "";
+               setLoading(false);
           } catch (error) {
                setError(error.response);
+               setLoading(false);
           }
      };
 
@@ -80,25 +74,22 @@ const Gallery = () => {
                          type="submit"
                          className="bg-primary text-white btn py-2 px-5 mr-2"
                     >
-                         Submit
+                         {loading ? (
+                              <FontAwesomeIcon
+                                   style={{
+                                        marginRight: ".2rem",
+                                        marginTop: ".2rem"
+                                   }}
+                                   icon="spinner"
+                                   size="1x"
+                                   color="yellow"
+                                   spin
+                              />
+                         ) : (
+                              "  Submit"
+                         )}
                     </Button>
                </Form>
-               <div className="my-2">
-                    {displayGallery.splice(0, 5).map(event => (
-                         <div key={event.id}>
-                              <div className={"trending"}>
-                                   <img
-                                        height="30"
-                                        width="30"
-                                        className={""}
-                                        src={event.image}
-                                        alt="news"
-                                   />
-                                   <h5>{event.text}</h5>
-                              </div>
-                         </div>
-                    ))}
-               </div>
                <Link to="/all-galleries-posted">
                     <button className="btn btn-primary m-3">See All</button>
                </Link>
