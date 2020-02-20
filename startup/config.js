@@ -12,17 +12,17 @@ module.exports = app => {
     process.exit(1);
   }
 
-  if (!config.cloud_name) {
+  if (!config.cloudinary.cloud_name) {
     winston.error(`FATAL ERROR: cloud_name is not set.`);
     process.exit(1);
   }
 
-  if (!config.api_key) {
+  if (!config.cloudinary.api_key) {
     winston.error(`FATAL ERROR: api_key is not set.`);
     process.exit(1);
   }
 
-  if (!config.api_secret) {
+  if (!config.cloudinary.api_secret) {
     winston.error(`FATAL ERROR: api_secret is not set.`);
     process.exit(1);
   }
