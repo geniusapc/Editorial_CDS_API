@@ -57,6 +57,18 @@ body {
      margin: 1.2rem 0;
 }
 
+//* collapse btn
+.collapse-btn {
+     background-color: $white;
+     color: $black;
+     font-size: 20px;
+     border-radius: 50%;
+     &:hover {
+          background-color: $dark;
+          color: $white;
+     }
+}
+
 //* Navbar text
 
 .nav {
@@ -69,11 +81,15 @@ body {
      }
 }
 .card-image-event {
-     height: 200px;
-     width: 300px;
-     background-repeat: no-repeat;
-     background-size: 100% 100%;
-     background-position: center;
+     // height: 200px !important;
+     // width: 300px !important;
+     // background-repeat: no-repeat;
+     // background-size: 100% 100%;
+     // background-position: center;
+}
+
+event-body {
+     max-width: 500px !important ;
 }
 
 //* Landing page....
@@ -102,18 +118,24 @@ body {
           }
 
           .search-btn {
-               display: flex;
-               flex-wrap: nowrap;
                border: 1px solid $light;
                justify-content: space-between;
                border-radius: $border-radius;
                background: rgba($white, 0.8);
+               width: 100%;
+
+               form {
+                    display: flex;
+                    justify-content: end;
+                    width: 100%;
+               }
 
                input {
                     border: none;
                     background: none;
                     padding: 0.6rem 6rem;
                     border-radius: $border-radius;
+                    width: 100%;
 
                     &:focus {
                          border: $primary 1px solid;
@@ -282,12 +304,19 @@ body {
      }
 }
 
-.card {
+.card{
      background: $white;
      position: relative;
      color: $black;
+     transform: scale(0.9);
      // max-height: 80%;
      // width: auto;
+     &:hover {
+          transform: scale(1);
+          transition: all 0.1 ease-in;
+          box-shadow: 2px 3px 4px 3px rgba($dark, 0.5);
+          cursor: pointer;
+     }
 
      &__body {
           display: flex;
@@ -512,7 +541,7 @@ body {
 
 .form-image {
      background: linear-gradient(rgba(0, 135, 54, 0.3), rgba(0, 135, 54, 0.4)),
-          url("../images/show.JPG");
+          url("https://res.cloudinary.com/cmcwebcode/image/upload/v1573994942/show_ew1cff.jpg");
      background-position: center;
      background-size: cover;
      height: 70vh;
@@ -586,19 +615,13 @@ body {
 }
 
 .form-container {
-     position: relative;
-     margin: 2rem auto 3rem auto;
-     border-radius: 10px;
-     background-color: rgba($white, 0.7);
-     width: 80%;
+     margin: 2rem auto;
 }
 
 .form-wrapper {
-     padding: 10px 0 14px 0;
-
-     width: 100%;
-     // margin: 0 0 0 3.4rem;
-     margin: -2rem 3rem;
+     border-radius: 10px;
+     background-color: rgba($white, 0.7);
+     padding: 1.5rem;
 }
 
 form {
@@ -651,8 +674,10 @@ form {
      position: absolute;
      top: 50%;
      left: 50%;
+     width: 85%;
+     margin: 0 auto;
      transform: translate(-50%, -50%);
-     // margin: 0 2rem;
+     border-radius: 8px;
      transition: all 0.2s ease-out;
      background-color: $primary;
      color: $white;

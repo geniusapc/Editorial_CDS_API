@@ -23,7 +23,8 @@ import {
      faShare,
      faHeart,
      faPager,
-     faClock
+     faClock,
+     faTimes
 } from "@fortawesome/free-solid-svg-icons";
 
 import Layouts from "./layouts/Layouts";
@@ -48,7 +49,8 @@ library.add(
      faHeart,
      faShare,
      faPager,
-     faClock
+     faClock,
+     faTimes
 );
 
 const App = () => {

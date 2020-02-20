@@ -3,38 +3,36 @@ import Moment from "react-moment";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-// import {
-//      FacebookShareButton,
-//      TwitterShareButton,
-//      WhatsappShareButton
-// } from "react-share";
-import { FacebookIcon, WhatsappIcon } from "react-share";
+import Facebook from "react-sharingbuttons/dist/buttons/Facebook";
+import Twitter from "react-sharingbuttons/dist/buttons/Twitter";
+import "react-sharingbuttons/dist/main.css";
 
 const Readnews = ({ match }) => {
      const url = window.location.href;
      const [news, setNews] = useState([]);
+     const [eventComment, setEventComment] = useState();
      const [name, setName] = useState();
      const [text, setText] = useState();
      const [loading, setLoading] = useState();
      const [newsId, setNewsId] = useState();
 
+     const array = [];
+
      useEffect(() => {
-          const printId = id => console.log(id);
-          printId(match.params.id);
-          const getData = (posts, id) => {
-               posts.filter(post => {
+          const getData = async (posts, id) => {
+               await posts.filter(post => {
                     if (post.title === id) {
-                         console.log(post);
                          let title = post.title;
                          let body = post.text;
                          let image = post.image;
                          let time = post.createdAt;
+                         array.push(post.comments);
                          setNewsId(post.id);
                          loadData(title, body, image);
+                         // getCommentsArray(comments)
                     }
                });
           };
-
           const getAllNews = async () => {
                try {
                     setLoading(true);
@@ -50,6 +48,13 @@ const Readnews = ({ match }) => {
 
      const loadData = (title, body, image, createdAt) =>
           setNews({ title: title, body: body, image: image, time: createdAt });
+     // const getCommentsArray = (message) =>{
+     //      array.push(message)
+     //   const  comment = array.flat()
+     //      setEventComment(comment)
+     //      console.log(eventComment);
+
+     // }
 
      const messageHandler = async e => {
           e.preventDefault();
@@ -65,10 +70,7 @@ const Readnews = ({ match }) => {
                );
                setName("");
                setText("");
-               console.log(res);
-          } catch (e) {
-               console.log(e);
-          }
+          } catch (e) {}
      };
 
      return (
@@ -113,19 +115,11 @@ const Readnews = ({ match }) => {
                               <Moment fromNow>{news.time}</Moment>
                          </span>
                          <div className="mt-2">
-                              <FacebookIcon
-                                   iconFillColor={"blue"}
-                                   size={32}
-                                   round={true}
-                                   url={`http://localhost:3000/news/${news.title}`}
-                                   children={news.title}
-                              />
-                              <WhatsappIcon
-                                   iconFillColor={"green"}
-                                   size={32}
-                                   round={true}
-                                   url={`http://localhost:3000/news/${news.title}`}
-                                   children={news.title}
+                              <p className="text-primary">Share on: </p>
+                              <Facebook url={url} />
+                              <Twitter
+                                   url={url}
+                                   shareText={`latest saki corpers news ${news.title}`}
                               />
                          </div>
                          <p className="my-3">{news.body}</p>
@@ -177,8 +171,26 @@ const Readnews = ({ match }) => {
                          </div>
                     </div>
                )}
+               <div className="container mx-auto ">
+                    <h4 className="text-primary mt-3">Comments</h4>
+                    <div
+                         className="bg-light m-auto p-2 mt-2"
+                         style={{ borderRadius: "10px" }}
+                    ></div>
+               </div>
           </div>
      );
 };
+
+// <div>
+//                          {/*comment.forEach( message =>(
+//                               <div key={message.id}>
+//                                    <h6>{message.name}</h6>
+//                                    <p>
+//                                    {message.comment}
+//                                    </p>
+//                               </div>
+//                          ))*/}
+//                     </div>
 
 export default Readnews;

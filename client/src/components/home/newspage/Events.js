@@ -39,7 +39,7 @@ const Events = props => {
                     </div>
                </div>
 
-               <div className="container event-grid">
+               <div className="event-grid">
                     {loading ? (
                          <Loading />
                     ) : (
