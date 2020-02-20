@@ -12,7 +12,7 @@ let prod = {
     api_secret: env.api_secret
   },
 
-  db: { connectionString: env.DATABASE_URL } 
+  db: { connectionString: env.DATABASE_URL }
 };
 
 let dev = {

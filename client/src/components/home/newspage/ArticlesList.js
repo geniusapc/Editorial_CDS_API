@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ScrollAnimation from 'react-animate-on-scroll';
+import "animate.css/animate.min.css";
 // import image from "./slide2.jpg";
 
 const ArticlesList = props => {
@@ -22,7 +24,7 @@ const ArticlesList = props => {
                               Trending News.
                          </h4>
                          {displayEvent.sort().map(event => (
-                              <Link to={`/news/${event.title}`}>
+                              <Link to={`/news/${event.title}`} key={event.id}>
                                    <div>
                                         <div className={"trending"}>
                                              <img
@@ -43,6 +45,11 @@ const ArticlesList = props => {
                </div>
                <div className={"articles mb-5 "}>
                     <article>
+                    <ScrollAnimation animateIn='flipInX'
+                      afterAnimatedIn={function afterAnimatedIn(v) {
+	              var t = "Animate In finished.\n";
+	              t += 'v.onScreen: ' + v.onScreen + '\n';
+	              t += 'v.inViewport: ' + v.inViewport; }}>
                          <h3>About Nigeria</h3>
                          <p className={""}>
                               The history of Nigeria can be traced to
@@ -52,6 +59,8 @@ const ArticlesList = props => {
                               settled in the region that is today Nigeria.
                               <br />
                          </p>
+                            </ScrollAnimation>
+                            <ScrollAnimation animateIn='fadeIn'>
                          <a
                               href="https://en.wikipedia.org/wiki/History_of_Nigeria"
                               target="_blanck"
@@ -61,6 +70,7 @@ const ArticlesList = props => {
                          >
                               read more
                          </a>
+                          </ScrollAnimation>
                     </article>
                </div>
           </div>

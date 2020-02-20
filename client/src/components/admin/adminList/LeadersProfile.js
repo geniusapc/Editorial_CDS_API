@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardTitle, CardText } from "reactstrap";
+import { Card, CardTitle, CardText, CardImg } from "reactstrap";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import formData from "form-data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
+
 
 const LeadersProfile = () => {
      const [leaders, setLeaders] = useState([]);
@@ -13,6 +15,7 @@ const LeadersProfile = () => {
      const [title, setTitle] = useState();
      const [notify, setNotify] = useState("");
      const [error, setError] = useState("");
+     const [loading, setLoading] = useState();
      useEffect(() => {
           const getLeadersProfile = async () => {
                try {
@@ -44,6 +47,7 @@ const LeadersProfile = () => {
           data.append("imagefile", image.raw, image.raw.jpg);
 
           try {
+               setLoading(true)
                const res = await axios.put(`/api/leaders/${title}`, data, {
                     headers: {
                          "conent-type": "multipart/form-data",
@@ -51,9 +55,12 @@ const LeadersProfile = () => {
                     }
                });
                setNotify(res.data);
+               setLoading(false)
           } catch (error) {
                setError(error.response.data);
+               setLoading(false)
           }
+
      };
 
      return (
@@ -70,6 +77,13 @@ const LeadersProfile = () => {
                     <div className={"event-grid"}>
                          {leaders.map(lead => (
                               <Card body key={lead.id} className="my-2 mx-2">
+                                   <CardImg
+                                        // className="card-img"
+                                        src={lead.image}
+                                        height="200"
+                                        weight="200"
+                                        alt="laed"
+                                   />
                                    <CardTitle>{lead.name}</CardTitle>
                                    <CardText>{lead.title}.</CardText>
                                    <button
@@ -132,7 +146,16 @@ const LeadersProfile = () => {
                                    type="submit"
                                    className="bg-warning  text-white btn btn-block mb-3"
                               >
-                                   Submit
+                                    {loading ?   <FontAwesomeIcon
+                              style={{
+                                   marginRight: "1rem",
+                                   marginTop: ".4rem"
+                              }}
+                              icon="spinner"
+                              size="1x"
+                              color="yellow"
+                              spin
+                         />: "Submit"}
                               </Button>
                          </Form>
                     </div>
