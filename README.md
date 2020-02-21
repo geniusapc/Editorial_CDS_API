@@ -4,11 +4,11 @@ This Website is specially dedicated to the Editorial Cds group for giving inform
 
 ## Description
 
-As a growing `Frontend Developer`, i developed passion for creating websites and for event coverage so i decided to create this basic website for my community Devlopment Service (Editorial) group as a corp member with the collaboration of my Team member `Backend Developer` [youngenius](www.https://github.com/youngenius)
+As a growing `Frontend Developer`, i developed passion for creating websites and for event coverage so i decided to create this basic website for my community Devlopment Service (Editorial) group as a corp member with the collaboration of my Team member `Backend Developer` [youngenius](www.https://github.com/youngenius1)
 
 ## Api Documentation
 
-visit `https://documenter.getpostman.com/view/10163657/SWT7CfN5` for API documentation
+visit [postman documenter](https://documenter.getpostman.com/view/10163657/SWT7CfN5) for API documentation
 
 ## Technnologies
 
@@ -59,7 +59,7 @@ nb: ensure you are currently in the project directory...
 
 ## Authors and Acknowledgment
 
-I want to say a big thank you to my colleague [youngenius](https://github.com/youngenius) `Backend Developer` for his tireless effort to see that this project was actualized, though we are still working on it to improve the functionalities....
+I want to say a big thank you to my colleague [youngenius](https://github.com/youngenius1) `Backend Developer` for his tireless effort to see that this project was actualized, though we are still working on it to improve the functionalities....
 
 ## License
 
@@ -67,10 +67,10 @@ I want to say a big thank you to my colleague [youngenius](https://github.com/yo
 
 ## Website
 
-- check it out here [editorialcdsgroup](http://wwww.editorialcdsgroup.live)
+- check it out here [editorialcdsgroup](http://www.editorialcdsgroup.live)
 
 ## Contact
 
 - Twitter : [@Mr_Cmc1](https://twitter.com/Mr_Cmc1?s=08)
 
-- Twitter : [youngenius](https://github.com/youngenius)
+- Twitter : [youngenius](https://github.com/youngenius1)
