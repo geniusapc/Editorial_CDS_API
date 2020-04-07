@@ -10,20 +10,43 @@ const Events = props => {
      const [currentPage, setCurrentPage] = useState(1);
      // const [postsPerPage] = useState(3);
      const [loading, setLoading] = useState();
-     const [posts, setPosts] = useState([]);
+     const [posts, setPosts] = useState([
+          {
+               id: 1,
+               title: "Heading",
+               text: `lorem100cdsacjksdbckjsbdkcjbksjdbcksbdkcjbksdbcksbdkcbskdbcksbdkcbksdbckbsdkbcksdbcksbdkcbksdbcksdbkcbksbdcksbdkcjbsdciwejbsdkcbws;dcwkjcb;oclsdcksjdbckbjsdc`,
+               img: "htttpsxkjajckasc",
+               time: "3:0000am"
+          },
+          {
+               id: 2,
+               title: "Heading",
+               text: `lorem100cdsacjksdbckjsbdkcjbksjdbcksbdkcjbksdbcksbdkcbskdbcksbdkcbksdbckbsdkbcksdbcksbdkcbksdbcksdbkcbksbdcksbdkcjbsdciwejbsdkcbws;dcwkjcb;oclsdcksjdbckbjsdc`,
+               img: "htttpsxkjajckasc",
+               time: "3:0000am"
+          },
+          {
+               id: 3,
+               title: "Heading",
+               text: `lorem100cdsacjksdbckjsbdkcjbksjdbcksbdkcjbksdbcksbdkcbskdbcksbdkcbksdbckbsdkbcksdbcksbdkcbksdbcksdbkcbksbdcksbdkcjbsdciwejbsdkcbws;dcwkjcb;oclsdcksjdbckbjsdc`,
+               img: "htttpsxkjajckasc",
+               time: "3:0000am"
+          },
+        
+     ]);
 
-     useEffect(() => {
-          const getAllNews = async () => {
-               try {
-                    setLoading(true);
-                    const res = await axios.get("/api/event");
+     // useEffect(() => {
+     //      const getAllNews = async () => {
+     //           try {
+     //                setLoading(true);
+     //                const res = await axios.get("/api/event");
 
-                    setPosts(res.data);
-                    setLoading(false);
-               } catch (error) {}
-          };
-          getAllNews();
-     }, []);
+     //                setPosts(res.data);
+     //                setLoading(false);
+     //           } catch (error) {}
+     //      };
+     //      getAllNews();
+     // }, []);
      const postsPerPage = 3;
      const indexOfLastPost = currentPage * postsPerPage;
      const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -39,12 +62,12 @@ const Events = props => {
                     </div>
                </div>
 
-               <div className="event-grid">
+               <div className="event-check">
                     {loading ? (
                          <Loading />
                     ) : (
                          currentPost.map(news => (
-                              <div className="container-fluid" key={news.id}>
+                              <div className="container-fluid">
                                    <EventList
                                         key={news.id}
                                         title={news.title}
@@ -54,7 +77,7 @@ const Events = props => {
                                    />
                               </div>
                          ))
-                    )}
+                    )}{" "}
                </div>
                <div className="align-content-center">
                     <Pagination
