@@ -38,8 +38,8 @@ const LandingPage = props => {
                <div className={"page "}>
                     <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
                     <h1 className={"mb-3"}>
-                         Welcome To The Editoral <br/> And Publicity
-                         <br /> CDS Group Saki-West
+                         THE SAKI WEST CORPERS ZONE <br/>
+                        A PLACE FOR BETTER INFORMATIONS
                     </h1>
                     </ScrollAnimation >
                     <ScrollAnimation animateIn='bounceInLeft' 
@@ -98,7 +98,7 @@ const LandingPage = props => {
                       </div>
                </div>
                <div className={"page-2"}>
-                    <img src={nysc} height="500" width="650" alt="nysc photo"/>
+                    <img src={nysc} height="500" width="650" alt="nysc shot it"/>
                </div>
              
           </section>

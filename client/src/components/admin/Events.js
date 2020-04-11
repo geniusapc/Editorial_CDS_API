@@ -22,7 +22,7 @@ const Events = () => {
      const updateEvents = async e => {
           e.preventDefault();
           const value = cookies["auth-token"];
-          const { title, text, date } = e.target.elements;
+          const { title, text, date } = e.target.elements; 
           let titleData = title.value,
                textData = text.value,
                dateData = date.value;
