@@ -2,25 +2,7 @@
 @import "./animation";
 @import "./variables";
 //     //* bootsrtap variables to edit later
-// $primary: #008736;
-// $secondary: #fafafa;
-// $success: #4bb462;
-// $info: #17a2b8;
-// $warning: #fffb00f6;
-// $danger: #dc3545;
-// $light: #e9ecef;
-// $dark: #343a40;
-// $white: #fff;
-// $black: #000;
-// $body-bg: #ffff;
-// $body-color: #212529;
-// $body-colr: #E6E8EC;
-// .primary {
-//     color: $primary;
-// }
-// $border-radius: 0.7rem;
-// $border-radius-lg: 0.4rem;
-// $border-radius-sm: 0.3rem;
+
 html {
     font-size: 80%;
 }
@@ -28,24 +10,31 @@ html {
 body {
     font-family: "Raleway", sans-serif;
     line-height: 1.7;
+    overflow-x: hidden !important;
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-    border-radius: 15px;
+
+.home {
+    position: relative;
+    margin: 0  auto;
 }
 
-::-webkit-scrollbar-track {
-    background-color: $primary;
-}
+// ::-webkit-scrollbar {
+//     width: 6px;
+//     border-radius: 15px;
+// }
 
-::-webkit-scrollbar-thumb {
-    background-color: $warning;
-}
+// ::-webkit-scrollbar-track {
+//     background-color: $primary;
+// }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: $warning;
-}
+// ::-webkit-scrollbar-thumb {
+//     background-color: $warning;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//     background-color: $warning;
+// }
 
 .img-rounded {
     width: 150px;
@@ -74,10 +63,6 @@ body {
     &:hover {
         color: darken($primary, 60%) !important;
     }
-}
-
-event-body {
-    max-width: 500px !important;
 }
 
 //* Landing page....
@@ -118,6 +103,7 @@ event-body {
                     border: $primary 1px solid;
                     outline: none;
                 }
+
                  ::placeholder {
                     font-style: italic;
                 }
@@ -126,10 +112,12 @@ event-body {
     }
 }
 
+
+
+
 .cover-main {
     background-color: #fcfcfc;
-    width: 60%;
-    //     display: none;
+    overflow-x: hidden !important;
 }
 
 .land-btn {
@@ -237,16 +225,10 @@ event-body {
             text-align: justify;
         }
     }
-    //     img {
-    //         height: 600px !important;
-    //         width: 700px;
-    //     }
+ 
 }
 
-// .image-bg {
-//     height: 600px;
-//     width: 800px;
-// }
+
 //*Layouts....
 .main {
     display: grid;
@@ -288,25 +270,14 @@ event-body {
     }
 }
 
-.event-check {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 800px
-}
 
 .card {
     background: $white;
     position: relative;
     color: $black;
-    // transform: scale(0.9);
-    max-height: 80%;
-    width: 75%;
-    //     margin: 0 auto;
     box-shadow: 0px 1px 3px 2px #e6e8ec;
     &:hover {
-        //    transform: scale(1);
         transition: all 0.1 ease-in;
-        // box-shadow: 2px 3px 4px 3px rgba($dark, 0.5);
         cursor: pointer;
     }
     &__body {
@@ -440,23 +411,23 @@ event-body {
     text-align: center;
     p {
         font-size: 1.2rem;
-        color: $white;
+        color: $primary;
     }
 }
 
 .page-grid {
     display: flex;
-    // grid-template-columns: repeat(10, 1fr);
     margin: 0 0.5rem 0 0;
     cursor: pointer;
     li {
         border-radius: 50%;
-        background-color: $white;
+        background-color: $light;
         list-style-type: none;
         margin: 8px;
         height: 20px;
         width: 20px;
         text-align: center;
+        padding: .3rem auto ;
         // a {
         //      // padding: 7px;
         // }
@@ -467,10 +438,6 @@ event-body {
             transition: transform 0.2s ease-in;
         }
     }
-    // .round {
-    //      list-style-type: none;
-    //      border-radius: 50%;
-    // }
 }
 
 .active-link {
@@ -671,6 +638,20 @@ form {
     }
 }
 
+.loader-ball {
+    position: relative;
+    height:70vh;
+    background-color: $primary;
+    div {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: -17rem ;
+    }
+
+}
+
 // *media Queries......
 @media (max-width: 1000px) {
     .section-a {
@@ -725,8 +706,6 @@ form {
 
 @media (min-width: 1014px) {
     .section-a {
-        //    display: flex;
-        //    display: none;
         .page {
             margin: 2.3rem 0.6rem;
         }
