@@ -7,7 +7,7 @@
      width: 100%;
      background-color: #f4f4f4;
      margin: auto;
-     border-radius: 13px;
+     border-radius: 10px;
    }
    
    .block {
@@ -27,7 +27,7 @@
    .foot {
      display: grid;
      grid-template-columns: 1fr 1fr 1fr 1fr;
-     height: 50vh;
+     /* height: 50vh; */
    }
    
    .foot > div {
