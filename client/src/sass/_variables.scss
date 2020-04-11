@@ -1,25 +1,23 @@
 //* format colors
-
 //* bootsrtap variables to edit later
-
 $primary: #008736;
 $secondary: #fafafa;
 $success: #4bb462;
 $info: #17a2b8;
 $warning: #fffb00f6;
 $danger: #dc3545;
-$light: #e9ecef;
+$light: rgba(245, 247, 248, 0.966);
 $dark: #343a40;
 $white: #fff;
 $black: #000;
-
 $body-bg: #ffff;
 $body-color: #212529;
-
+$boot-color:#EB6300;
+$color-light:#EEEEEE;
 .primary {
-     color: $primary;
+    color: $primary;
 }
 
-$border-radius: 2.5rem;
+$border-radius: 0.7rem;
 $border-radius-lg: 1rem;
 $border-radius-sm: 1rem;

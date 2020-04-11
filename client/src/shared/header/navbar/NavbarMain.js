@@ -24,7 +24,7 @@ const NavbarMain = props => {
                <Navbar color="white" light expand="md">
                     <Logo></Logo>
                     <h4 className={" ml-3 primary"}>EDITORIAL CDS GROUP</h4>
-                    <NavbarToggler onClick={toggle} />
+                    <NavbarToggler key={DropdownToggle} onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                          <Nav className=" text-primary primary ml-auto" navbar>
                               <NavItem className=" text-primary">

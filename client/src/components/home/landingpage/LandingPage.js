@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import nysc from '../../../images/newcontentimage.svg'
 import ScrollAnimation from 'react-animate-on-scroll';
 import "animate.css/animate.min.css";
 import Typed from "react-typed";
@@ -37,13 +38,13 @@ const LandingPage = props => {
                <div className={"page "}>
                     <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
                     <h1 className={"mb-3"}>
-                         Welcome To Editoral And Publicity
-                         <br /> CDS Group Saki-West
+                         THE SAKI WEST CORPERS ZONE <br/>
+                        A PLACE FOR BETTER INFORMATIONS
                     </h1>
                     </ScrollAnimation >
-                    <ScrollAnimation animateIn='bounceInRight'
-                           animateOut='bounceOutLeft'>
-                    <em className="text-white m-3 h4  italic">
+                    <ScrollAnimation animateIn='bounceInLeft' 
+                         >
+                    <em className=" m-3 h4  italic">
                          <span className="mr-2">We</span>
                          <Typed
                               strings={textLines}
@@ -74,7 +75,7 @@ const LandingPage = props => {
                                              }}
                                              icon={"search"}
                                              size="2x"
-                                             color="#008736"
+                                             color="#fff"
                                         />
                                    </button>
                               </form>
@@ -95,6 +96,9 @@ const LandingPage = props => {
                          </div>
                     </div>
                       </div>
+               </div>
+               <div className={"page-2"}>
+                    <img src={nysc} height="500" width="650" alt="nysc shot it"/>
                </div>
              
           </section>

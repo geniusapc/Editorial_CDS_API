@@ -6,14 +6,14 @@ import Profile from "./profile/Profiles";
 
 export const Home = () => {
      return (
-          <>
+          <div className="home">
                <LandingPage />
-               <main className={"bg-primary "}>
-                    <Events />
+               <main className="cover-main">
+               <Events />
                </main>
                <Articles />
-               <Profile />
-          </>
+               <Profile /> 
+          </div>
      );
 };
 
