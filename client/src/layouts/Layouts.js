@@ -1,24 +1,42 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import Loader from '../shared/loader/Loader';
+
+/**
+ * *All components Routes
+ */
 
 import NavbarMain from "../shared/header/navbar/NavbarMain";
 import Footer from "../shared/footer/Footer";
 import Home from "../components/home/Home";
-import Gallery from "../components/gallery/Gallery";
-import ErrorPage from "./ErrorPage";
-import Login from "../components/login/Login";
-import Register from "../components/register/Register";
-import Contact from "../components/contact/Contact";
-import About from "../components/about/About";
-import NewsPage from "../components/readnewspage/Readnews";
+import ErrorPage from './ErrorPage';
+const Gallery = lazy(() => import("../components/gallery/Gallery"));
+// const ErrorPage = lazy(()=> import("./ErrorPage"));
+const Login = lazy(() => import("../components/login/Login"));
+const Register = lazy(() => import("../components/register/Register"));
+const Contact = lazy(() => import("../components/contact/Contact"));
+const About = lazy(() => import("../components/about/About"));
+const NewsPage = lazy(() => import("../components/readnewspage/Readnews"));
 
-//***********ADMIN COMPS ******** *//
-import Admin from "../components/admin/Admin";
-import AdminEvent from "../components/admin/adminList/EventList";
-import AdminGallery from "../components/admin/adminList/GalleryList";
-import UserList from "../components/admin/adminList/UserList";
-import Leaders from "../components/admin/adminList/LeadersProfile";
-import PrivateRoute from "../shared/PrivateRoute";
+
+//*************************** *//
+//***********ADMIN************* //
+//***********COMPS************** //
+//***************************** //
+const Admin = lazy(() => import("../components/admin/Admin"));
+const AdminEvent = lazy(() => import("../components/admin/adminList/EventList"));
+const AdminGallery = lazy(() => import("../components/admin/adminList/GalleryList"));
+const UserList = lazy(() => import("../components/admin/adminList/UserList"));
+const Leaders = lazy(() => import("../components/admin/adminList/LeadersProfile"));
+const PrivateRoute = lazy(() => import("../shared/PrivateRoute"));
+
+const LoaderSpinner =()=>(
+     <div className="loader-ball" >
+          <div> 
+               <Loader/>
+          </div>
+     </div>
+)
 
 const Layouts = () => {
      return (
@@ -27,34 +45,36 @@ const Layouts = () => {
                     <NavbarMain />
                     <Switch>
                          <Route path="/" exact component={Home} />
-                         <Route path="/gallery" exact component={Gallery} />
-                         <Route path="/login" exact component={Login} />
-                         <Route path="/signup" exact component={Register} />
+                         <Suspense fallback={LoaderSpinner}>
+                              <Route path="/gallery" exact component={Gallery} />
+                              <Route path="/login" exact component={Login} />
+                              <Route path="/signup" exact component={Register} />
 
-                         <Route path="/about-us" exact component={About} />
-                         <Route
-                              path="/all-events-posted"
-                              exact
-                              component={AdminEvent}
-                         />
-                         <Route
-                              path="/all-galleries-posted"
-                              exact
-                              component={AdminGallery}
-                         />
-                         <Route path="/leaders" exact component={Leaders} />
-                         <Route path="/all-users" exact component={UserList} />
-                         <Route path="/news/:id" exact component={NewsPage} />
-                         <Route path="/contact-us" exact component={Contact} />
+                              <Route path="/about-us" exact component={About} />
+                              <Route
+                                   path="/all-events-posted"
+                                   exact
+                                   component={AdminEvent}
+                              />
+                              <Route
+                                   path="/all-galleries-posted"
+                                   exact
+                                   component={AdminGallery}
+                              />
+                              <Route path="/leaders" exact component={Leaders} />
+                              <Route path="/all-users" exact component={UserList} />
+                              <Route path="/news/:id" exact component={NewsPage} />
+                              <Route path="/contact-us" exact component={Contact} />
+                              <PrivateRoute
+                                   exact
+                                   path="/admin-dashboard"
+                                   component={Admin}
+                              />
+                         </Suspense>
 
-                         <PrivateRoute
-                              exact
-                              path="/admin-dashboard"
-                              component={Admin}
-                         />
-                         <Route component={ErrorPage} />
                     </Switch>
-
+                    {/* <Route exact to="/page-404" component={ErrorPage} />
+                    <Redirect to="/page-404" /> */}
                     <Footer />
                </div>
           </Router>
