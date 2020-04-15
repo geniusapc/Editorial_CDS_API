@@ -13,22 +13,19 @@ const Events = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	// const [postsPerPage] = useState(3);
 	const [loading, setLoading] = useState();
-	const [posts, setPosts] = useState([
-
-
-	]);
+	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
-	     const getAllNews = async () => {
-	          try {
-	               setLoading(true);
-	               const res = await axios.get("/api/event");
+		const getAllNews = async () => {
+			try {
+				setLoading(true);
+				const res = await axios.get("/api/event");
 
-	               setPosts(res.data);
-	               setLoading(false);
-	          } catch (error) {}
-	     };
-	     getAllNews();
+				setPosts(res.data);
+				setLoading(false);
+			} catch (error) { }
+		};
+		getAllNews();
 	}, []);
 	const postsPerPage = 3;
 	const indexOfLastPost = currentPage * postsPerPage;
