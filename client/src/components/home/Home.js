@@ -9,10 +9,10 @@ export const Home = () => {
           <div className="home">
                <LandingPage />
                <main className="cover-main">
-               <Events />
+                    <Events />
                </main>
                <Articles />
-               <Profile /> 
+               <Profile />
           </div>
      );
 };

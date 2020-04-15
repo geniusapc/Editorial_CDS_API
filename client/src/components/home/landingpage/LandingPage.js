@@ -9,100 +9,100 @@ import Typed from "react-typed";
 import axios from "axios";
 
 const LandingPage = props => {
-     const [search, setSearch] = useState("");
-     const [posts, setPosts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [posts, setPosts] = useState([]);
 
-     const textLines = [
-          `Give information`,
-          `Write arcticles`,
-          `Develop students academically`,
-          `Enlighten our host community`
-     ];
+  const textLines = [
+    `Give information`,
+    `Write arcticles`,
+    `Develop students academically`,
+    `Enlighten our host community`
+  ];
 
-     const searchhEvent = async e => {
-          e.preventDefault();
+  const searchhEvent = async e => {
+    e.preventDefault();
 
-          if (search === "") {
-               return;
-          } else {
-               try {
-                    const res = await axios.get(`/api/event/search/${search}`);
-                    setPosts(res.data);
-                    console.log(res.data);
-               } catch (error) {}
-          }
-     };
+    if (search === "") {
+      return;
+    } else {
+      try {
+        const res = await axios.get(`/api/event/search/${search}`);
+        setPosts(res.data);
+        console.log(res.data);
+      } catch (error) { }
+    }
+  };
 
-     return (
-          <section className={"section-a"}>
-               <div className={"page "}>
-                    <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
-                    <h1 className={"mb-3"}>
-                         THE SAKI WEST CORPERS ZONE <br/>
-                        A PLACE FOR BETTER INFORMATIONS
+  return (
+    <section className={"section-a"}>
+      <div className={"page "}>
+        <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
+          <h1 className={"mb-3"}>
+            THE SAKI WEST <br /> CORPERS ZONE
+                        A PLACE  FOR BETTER INFORMATIONS
                     </h1>
-                    </ScrollAnimation >
-                    <ScrollAnimation animateIn='bounceInLeft' 
-                         >
-                    <em className=" m-3 h4  italic">
-                         <span className="mr-2">We</span>
-                         <Typed
-                              strings={textLines}
-                              typeSpeed={80}
-                              backSpeed={50}
-                              loop
-                         />
-                    </em>
+        </ScrollAnimation >
+        <ScrollAnimation animateIn='bounceInLeft'
+        >
+          <em className=" m-3 h4  italic">
+            <span className="mr-2">We</span>
+            <Typed
+              strings={textLines}
+              typeSpeed={80}
+              backSpeed={50}
+              loop
+            />
+          </em>
 
-                    </ScrollAnimation>
-                    <div className={"pb-5 mt-2"}>
-                    <div className={"mx-2"}>
-                         <div className={"search-btn "}>
-                              <form onSubmit={searchhEvent}>
-                                   <input
-                                        type="text"
-                                        value={search}
-                                        onChange={e =>
-                                             setSearch(e.target.value)
-                                        }
-                                        placeholder="Seacrh your favorite news here..."
-                                   />
-                                   <button className="land-btn" type="submit">
-                                        <FontAwesomeIcon
-                                             style={{
-                                                  marginRight: "1rem",
-                                                  marginTop: ".4rem"
-                                             }}
-                                             icon={"search"}
-                                             size="2x"
-                                             color="#fff"
-                                        />
-                                   </button>
-                              </form>
-                         </div>
+        </ScrollAnimation>
+        <div className={"pb-5 mt-2"}>
+          <div className={"mx-2"}>
+            <div className={"search-btn "}>
+              <form onSubmit={searchhEvent}>
+                <input
+                  type="text"
+                  value={search}
+                  onChange={e =>
+                    setSearch(e.target.value)
+                  }
+                  placeholder="Seacrh your favorite news here..."
+                />
+                <button className="land-btn" type="submit">
+                  <FontAwesomeIcon
+                    style={{
+                      marginRight: "1rem",
+                      marginTop: ".4rem"
+                    }}
+                    icon={"search"}
+                    size="2x"
+                    color="#fff"
+                  />
+                </button>
+              </form>
+            </div>
 
-                         <div className="m-1">
-                              <ListGroup>
-                                   {posts.map(post => (
-                                        <Link to={`/news/${post.title}`}>
-                                             <ListGroupItem>
-                                                  <span className="text-black m-1">
-                                                       {post.title}
-                                                  </span>{" "}
-                                             </ListGroupItem>
-                                        </Link>
-                                   ))}
-                              </ListGroup>
-                         </div>
-                    </div>
-                      </div>
-               </div>
-               <div className={"page-2"}>
-                    <img src={nysc} height="500" width="650" alt="nysc shot it"/>
-               </div>
-             
-          </section>
-     );
+            <div className="m-1">
+              <ListGroup>
+                {posts.map(post => (
+                  <Link to={`/news/${post.title}`}>
+                    <ListGroupItem>
+                      <span className="text-black m-1">
+                        {post.title}
+                      </span>{" "}
+                    </ListGroupItem>
+                  </Link>
+                ))}
+              </ListGroup>
+            </div>
+          </div>
+        </div>
+      </div>f
+      <div className={"page-2"}>
+        <img src={nysc} height="500" width="650" alt="nysc shot it" />
+      </div>
+
+    </section>
+  );
 };
 
 export default LandingPage;
