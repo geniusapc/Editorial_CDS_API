@@ -7,6 +7,7 @@ const user = require("../api/user");
 const about = require("../api/about");
 const event = require("../api/event");
 const leaders = require("../api/leaders");
+const test = require("../api/test");
 
 module.exports = app => {
   app.use("/api/event", event);
@@ -15,5 +16,6 @@ module.exports = app => {
   app.use("/api/user", user);
   app.use("/api/about", about);
   app.use("/api/leaders", leaders);
+  app.use("/api/test", test);
   app.use(errorHandler);
 };

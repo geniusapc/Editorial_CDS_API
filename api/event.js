@@ -9,7 +9,7 @@ const fileUpload = require("express-fileupload");
 router.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: "/tmp/"
+    tempFileDir: "/tmp/",
   })
 );
 
@@ -25,7 +25,7 @@ router.get("/", async (req, res, next) => {
   let events = await Event.findAll({
     order: [["createdAt", "DESC"]],
     limit,
-    include: [{ model: Comment }]
+    include: [{ model: Comment }],
   });
   return res.status(200).json(events);
 });
@@ -37,12 +37,12 @@ router.get("/search/:title", async (req, res, next) => {
   let events = await Event.findAll({
     where: {
       title: {
-        [Op.iLike]: `%${title}%`
-      }
+        [Op.iLike]: `%${title}%`,
+      },
     },
     order: [["createdAt", "DESC"]],
     limit,
-    include: [{ model: Comment }]
+    include: [{ model: Comment }],
   });
   return res.status(200).json(events);
 });
@@ -54,9 +54,9 @@ router.get("/:slugTitle", async (req, res) => {
     include: [
       {
         model: Comment,
-        order: [["createdAt", "DESC"]]
-      }
-    ]
+        order: [["createdAt", "DESC"]],
+      },
+    ],
   });
 
   if (!event) return res.status(400).send("Event not found");
@@ -77,7 +77,7 @@ router.post("/", [auth, admin], async (req, res) => {
   let { url, public_id } = await cloudinary.uploader.upload(tempFilePath);
   let [data, created] = await Event.findOrCreate({
     where: { slugTitle },
-    defaults: { image: url, imageId: public_id, text, title, createdAt: date }
+    defaults: { image: url, imageId: public_id, text, title, createdAt: date },
   });
   if (!created) return res.status(400).send("Event already exist");
 
