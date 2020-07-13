@@ -17,10 +17,12 @@ module.exports = async (req, res) => {
   if (!!req.files) {
     const { error: imgError } = validationImg(req.files);
     if (imgError) return res.status(422).send(imgError.details[0].message);
-    await cloudinary.uploader.destroy(event.image.id);
+    await cloudinary.uploader.destroy(event.url).catch((err) => {
+      throw err.error;
+    });
     const { tempFilePath } = req.files.imagefile;
     const { url, public_id } = await cloudinary.uploader.upload(tempFilePath);
-    updateFields = { ...updateFields, image: { url, id: public_id } };
+    updateFields = { ...updateFields, imagId: public_id, url };
   }
 
   await Event.update(updateFields, { where: { id } });

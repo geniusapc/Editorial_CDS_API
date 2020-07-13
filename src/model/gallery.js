@@ -5,7 +5,7 @@ class Gallery extends Model {}
 
 Gallery.init(
   {
-    image: DataTypes.STRING,
+    url: DataTypes.STRING,
     imageId: DataTypes.STRING,
     text: DataTypes.STRING,
   },

@@ -11,11 +11,16 @@ module.exports = async (req, res) => {
   if (error) return res.status(422).send(error.details[0].message);
   if (imgError) return res.status(422).send(imgError.details[0].message);
 
-  const { tempFilePath } = req.files.imagefile;
-  const { url, public_id } = await cloudinary.uploader.upload(tempFilePath);
+  const { tempFilePath } = req.files.image;
+  const { url, public_id } = await cloudinary.uploader
+    .upload(tempFilePath)
+    .catch((err) => {
+      throw err.error;
+    });
   const gallery = await Gallery.create({
     text,
-    image: { url, id: public_id },
+    url,
+    imageId: public_id,
   });
   return res.status(200).send(gallery);
 };

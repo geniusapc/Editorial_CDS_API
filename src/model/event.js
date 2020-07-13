@@ -8,10 +8,9 @@ Event.init(
   {
     title: DataTypes.STRING,
     slugTitle: DataTypes.STRING,
-    image: DataTypes.STRING,
+    url: DataTypes.STRING,
     imageId: DataTypes.STRING,
     text: DataTypes.TEXT,
-    likes: { type: Sequelize.ARRAY(Sequelize.INTEGER), defaultValue: [] },
   },
   { sequelize, modelName: 'events' }
 );
